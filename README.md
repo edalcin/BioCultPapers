@@ -328,3 +328,56 @@ A versão 2.1 traz integração completa com o projeto [etnoDB](https://github.c
 ### Migração de Dados
 
 Se você já utiliza o EtnoPapers, seus dados antigos serão automaticamente convertidos para a nova estrutura ao abrir a aplicação pela primeira vez.
+
+---
+
+## EtnoArquitetura Federada — v3.0
+
+O **etnopapers** faz parte da [EtnoArquitetura](https://github.com/edalcin/etnoArquitetura), um ecossistema federado para gestão de Conhecimento Tradicional Associado à Biodiversidade (CTA).
+
+### Papel do etnopapers na Federação
+
+O etnopapers é componente **exclusivo de Iniciativas de Fontes Secundárias** — o tipo de membro da federação especializado em sistematizar CTA extraído de literatura científica. Na arquitetura federada v3.0, etnopapers permanece como ferramenta de entrada de dados para o **etnoDB**, sem relação direta com o Pluriverso.
+
+```mermaid
+graph TD
+    subgraph I1["Iniciativa de Fontes Secundárias"]
+        EP(etnopapers\nExtração com IA) -->|dados extraídos de PDFs| EDB(etnoDB)
+        EDB <--> MDB[(MongoDB)]
+        ET(etnoTermos\nSKOS-XL) <--> MDB
+    end
+
+    PL{{"Pluriverso\nMiddleware de Federação"}}
+
+    EDB -->|"harvest REST\n(registros públicos)"| PL
+```
+
+O etnopapers **não expõe endpoint de harvest** e **não interage diretamente com o Pluriverso**. Seu papel é acelerar a entrada de dados no etnoDB — a publicação para a federação é responsabilidade do etnoDB.
+
+### Por que etnopapers é exclusivo de fontes secundárias?
+
+A linha conceitual primário/secundário é central na EtnoArquitetura:
+- **Fontes secundárias** (literatura científica, PDFs): sistematizadas por iniciativas como o etnoDB, com suporte do etnopapers para extração automatizada
+- **Fontes primárias** (comunidades tradicionais, CLPI): registradas diretamente pelo **etnoRelatos**, sem intermediação de extração de literatura
+
+Comunidades que queiram sistematizar literatura científica sobre seus próprios conhecimentos podem operar uma instância de Iniciativa de Fontes Secundárias separada (com etnoDB + etnopapers próprios).
+
+### Mudanças Necessárias para v3.0
+
+> **Nota**: Nenhuma implementação está sendo realizada agora.
+
+O etnopapers tem **impacto mínimo** na transição para a arquitetura federada:
+
+| Mudança | Descrição |
+|---------|-----------|
+| **Configuração de MongoDB** | Garantir que aponta para o MongoDB da Iniciativa #1 (não mais "compartilhado") — provavelmente já correto, apenas documentar explicitamente |
+| **Campo `member_id`** | Incluir `member_id` nos registros gerados para rastreabilidade no índice federado |
+
+### Componentes Relacionados
+
+| Componente | Relação |
+|------------|---------|
+| **[etnoDB](https://github.com/edalcin/etnoDB)** | Destino dos dados extraídos; responsável pela publicação na federação via Pluriverso |
+| **[etnoTermos](https://github.com/edalcin/etnotermos)** | Vocabulários controlados para padronização terminológica dos dados extraídos |
+| **[Pluriverso](https://github.com/edalcin/pluriverso)** | Sem relação direta — etnopapers não participa do harvest |
+| **[etnoArquitetura](https://github.com/edalcin/etnoArquitetura)** | Documentação completa da arquitetura ([ADR-004](https://github.com/edalcin/etnoArquitetura/blob/main/docs/architecture-decisions/ADR-004-federated-architecture.md)) |
