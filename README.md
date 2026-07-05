@@ -15,6 +15,11 @@
 
 > **✨ Novidade na v2.1.0**: Integração completa com o projeto etnoDB! Nova estrutura de dados padronizada conforme [etnoDB Data Structure](https://github.com/edalcin/etnoDB?tab=readme-ov-file#estrutura-de-dados) para sincronização perfeita com o banco de dados central. [Saiba mais](VERSION_HISTORY.md#versão-210---dezembro-2025)
 
+
+> "Se os dados não estão fisicamente sob o controle de quem os gerou, a soberania é apenas uma promessa bonita em um termo de consentimento."
+>
+> — Eduardo Dalcin, em [*Sementes Livres, Solos Próprios: Por que o Conhecimento Tradicional exige uma Arquitetura Federada*](https://eduardo.dalc.in/por-que-o-conhecimento-tradicional-exige-uma-arquitetura-federada/), post que resume e ilustra didaticamente a arquitetura federada na qual o etnoPapers atua como ferramenta de extração automatizada para iniciativas de fontes secundárias.
+
 ---
 
 > ## 🔗 Projeto etnoDB
