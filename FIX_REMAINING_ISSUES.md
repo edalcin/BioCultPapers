@@ -116,7 +116,7 @@ Não corte a lista - sempre retorne completo.
 ### Problem
 ```
 Benchmark (OLLAMA): "Ouricuri Forest, Fulni-o Indigenous Land"
-EtnoPapers:         "Ouricuri settlement"
+BioCultPapers:         "Ouricuri settlement"
 ```
 
 The location is identified but less detailed.

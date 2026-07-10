@@ -1,4 +1,4 @@
-# EtnoPapers WPF Migration - Implementation Readiness Guide
+# BioCultPapers WPF Migration - Implementation Readiness Guide
 
 **Status**: ✅ Ready for Phase 0 (Project Setup & Infrastructure)
 **Date**: 2025-12-06
@@ -114,7 +114,7 @@ code .specify/memory/constitution.md  # Project principles
 #### T001: Create Visual Studio Solution
 
 ```bash
-dotnet new sln -n EtnoPapers
+dotnet new sln -n BioCultPapers
 ```
 
 **Acceptance**: Solution file created, can open in Visual Studio 2022
@@ -419,10 +419,10 @@ Before starting Phase 0 tomorrow, verify:
 
 ```bash
 # Phase 0 Setup (Day 1)
-cd H:\git\etnopapers
+cd H:\git\BioCultPapers
 
 # Create solution
-dotnet new sln -n EtnoPapers
+dotnet new sln -n BioCultPapers
 
 # Create projects
 dotnet new classlib -n EtnoPapers.Core -f net8.0 -o src/EtnoPapers.Core

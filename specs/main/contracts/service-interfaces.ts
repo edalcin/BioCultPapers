@@ -1,8 +1,8 @@
 /**
- * Service Interfaces: EtnoPapers
+ * Service Interfaces: BioCultPapers
  *
  * This file defines the TypeScript interfaces for all internal services
- * in the EtnoPapers desktop application. These serve as contracts between
+ * in the BioCultPapers desktop application. These serve as contracts between
  * the UI layer and business logic layer.
  *
  * Date: 2025-12-01

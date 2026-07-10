@@ -1,6 +1,6 @@
 # Prompt Adaptation Quick Reference
 
-**Quick guide for adapting EtnoPapers extraction prompts to cloud AI providers**
+**Quick guide for adapting BioCultPapers extraction prompts to cloud AI providers**
 
 ---
 
@@ -303,7 +303,7 @@ DOCUMENT TO ANALYZE:
 
 ## Parameter Reference Table
 
-| Parameter | OpenAI | Anthropic | Gemini | EtnoPapers Value |
+| Parameter | OpenAI | Anthropic | Gemini | BioCultPapers Value |
 |-----------|--------|-----------|--------|------------------|
 | Temperature | `temperature` | `temperature` | `temperature` | `0.1` |
 | Top-P | `top_p` | `top_p` | `topP` | `0.3` |

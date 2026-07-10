@@ -1,4 +1,4 @@
-# EtnoPapers 1.0.0 Release Checklist
+# BioCultPapers 1.0.0 Release Checklist
 
 **Release Manager**: ________________
 **Release Date**: December 2024
@@ -79,8 +79,8 @@
   - [ ] Release notes mention 1.0.0
 
 - [ ] Assembly metadata complete
-  - [ ] Product name: "EtnoPapers"
-  - [ ] Company: "EtnoPapers Project"
+  - [ ] Product name: "BioCultPapers"
+  - [ ] Company: "BioCultPapers Project"
   - [ ] Copyright: "Copyright © 2024"
   - [ ] Description accurate
 
@@ -124,13 +124,13 @@
 ### Installer Creation
 
 - [ ] Windows MSI installer created
-  - [ ] File: EtnoPapers-Setup-1.0.0.msi
+  - [ ] File: BioCultPapers-Setup-1.0.0.msi
   - [ ] Size: ~120 MB (expected)
   - [ ] File signature valid
   - [ ] Installer launches without errors
 
 - [ ] Portable ZIP package created
-  - [ ] File: EtnoPapers-Portable-1.0.0.zip
+  - [ ] File: BioCultPapers-Portable-1.0.0.zip
   - [ ] Size: ~160 MB (expected)
   - [ ] Contains all necessary files
   - [ ] README.txt included
@@ -138,8 +138,8 @@
 - [ ] Checksums calculated
   ```bash
   # SHA256 checksums
-  certutil -hashfile EtnoPapers-Setup-1.0.0.msi SHA256
-  certutil -hashfile EtnoPapers-Portable-1.0.0.zip SHA256
+  certutil -hashfile BioCultPapers-Setup-1.0.0.msi SHA256
+  certutil -hashfile BioCultPapers-Portable-1.0.0.zip SHA256
   # Saved to checksums.txt
   ```
 
@@ -283,14 +283,14 @@
 
 ### Release Artifacts
 
-- [ ] EtnoPapers-Setup-1.0.0.msi
+- [ ] BioCultPapers-Setup-1.0.0.msi
   - [ ] File present
   - [ ] Size verified (~120 MB)
   - [ ] Checksum calculated
   - [ ] Virus scan passed
   - [ ] Ready for distribution
 
-- [ ] EtnoPapers-Portable-1.0.0.zip
+- [ ] BioCultPapers-Portable-1.0.0.zip
   - [ ] File present
   - [ ] Size verified (~160 MB)
   - [ ] Checksum calculated

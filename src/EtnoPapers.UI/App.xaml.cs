@@ -97,7 +97,7 @@ namespace EtnoPapers.UI
                 // Initialize logger immediately (needed for all other logging)
                 _loggerService = new LoggerService();
 
-                _loggerService.Info("EtnoPapers application started");
+                _loggerService.Info("BioCultPapers application started");
 
             // Initialize services lazily (T073: Startup optimization)
             // ConfigurationService: lazy-loaded on first access
@@ -149,7 +149,7 @@ namespace EtnoPapers.UI
 
         protected override void OnExit(ExitEventArgs e)
         {
-            _loggerService?.Info("EtnoPapers application closing");
+            _loggerService?.Info("BioCultPapers application closing");
             base.OnExit(e);
         }
     }

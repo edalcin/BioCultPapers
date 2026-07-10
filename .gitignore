@@ -134,5 +134,5 @@ x86/
 *.wixpdb
 
 # Portable builds (self-contained, too large for git)
-EtnoPapers-Portable/
+BioCultPapers-Portable/
 artifacts/

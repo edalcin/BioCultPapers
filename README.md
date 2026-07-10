@@ -1,9 +1,9 @@
-# EtnoPapers
+# BioCultPapers
 
 <div align="center">
-  <img src="docs\etnoImagens\etnopapers2Trans300.png" alt="etnoPapers Logo" width="200">
-  
-  [![Version](https://img.shields.io/badge/version-2.1.0-blue.svg)](https://github.com/edalcin/etnopapers/releases)
+  <img src="docs\etnoImagens\etnopapers2Trans300.png" alt="BioCultPapers Logo" width="200">
+
+  [![Version](https://img.shields.io/badge/version-2.1.0-blue.svg)](https://github.com/edalcin/BioCultPapers/releases)
   [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18139340.svg)](https://doi.org/10.5281/zenodo.18139340)
 
 
@@ -13,35 +13,35 @@
 
 **Versão Atual**: 2.1.0 | [Ver Histórico de Versões](VERSION_HISTORY.md)
 
-> **✨ Novidade na v2.1.0**: Integração completa com o projeto etnoDB! Nova estrutura de dados padronizada conforme [etnoDB Data Structure](https://github.com/edalcin/etnoDB?tab=readme-ov-file#estrutura-de-dados) para sincronização perfeita com o banco de dados central. [Saiba mais](VERSION_HISTORY.md#versão-210---dezembro-2025)
+> **✨ Novidade na v2.1.0**: Integração completa com o projeto BioCultDB! Nova estrutura de dados padronizada conforme [BioCultDB Data Structure](https://github.com/edalcin/BioCultDB?tab=readme-ov-file#estrutura-de-dados) para sincronização perfeita com o banco de dados central. [Saiba mais](VERSION_HISTORY.md#versão-210---dezembro-2025)
 
 
 > "Se os dados não estão fisicamente sob o controle de quem os gerou, a soberania é apenas uma promessa bonita em um termo de consentimento."
 >
-> — Eduardo Dalcin, em [*Sementes Livres, Solos Próprios: Por que o Conhecimento Tradicional exige uma Arquitetura Federada*](https://eduardo.dalc.in/por-que-o-conhecimento-tradicional-exige-uma-arquitetura-federada/), post que resume e ilustra didaticamente a arquitetura federada na qual o etnoPapers atua como ferramenta de extração automatizada para iniciativas de fontes secundárias.
+> — Eduardo Dalcin, em [*Sementes Livres, Solos Próprios: Por que o Conhecimento Tradicional exige uma Arquitetura Federada*](https://eduardo.dalc.in/por-que-o-conhecimento-tradicional-exige-uma-arquitetura-federada/), post que resume e ilustra didaticamente a arquitetura federada na qual o BioCultPapers atua como ferramenta de extração automatizada para iniciativas de fontes secundárias.
 
 ---
 
-> ## 🔗 Projeto etnoDB
+> ## 🔗 Projeto BioCultDB
 >
-> **Este projeto faz parte do [etnoDB](https://github.com/edalcin/etnoDB)**, um sistema completo de banco de dados etnobotânicos provenientes de dados secundários (artigos científicos publicados).
+> **Este projeto faz parte do [BioCultDB](https://github.com/edalcin/BioCultDB)**, um sistema completo de banco de dados etnobotânicos provenientes de dados secundários (artigos científicos publicados).
 >
-> O **EtnoPapers** serve como **ferramenta alternativa de entrada de dados** ao etnoDB, permitindo a **extração automatizada de metadados de artigos científicos** usando inteligência artificial, complementando a **entrada manual de dados pela interface do etnoDB**.
+> O **BioCultPapers** serve como **ferramenta alternativa de entrada de dados** ao BioCultDB, permitindo a **extração automatizada de metadados de artigos científicos** usando inteligência artificial, complementando a **entrada manual de dados pela interface do BioCultDB**.
 >
 > **🎯 Fluxo de trabalho integrado:**
-> 1. **EtnoPapers** → Extração automatizada de PDFs com IA
+> 1. **BioCultPapers** → Extração automatizada de PDFs com IA
 > 2. **MongoDB** → Armazenamento centralizado de dados
-> 3. **etnoDB** → Visualização, curadoria e entrada manual complementar
+> 3. **BioCultDB** → Visualização, curadoria e entrada manual complementar
 >
-> Para mais informações sobre o projeto etnoDB, visite: **https://github.com/edalcin/etnoDB**
+> Para mais informações sobre o projeto BioCultDB, visite: **https://github.com/edalcin/BioCultDB**
 
 ---
 
-## Sobre o EtnoPapers
+## Sobre o BioCultPapers
 
-O EtnoPapers é uma aplicação desktop nativa para Windows desenvolvida para pesquisadores em etnobotânica que precisam catalogar e organizar dados sobre o uso tradicional de plantas por comunidades indígenas e tradicionais.
+O BioCultPapers é uma aplicação desktop nativa para Windows desenvolvida para pesquisadores em etnobotânica que precisam catalogar e organizar dados sobre o uso tradicional de plantas por comunidades indígenas e tradicionais.
 
-Com o EtnoPapers, você pode:
+Com o BioCultPapers, você pode:
 
 - ✨ **Extrair automaticamente** metadados de artigos científicos em PDF usando inteligência artificial
 - 📝 **Gerenciar** suas referências com interface completa de edição (criar, visualizar, editar, deletar)
@@ -114,7 +114,7 @@ Mantenha seus dados seguros e acessíveis:
 
 ## Instalação
 
-1. **Baixe o EtnoPapers**
+1. **Baixe o BioCultPapers**
    - Acesse a seção de Releases no GitHub
    - Baixe a versão mais recente do instalador
    - Execute o instalador e siga as instruções
@@ -141,8 +141,8 @@ Mantenha seus dados seguros e acessíveis:
    - Gere uma API key
    - Adicione créditos à conta (pago por uso)
 
-3. **Configure o EtnoPapers**
-   - Abra o EtnoPapers
+3. **Configure o BioCultPapers**
+   - Abra o BioCultPapers
    - Vá para **Configurações**
    - Selecione seu provedor de IA (Gemini, OpenAI ou Anthropic)
    - Cole sua chave de API
@@ -151,7 +151,7 @@ Mantenha seus dados seguros e acessíveis:
 4. **Configure o MongoDB** (opcional, mas recomendado)
    - Crie uma conta gratuita no MongoDB Atlas ou instale um servidor local
    - Obtenha a URI de conexão do seu banco de dados
-   - Configure a URI nas configurações do EtnoPapers
+   - Configure a URI nas configurações do BioCultPapers
 
 ---
 
@@ -159,7 +159,7 @@ Mantenha seus dados seguros e acessíveis:
 
 ### Primeira Configuração
 
-1. Abra o EtnoPapers
+1. Abra o BioCultPapers
 2. Vá para a área de **Configurações**
 3. Selecione seu provedor de IA em nuvem (Gemini, OpenAI ou Anthropic)
 4. Cole sua chave de API do provedor escolhido
@@ -219,7 +219,7 @@ Extraídos quando disponíveis no documento:
 
 ### Estrutura de Dados
 
-**Versão 2.1**: A estrutura de dados foi atualizada para integração completa com o [etnoDB](https://github.com/edalcin/etnoDB?tab=readme-ov-file#estrutura-de-dados).
+**Versão 2.1**: A estrutura de dados foi atualizada para integração completa com o [BioCultDB](https://github.com/edalcin/BioCultDB?tab=readme-ov-file#estrutura-de-dados).
 
 **Principais campos:**
 - `createdAt` / `updatedAt`: Timestamps no formato ISO 8601 (ex: "2025-12-26T11:02:00.533+00:00")
@@ -228,7 +228,7 @@ Extraídos quando disponíveis no documento:
 
 Para detalhes completos da estrutura de dados, consulte:
 - Arquivo de exemplo: [`docs/estrutura.json`](docs/estrutura.json)
-- Documentação oficial: [etnoDB Data Structure](https://github.com/edalcin/etnoDB?tab=readme-ov-file#estrutura-de-dados)
+- Documentação oficial: [BioCultDB Data Structure](https://github.com/edalcin/BioCultDB?tab=readme-ov-file#estrutura-de-dados)
 
 ---
 
@@ -236,7 +236,7 @@ Para detalhes completos da estrutura de dados, consulte:
 
 ### Comparação de Provedores
 
-O EtnoPapers suporta três provedores de IA em nuvem para extração de metadados:
+O BioCultPapers suporta três provedores de IA em nuvem para extração de metadados:
 
 | Aspecto | Google Gemini | OpenAI | Anthropic Claude |
 |---------|--------------|--------|------------------|
@@ -252,7 +252,7 @@ O EtnoPapers suporta três provedores de IA em nuvem para extração de metadado
 
 **Para iniciantes / uso ocasional:**
 - **Google Gemini** - Gratuito, rápido, sem necessidade de cartão de crédito
-- Ideal para testar o EtnoPapers sem custos
+- Ideal para testar o BioCultPapers sem custos
 - Limite generoso: até 15 requisições por minuto
 
 **Para uso profissional / alto volume:**
@@ -300,7 +300,7 @@ Para entender a arquitetura detalhada do sistema, incluindo diagramas C4 Model e
 
 ## Suporte
 
-Para questões, problemas ou sugestões sobre o EtnoPapers, use o [Issues](https://github.com/edalcin/etnopapers/issues).
+Para questões, problemas ou sugestões sobre o BioCultPapers, use o [Issues](https://github.com/edalcin/BioCultPapers/issues).
 
 ---
 
@@ -308,7 +308,7 @@ Para questões, problemas ou sugestões sobre o EtnoPapers, use o [Issues](https
 
 Para mais informações sobre o projeto:
 * Desenvolvedor: Eduardo Dalcin - edalcin@jbrj.gov.br
-* Referência Arquitetônica: [etnoArquitetura](https://github.com/edalcin/etnoArquitetura)
+* Referência Arquitetônica: [Arquitetura BioCultural](https://github.com/edalcin/Arquitetura-BioCultural)
 
 ---
 
@@ -320,36 +320,36 @@ Para mais informações sobre o projeto:
 
 ## 🔄 Novidades da Versão 2.1
 
-### Integração com etnoDB
+### Integração com BioCultDB
 
-A versão 2.1 traz integração completa com o projeto [etnoDB](https://github.com/edalcin/etnoDB), incluindo:
+A versão 2.1 traz integração completa com o projeto [BioCultDB](https://github.com/edalcin/BioCultDB), incluindo:
 
-- ✅ **Estrutura de dados padronizada**: Compatibilidade total com o schema do etnoDB
+- ✅ **Estrutura de dados padronizada**: Compatibilidade total com o schema do BioCultDB
 - ✅ **Timestamps ISO 8601**: Formato internacional para `createdAt` e `updatedAt`
 - ✅ **Sistema de status**: Campo `status` para workflow de aprovação ("pending", "approved", "rejected")
 - ✅ **Rastreamento de origem**: Campo `fonte` identifica a origem dos dados ("etnodb - [Provedor IA]")
-- ✅ **Sincronização otimizada**: Upload direto para MongoDB do etnoDB sem conversões
+- ✅ **Sincronização otimizada**: Upload direto para MongoDB do BioCultDB sem conversões
 
 ### Migração de Dados
 
-Se você já utiliza o EtnoPapers, seus dados antigos serão automaticamente convertidos para a nova estrutura ao abrir a aplicação pela primeira vez.
+Se você já utiliza o BioCultPapers, seus dados antigos serão automaticamente convertidos para a nova estrutura ao abrir a aplicação pela primeira vez.
 
 ---
 
-## EtnoArquitetura Federada — v3.0
+## Arquitetura BioCultural Federada — v3.0
 
-O **etnopapers** faz parte da [EtnoArquitetura](https://github.com/edalcin/etnoArquitetura), um ecossistema federado para gestão de Conhecimento Tradicional Associado à Biodiversidade (CTA).
+O **BioCultPapers** faz parte da [Arquitetura BioCultural](https://github.com/edalcin/Arquitetura-BioCultural), um ecossistema federado para gestão de Conhecimento Tradicional Associado à Biodiversidade (CTA).
 
-### Papel do etnopapers na Federação
+### Papel do BioCultPapers na Federação
 
-O etnopapers é componente **exclusivo de Iniciativas de Fontes Secundárias** — o tipo de membro da federação especializado em sistematizar CTA extraído de literatura científica. Na arquitetura federada v3.0, etnopapers permanece como ferramenta de entrada de dados para o **etnoDB**, sem relação direta com o Pluriverso.
+O BioCultPapers é componente **exclusivo de Iniciativas de Fontes Secundárias** — o tipo de membro da federação especializado em sistematizar CTA extraído de literatura científica. Na arquitetura federada v3.0, BioCultPapers permanece como ferramenta de entrada de dados para o **BioCultDB**, sem relação direta com o Pluriverso.
 
 ```mermaid
 graph TD
     subgraph I1["Iniciativa de Fontes Secundárias"]
-        EP(etnopapers\nExtração com IA) -->|dados extraídos de PDFs| EDB(etnoDB)
+        EP(BioCultPapers\nExtração com IA) -->|dados extraídos de PDFs| EDB(BioCultDB)
         EDB <--> MDB[(MongoDB)]
-        ET(etnoTermos\nSKOS-XL) <--> MDB
+        ET(BioCultTermos\nSKOS-XL) <--> MDB
     end
 
     PL{{"Pluriverso\nMiddleware de Federação"}}
@@ -357,21 +357,21 @@ graph TD
     EDB -->|"harvest REST\n(registros públicos)"| PL
 ```
 
-O etnopapers **não expõe endpoint de harvest** e **não interage diretamente com o Pluriverso**. Seu papel é acelerar a entrada de dados no etnoDB — a publicação para a federação é responsabilidade do etnoDB.
+O BioCultPapers **não expõe endpoint de harvest** e **não interage diretamente com o Pluriverso**. Seu papel é acelerar a entrada de dados no BioCultDB — a publicação para a federação é responsabilidade do BioCultDB.
 
-### Por que etnopapers é exclusivo de fontes secundárias?
+### Por que BioCultPapers é exclusivo de fontes secundárias?
 
-A linha conceitual primário/secundário é central na EtnoArquitetura:
-- **Fontes secundárias** (literatura científica, PDFs): sistematizadas por iniciativas como o etnoDB, com suporte do etnopapers para extração automatizada
-- **Fontes primárias** (comunidades tradicionais, CLPI): registradas diretamente pelo **etnoRelatos**, sem intermediação de extração de literatura
+A linha conceitual primário/secundário é central na Arquitetura BioCultural:
+- **Fontes secundárias** (literatura científica, PDFs): sistematizadas por iniciativas como o BioCultDB, com suporte do BioCultPapers para extração automatizada
+- **Fontes primárias** (comunidades tradicionais, CLPI): registradas diretamente pelo **BioCultRelatos**, sem intermediação de extração de literatura
 
-Comunidades que queiram sistematizar literatura científica sobre seus próprios conhecimentos podem operar uma instância de Iniciativa de Fontes Secundárias separada (com etnoDB + etnopapers próprios).
+Comunidades que queiram sistematizar literatura científica sobre seus próprios conhecimentos podem operar uma instância de Iniciativa de Fontes Secundárias separada (com BioCultDB + BioCultPapers próprios).
 
 ### Mudanças Necessárias para v3.0
 
 > **Nota**: Nenhuma implementação está sendo realizada agora.
 
-O etnopapers tem **impacto mínimo** na transição para a arquitetura federada:
+O BioCultPapers tem **impacto mínimo** na transição para a arquitetura federada:
 
 | Mudança | Descrição |
 |---------|-----------|
@@ -382,7 +382,7 @@ O etnopapers tem **impacto mínimo** na transição para a arquitetura federada:
 
 | Componente | Relação |
 |------------|---------|
-| **[etnoDB](https://github.com/edalcin/etnoDB)** | Destino dos dados extraídos; responsável pela publicação na federação via Pluriverso |
-| **[etnoTermos](https://github.com/edalcin/etnotermos)** | Vocabulários controlados para padronização terminológica dos dados extraídos |
-| **[Pluriverso](https://github.com/edalcin/pluriverso)** | Sem relação direta — etnopapers não participa do harvest |
-| **[etnoArquitetura](https://github.com/edalcin/etnoArquitetura)** | Documentação completa da arquitetura ([ADR-004](https://github.com/edalcin/etnoArquitetura/blob/main/docs/architecture-decisions/ADR-004-federated-architecture.md)) |
+| **[BioCultDB](https://github.com/edalcin/BioCultDB)** | Destino dos dados extraídos; responsável pela publicação na federação via Pluriverso |
+| **[BioCultTermos](https://github.com/edalcin/BioCultTermos)** | Vocabulários controlados para padronização terminológica dos dados extraídos |
+| **[Pluriverso](https://github.com/edalcin/pluriverso)** | Sem relação direta — BioCultPapers não participa do harvest |
+| **[Arquitetura BioCultural](https://github.com/edalcin/Arquitetura-BioCultural)** | Documentação completa da arquitetura ([ADR-004](https://github.com/edalcin/Arquitetura-BioCultural/blob/main/docs/architecture-decisions/ADR-004-federated-architecture.md)) |

@@ -11,7 +11,7 @@ namespace EtnoPapers.UI.ViewModels
     {
         private readonly DataStorageService _storageService;
         private int _recordCount = 0;
-        private string _welcomeMessage = "Bem-vindo ao EtnoPapers";
+        private string _welcomeMessage = "Bem-vindo ao BioCultPapers";
 
         public HomeViewModel()
         {

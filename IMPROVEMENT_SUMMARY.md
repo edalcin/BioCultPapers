@@ -1,7 +1,7 @@
-# EtnoPapers Quality Improvement Summary
+# BioCultPapers Quality Improvement Summary
 
 ## Problem Identified
-EtnoPapers extraction quality was **43% complete** vs OLLAMA Desktop's **86% complete**, despite using the **same model (Qwen2.5:7b), same PDF, and same prompt**.
+BioCultPapers extraction quality was **43% complete** vs OLLAMA Desktop's **86% complete**, despite using the **same model (Qwen2.5:7b), same PDF, and same prompt**.
 
 ### Failing Fields
 ```
@@ -138,7 +138,7 @@ Use the reference files provided:
 - **Prompt**: `docs/pdfTest/prompt2.md` (anti-hallucination rules)
 
 ### Test Procedure
-1. Run updated EtnoPapers: `src/EtnoPapers.UI/bin/Release/publish/EtnoPapers.UI.exe`
+1. Run updated BioCultPapers: `src/EtnoPapers.UI/bin/Release/publish/EtnoPapers.UI.exe`
 2. Extract benchmark PDF
 3. Compare output with `docs/pdfTest/ollama.json`
 4. Verify all fields are now present and populated
@@ -179,7 +179,7 @@ Use the reference files provided:
 
 ### Symptom: Fields missing from response entirely
 **Action**:
-1. Compare OLLAMA Desktop request format with EtnoPapers
+1. Compare OLLAMA Desktop request format with BioCultPapers
 2. Check if markdown content is being sent in full
 3. Verify UTF-8 encoding of custom prompt
 
@@ -189,7 +189,7 @@ Use the reference files provided:
 
 ### Before
 ```
-EtnoPapers → OLLAMAService → /api/generate
+BioCultPapers → OLLAMAService → /api/generate
   Request: { model, prompt, stream: false }
   Response: Cut off at 128-256 tokens (default)
   Result: Incomplete JSON (missing last fields)
@@ -197,7 +197,7 @@ EtnoPapers → OLLAMAService → /api/generate
 
 ### After
 ```
-EtnoPapers → OLLAMAService → /api/generate
+BioCultPapers → OLLAMAService → /api/generate
   Request: {
     model,
     prompt,
@@ -262,11 +262,11 @@ Add response validation before JSON parsing:
 
 **Updated executable available at**:
 ```
-H:\git\etnopapers\src\EtnoPapers.UI\bin\Release\publish\EtnoPapers.UI.exe
+H:\git\BioCultPapers\src\EtnoPapers.UI\bin\Release\publish\EtnoPapers.UI.exe
 ```
 
 **To test**:
-1. Close any running EtnoPapers instances
+1. Close any running BioCultPapers instances
 2. Run the executable above
 3. Extract benchmark PDF
 4. Check log and results
@@ -296,4 +296,4 @@ The quality improvement from 43% → 86% is achieved through **two critical chan
 2. **Bug Fix**: Custom prompt was not receiving markdown content (now fixed in commit 2bc4f24)
 3. **Better Logging**: Full response capture enables debugging
 
-**Expected Result**: EtnoPapers extraction quality will match OLLAMA Desktop when using the same model, PDF, and prompt.
+**Expected Result**: BioCultPapers extraction quality will match OLLAMA Desktop when using the same model, PDF, and prompt.

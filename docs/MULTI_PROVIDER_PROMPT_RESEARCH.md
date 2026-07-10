@@ -1,7 +1,7 @@
 # Multi-Provider AI Prompt Engineering Research
 
 **Date**: 2025-12-09
-**Context**: EtnoPapers migration from local OLLAMA to cloud AI providers (OpenAI, Anthropic, Gemini)
+**Context**: BioCultPapers migration from local OLLAMA to cloud AI providers (OpenAI, Anthropic, Gemini)
 **Objective**: Ensure consistent ethnobotanical metadata extraction across all three providers
 
 ---

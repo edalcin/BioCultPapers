@@ -1,4 +1,4 @@
-# EtnoPapers v1.0.0 Installer Testing Guide (T093)
+# BioCultPapers v1.0.0 Installer Testing Guide (T093)
 
 **Testing Phase**: Pre-Release Installation Validation
 **Version**: 1.0.0
@@ -10,7 +10,7 @@
 
 ## Overview
 
-This guide provides comprehensive procedures for testing the EtnoPapers MSI installer on clean Windows systems before release. Testing validates installation, functionality, uninstallation, and overall system integration.
+This guide provides comprehensive procedures for testing the BioCultPapers MSI installer on clean Windows systems before release. Testing validates installation, functionality, uninstallation, and overall system integration.
 
 ---
 
@@ -35,7 +35,7 @@ This guide provides comprehensive procedures for testing the EtnoPapers MSI inst
 - [ ] VMs created and updated with latest OS patches
 - [ ] No development tools installed (Visual Studio, .NET SDK, etc.)
 - [ ] Only .NET 8.0 Desktop Runtime may be pre-installed
-- [ ] Clean system state (no previous EtnoPapers installation)
+- [ ] Clean system state (no previous BioCultPapers installation)
 - [ ] Antivirus/Windows Defender enabled (to test SmartScreen handling)
 - [ ] Internet connection available
 - [ ] Administrator account access confirmed
@@ -48,7 +48,7 @@ This guide provides comprehensive procedures for testing the EtnoPapers MSI inst
 
 ### Files to Prepare
 
-1. **EtnoPapers-Setup-1.0.0.msi**
+1. **BioCultPapers-Setup-1.0.0.msi**
    - Location: `build/artifacts/` after running build script
    - Size: ~120 MB (expected)
    - Checksum: Verify against `checksums.txt`
@@ -64,7 +64,7 @@ This guide provides comprehensive procedures for testing the EtnoPapers MSI inst
 
 ```powershell
 # From repository root
-cd H:\git\etnopapers
+cd H:\git\BioCultPapers
 
 # Prerequisites: Install WiX Toolset v4 from https://wixtoolset.org/
 
@@ -77,7 +77,7 @@ dotnet publish -c Release -r win-x64 --self-contained
 cd ..\..\build\EtnoPapers.Installer
 dotnet build -c Release
 
-# Output: build/EtnoPapers.Installer/bin/Release/EtnoPapers-Setup-1.0.0.msi
+# Output: build/EtnoPapers.Installer/bin/Release/BioCultPapers-Setup-1.0.0.msi
 ```
 
 ---
@@ -91,7 +91,7 @@ dotnet build -c Release
 1. **Verify File Integrity**
    ```powershell
    # On test system, verify checksum
-   certutil -hashfile EtnoPapers-Setup-1.0.0.msi SHA256
+   certutil -hashfile BioCultPapers-Setup-1.0.0.msi SHA256
    # Compare output with checksums.txt
    ```
    - [ ] Checksum matches published value
@@ -150,7 +150,7 @@ dotnet build -c Release
 ### Test 2.2: Welcome & License Screen
 
 - [ ] **Welcome screen displays**:
-  - Product name: "EtnoPapers 1.0.0"
+  - Product name: "BioCultPapers 1.0.0"
   - Description visible and correct
   - "Next >" button functional
 
@@ -170,7 +170,7 @@ dotnet build -c Release
 ### Test 2.3: Installation Directory Selection
 
 - [ ] **Directory screen displays**:
-  - Default path: `C:\Program Files\EtnoPapers`
+  - Default path: `C:\Program Files\BioCultPapers`
   - Path is editable
   - Required disk space: ~500 MB shown
 
@@ -182,7 +182,7 @@ dotnet build -c Release
   - New path displays in text field
 
 - [ ] **Test custom installation path**:
-  - Change to `C:\Custom\Path\EtnoPapers`
+  - Change to `C:\Custom\Path\BioCultPapers`
   - "Next >" proceeds (if path valid)
   - Or shows error for invalid path
 
@@ -241,16 +241,16 @@ dotnet build -c Release
 
 - [ ] **Completion screen displays**:
   - "Installation completed successfully" message
-  - Checkbox: "Launch EtnoPapers now" (checked or unchecked)
+  - Checkbox: "Launch BioCultPapers now" (checked or unchecked)
   - "Finish" button ready
 
 - [ ] **Test completion options**:
-  - Leave "Launch EtnoPapers now" checked
+  - Leave "Launch BioCultPapers now" checked
   - Click "Finish"
   - Application launches (see T093.3)
 
 - [ ] **Alternative: Uncheck launch option**
-  - Uncheck "Launch EtnoPapers now"
+  - Uncheck "Launch BioCultPapers now"
   - Click "Finish"
   - Installer closes
   - Test manual launch (see T093.3)
@@ -265,7 +265,7 @@ dotnet build -c Release
 
 ```powershell
 # Verify installation directory
-Get-ChildItem "C:\Program Files\EtnoPapers" -Recurse | Format-Table -AutoSize
+Get-ChildItem "C:\Program Files\BioCultPapers" -Recurse | Format-Table -AutoSize
 ```
 
 - [ ] **Main installation files exist**:
@@ -291,13 +291,13 @@ Get-ChildItem "C:\Program Files\EtnoPapers" -Recurse | Format-Table -AutoSize
 
 - [ ] **Start Menu folder created**:
   ```powershell
-  Get-ChildItem "$env:ProgramData\Microsoft\Windows\Start Menu\Programs" | Where-Object {$_.Name -match "EtnoPapers"}
+  Get-ChildItem "$env:ProgramData\Microsoft\Windows\Start Menu\Programs" | Where-Object {$_.Name -match "BioCultPapers"}
   ```
-  - [ ] "EtnoPapers" folder exists in Start Menu
-  - [ ] "EtnoPapers" shortcut exists
+  - [ ] "BioCultPapers" folder exists in Start Menu
+  - [ ] "BioCultPapers" shortcut exists
 
 - [ ] **Shortcut functionality**:
-  - [ ] Click Start Menu > "EtnoPapers"
+  - [ ] Click Start Menu > "BioCultPapers"
   - [ ] Application launches (5 seconds timeout)
   - [ ] Main window displays
 
@@ -305,9 +305,9 @@ Get-ChildItem "C:\Program Files\EtnoPapers" -Recurse | Format-Table -AutoSize
 
 - [ ] **Desktop shortcut exists**:
   ```powershell
-  Get-ChildItem "$env:USERPROFILE\Desktop" | Where-Object {$_.Name -match "EtnoPapers"}
+  Get-ChildItem "$env:USERPROFILE\Desktop" | Where-Object {$_.Name -match "BioCultPapers"}
   ```
-  - [ ] "EtnoPapers.lnk" file on desktop
+  - [ ] "BioCultPapers.lnk" file on desktop
   - [ ] Icon displays correctly
 
 - [ ] **Shortcut functionality**:
@@ -319,20 +319,20 @@ Get-ChildItem "C:\Program Files\EtnoPapers" -Recurse | Format-Table -AutoSize
 
 ```powershell
 # Check Add/Remove Programs entry
-Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\EtnoPapers" | Format-List
+Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\BioCultPapers" | Format-List
 
 # Check application registry
-Get-ItemProperty "HKLM:\SOFTWARE\EtnoPapers" | Format-List
+Get-ItemProperty "HKLM:\SOFTWARE\BioCultPapers" | Format-List
 ```
 
 - [ ] **Add/Remove Programs entry**:
-  - [ ] DisplayName: "EtnoPapers 1.0.0"
+  - [ ] DisplayName: "BioCultPapers 1.0.0"
   - [ ] DisplayVersion: "1.0.0"
-  - [ ] Publisher: "EtnoPapers Project"
+  - [ ] Publisher: "BioCultPapers Project"
   - [ ] UninstallString present and valid
 
 - [ ] **Application registry**:
-  - [ ] HKLM\SOFTWARE\EtnoPapers exists
+  - [ ] HKLM\SOFTWARE\BioCultPapers exists
   - [ ] InstallLocation points to correct directory
   - [ ] URLInfoAbout points to GitHub repository
 
@@ -344,7 +344,7 @@ Get-ItemProperty "HKLM:\SOFTWARE\EtnoPapers" | Format-List
 
 ### Test 4.1: Application Launch from Installer
 
-If installation completion selected "Launch EtnoPapers now":
+If installation completion selected "Launch BioCultPapers now":
 
 - [ ] **Application launches**:
   - Launches within 2 seconds of "Finish" click
@@ -354,23 +354,23 @@ If installation completion selected "Launch EtnoPapers now":
 ### Test 4.2: Manual Application Launch
 
 - [ ] **Launch from Start Menu**:
-  - Click Start Menu > EtnoPapers
+  - Click Start Menu > BioCultPapers
   - Application launches within 2 seconds
 
 - [ ] **Launch from desktop shortcut**:
-  - Double-click EtnoPapers.lnk
+  - Double-click BioCultPapers.lnk
   - Application launches within 2 seconds
 
 - [ ] **Launch from command line**:
   ```powershell
-  & "C:\Program Files\EtnoPapers\EtnoPapers.exe"
+  & "C:\Program Files\BioCultPapers\EtnoPapers.exe"
   ```
   - Application launches without errors
 
 ### Test 4.3: Main Window Verification
 
 - [ ] **Window displays correctly**:
-  - [ ] Title bar: "EtnoPapers 1.0.0" (or similar)
+  - [ ] Title bar: "BioCultPapers 1.0.0" (or similar)
   - [ ] Main window visible and responsive
   - [ ] No error dialogs
   - [ ] No missing UI elements
@@ -487,12 +487,12 @@ if ($response) { Write-Host "OLLAMA is accessible" }
   # Open Settings > Apps > Installed apps
   # Or: Control Panel > Programs > Programs and Features
   ```
-  - [ ] Find "EtnoPapers 1.0.0" in list
+  - [ ] Find "BioCultPapers 1.0.0" in list
   - [ ] Click three dots or right-click
   - [ ] Select "Uninstall"
 
 - [ ] **Uninstall dialog appears**:
-  - [ ] "Do you want to uninstall EtnoPapers?"
+  - [ ] "Do you want to uninstall BioCultPapers?"
   - [ ] Click "Uninstall" to confirm
 
 - [ ] **Uninstall wizard displays**:
@@ -508,43 +508,43 @@ if ($response) { Write-Host "OLLAMA is accessible" }
 
 ```powershell
 # Verify installation directory removed
-Test-Path "C:\Program Files\EtnoPapers"
+Test-Path "C:\Program Files\BioCultPapers"
 # Should return $False
 
 # Verify Start Menu folder removed
-Get-ChildItem "$env:ProgramData\Microsoft\Windows\Start Menu\Programs" | Where-Object {$_.Name -match "EtnoPapers"}
+Get-ChildItem "$env:ProgramData\Microsoft\Windows\Start Menu\Programs" | Where-Object {$_.Name -match "BioCultPapers"}
 # Should return nothing
 ```
 
 - [ ] **Installation directory removed**:
-  - [ ] `C:\Program Files\EtnoPapers` does not exist
+  - [ ] `C:\Program Files\BioCultPapers` does not exist
   - [ ] All application files deleted
 
 - [ ] **Start Menu shortcuts removed**:
-  - [ ] EtnoPapers folder not in Start Menu
-  - [ ] Start Menu > "EtnoPapers" not found
+  - [ ] BioCultPapers folder not in Start Menu
+  - [ ] Start Menu > "BioCultPapers" not found
 
 - [ ] **Desktop shortcut removed** (if created):
-  - [ ] Desktop no longer has "EtnoPapers.lnk"
+  - [ ] Desktop no longer has "BioCultPapers.lnk"
   - [ ] Or shortcut still exists but broken (acceptable)
 
 ### Test 6.3: Registry Cleanup
 
 ```powershell
 # Verify uninstall entry removed
-Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\EtnoPapers"
+Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\BioCultPapers"
 # Should return $False (or value removed)
 
 # Verify application registry
-Test-Path "HKLM:\SOFTWARE\EtnoPapers"
+Test-Path "HKLM:\SOFTWARE\BioCultPapers"
 # May still exist with company info (acceptable) or be removed
 ```
 
 - [ ] **Uninstall entry removed**:
-  - [ ] HKLM\...\Uninstall\EtnoPapers removed
+  - [ ] HKLM\...\Uninstall\BioCultPapers removed
 
 - [ ] **Application registry cleaned**:
-  - [ ] HKLM\SOFTWARE\EtnoPapers removed
+  - [ ] HKLM\SOFTWARE\BioCultPapers removed
   - [ ] Or empty of application-specific values
 
 ### Test 6.4: User Data Preservation
@@ -585,7 +585,7 @@ Test-Path "$env:USERPROFILE\Documents\EtnoPapers"
 ```powershell
 # Measure startup time
 $start = Get-Date
-& "C:\Program Files\EtnoPapers\EtnoPapers.exe"
+& "C:\Program Files\BioCultPapers\EtnoPapers.exe"
 # Wait for window to appear, note time
 $end = Get-Date
 Write-Host "Startup time: $([math]::Round(($end - $start).TotalSeconds, 2)) seconds"
@@ -637,14 +637,14 @@ Get-Process EtnoPapers.exe | Select-Object @{Name="Memory(MB)";Expression={[math
 
 If PDF association configured during installation:
 
-- [ ] **PDF files show EtnoPapers icon**:
+- [ ] **PDF files show BioCultPapers icon**:
   - [ ] Open File Explorer
   - [ ] Navigate to folder with PDF files
-  - [ ] PDFs show EtnoPapers icon (or Windows icon)
+  - [ ] PDFs show BioCultPapers icon (or Windows icon)
 
 - [ ] **PDF double-click behavior**:
   - [ ] Double-click PDF file
-  - [ ] Opens with EtnoPapers (if configured)
+  - [ ] Opens with BioCultPapers (if configured)
   - [ ] Or standard PDF reader (if not configured)
 
 ### Test 8.2: Taskbar Integration
@@ -656,7 +656,7 @@ If PDF association configured during installation:
   - [ ] Thumbnail preview works (Windows 10/11)
 
 - [ ] **Window switching**:
-  - [ ] Alt+Tab shows EtnoPapers
+  - [ ] Alt+Tab shows BioCultPapers
   - [ ] Switching focus works
 
 ### Test 8.3: System Tray Integration (if implemented)
@@ -775,7 +775,7 @@ _____________________________________________________________________________
 **Problem**: MSI file doesn't open or installation fails immediately
 
 **Solutions**:
-1. Verify file integrity: `certutil -hashfile EtnoPapers-Setup-1.0.0.msi SHA256`
+1. Verify file integrity: `certutil -hashfile BioCultPapers-Setup-1.0.0.msi SHA256`
 2. Ensure administrator privileges
 3. Disable antivirus temporarily (for testing only)
 4. Check Windows Event Viewer for errors
@@ -806,7 +806,7 @@ _____________________________________________________________________________
 **Problem**: Files remain after uninstall
 
 **Solutions**:
-1. Manually delete `C:\Program Files\EtnoPapers`
+1. Manually delete `C:\Program Files\BioCultPapers`
 2. Use Registry Editor to remove entries
 3. Rebuild WiX project ensuring cleanup
 4. Check for locked files preventing deletion
@@ -819,7 +819,7 @@ _____________________________________________________________________________
 1. Check system specs (may be underpowered)
 2. Note actual timings for documentation
 3. Verify no background antivirus scanning
-4. Check baseline without EtnoPapers running
+4. Check baseline without BioCultPapers running
 
 ---
 

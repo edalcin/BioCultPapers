@@ -1,6 +1,6 @@
-# EtnoPapers Windows Installer (WiX Toolset)
+# BioCultPapers Windows Installer (WiX Toolset)
 
-This directory contains the Windows MSI installer project for EtnoPapers using WiX Toolset v4.
+This directory contains the Windows MSI installer project for BioCultPapers using WiX Toolset v4.
 
 ## Project Structure
 
@@ -19,7 +19,7 @@ EtnoPapers.Installer/
 ### EtnoPapers.Installer.wixproj
 WiX project file that defines:
 - Build configuration (Debug/Release)
-- Output name and type (EtnoPapers-Setup-1.0.0.msi)
+- Output name and type (BioCultPapers-Setup-1.0.0.msi)
 - Publish directory for application binaries
 - Compiler settings and preprocessor variables
 
@@ -29,11 +29,11 @@ Main WiX source file containing:
 - **T086**: Feature definition (application, shortcuts)
 - **T087**: User interface configuration (UI dialogs, banner, license)
 - **T088**: Installation directories and shortcuts:
-  - `C:\Program Files\EtnoPapers` - Main installation folder
-  - Start Menu shortcuts in `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\EtnoPapers`
+  - `C:\Program Files\BioCultPapers` - Main installation folder
+  - Start Menu shortcuts in `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\BioCultPapers`
   - Optional desktop shortcut
 - **T089**: Registry entries:
-  - HKLM\SOFTWARE\EtnoPapers - Application metadata
+  - HKLM\SOFTWARE\BioCultPapers - Application metadata
   - Add/Remove Programs entry
   - PDF file association (optional)
 - **T090**: Release build configuration with optimization
@@ -51,13 +51,13 @@ Rich Text Format license file displayed during installation:
 - Dimensions: 500 x 63 pixels
 - Format: 24-bit BMP
 - Used in: Welcome and completion dialogs
-- Should contain EtnoPapers logo and branding
+- Should contain BioCultPapers logo and branding
 
 **Dialog.bmp** (Required)
 - Dimensions: 262 x 392 pixels
 - Format: 24-bit BMP
 - Used in: License and installation dialogs
-- Should contain EtnoPapers logo and branding elements
+- Should contain BioCultPapers logo and branding elements
 
 ## Building the Installer
 
@@ -70,7 +70,7 @@ Rich Text Format license file displayed during installation:
 ### Build Steps
 
 ```powershell
-# From the etnopapers root directory
+# From the BioCultPapers root directory
 
 # 1. Publish the application
 cd src\EtnoPapers.UI
@@ -79,7 +79,7 @@ dotnet publish -c Release -r win-x64 --self-contained
 # 2. Build the MSI installer
 cd ..\..\build\EtnoPapers.Installer
 dotnet build -c Release
-# Output: bin\Release\EtnoPapers-Setup-1.0.0.msi
+# Output: bin\Release\BioCultPapers-Setup-1.0.0.msi
 
 # Or use the automated release script:
 cd ..\..
@@ -115,7 +115,7 @@ The PowerShell script in the build directory handles:
 ### File Structure After Installation
 
 ```
-C:\Program Files\EtnoPapers\
+C:\Program Files\BioCultPapers\
 ├── EtnoPapers.exe                 (Main application)
 ├── EtnoPapers.UI.dll             (UI assembly)
 ├── EtnoPapers.Core.dll           (Core services)
@@ -131,14 +131,14 @@ C:\Users\[User]\Documents\EtnoPapers\
 
 ### Registry Entries
 
-**HKEY_LOCAL_MACHINE\SOFTWARE\EtnoPapers**
-- DisplayName: EtnoPapers 1.0.0
+**HKEY_LOCAL_MACHINE\SOFTWARE\BioCultPapers**
+- DisplayName: BioCultPapers 1.0.0
 - DisplayVersion: 1.0.0
-- Publisher: EtnoPapers Project
-- InstallLocation: C:\Program Files\EtnoPapers
+- Publisher: BioCultPapers Project
+- InstallLocation: C:\Program Files\BioCultPapers
 - URLInfoAbout: https://github.com/etnopayers/etnopayers
 
-**HKEY_CURRENT_USER\Software\EtnoPapers**
+**HKEY_CURRENT_USER\Software\BioCultPapers**
 - Settings and preferences (created by application)
 
 ## Customization
@@ -147,12 +147,12 @@ C:\Users\[User]\Documents\EtnoPapers\
 
 1. **Replace Banner.bmp**
    - Create 500x63 pixel image
-   - Include EtnoPapers logo
+   - Include BioCultPapers logo
    - Save as 24-bit BMP
 
 2. **Replace Dialog.bmp**
    - Create 262x392 pixel image
-   - Include EtnoPapers branding
+   - Include BioCultPapers branding
    - Save as 24-bit BMP
 
 3. **Update License.rtf**
@@ -219,7 +219,7 @@ The installer version follows semantic versioning:
 
 ## Distribution
 
-The built MSI (`EtnoPapers-Setup-1.0.0.msi`) can be:
+The built MSI (`BioCultPapers-Setup-1.0.0.msi`) can be:
 1. Downloaded directly from GitHub Releases
 2. Distributed via installers on websites
 3. Packaged for enterprise deployment

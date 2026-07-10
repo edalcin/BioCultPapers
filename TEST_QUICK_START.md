@@ -2,7 +2,7 @@
 
 ## What Was Fixed
 
-**Problem**: EtnoPapers extractions had only 43% field completion vs OLLAMA Desktop's 86%
+**Problem**: BioCultPapers extractions had only 43% field completion vs OLLAMA Desktop's 86%
 
 **Root Cause**: OLLAMA's response was being truncated, cutting off last fields (metodologia, ano_coleta, pais, estado, local)
 
@@ -14,9 +14,9 @@
 
 ## Test Instructions (5 minutes)
 
-### Step 1: Run EtnoPapers
+### Step 1: Run BioCultPapers
 ```powershell
-C:\Users\EDalcin\git\etnopapers\src\EtnoPapers.UI\bin\Release\publish\EtnoPapers.UI.exe
+C:\Users\EDalcin\git\BioCultPapers\src\EtnoPapers.UI\bin\Release\publish\EtnoPapers.UI.exe
 ```
 
 ### Step 2: Extract Benchmark PDF
@@ -49,7 +49,7 @@ Look for these key fields being **populated** (not empty):
 }
 ```
 
-**Expected (EtnoPapers v2)**:
+**Expected (BioCultPapers v2)**:
 Should match or be very similar to above.
 
 ---

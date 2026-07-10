@@ -1,15 +1,15 @@
-# UI Acceptance Testing Checklist - EtnoPapers
+# UI Acceptance Testing Checklist - BioCultPapers
 
 **Version**: 1.0.0
 **Date**: 2025-12-03
-**Application**: EtnoPapers Desktop (C# WPF)
+**Application**: BioCultPapers Desktop (C# WPF)
 **Target Platform**: Windows 10+
 
 ---
 
 ## Overview
 
-This checklist provides comprehensive acceptance criteria for UI testing the EtnoPapers desktop application. All scenarios should be tested in the following configurations:
+This checklist provides comprehensive acceptance criteria for UI testing the BioCultPapers desktop application. All scenarios should be tested in the following configurations:
 - **Language**: Portuguese (pt-BR) and English (en-US)
 - **Window State**: Both windowed and maximized modes
 - **Data Conditions**: With sample records and empty database
@@ -21,7 +21,7 @@ This checklist provides comprehensive acceptance criteria for UI testing the Etn
 ### T1.1 Application Launch
 - [ ] Application starts without errors
 - [ ] Main window appears within 2 seconds
-- [ ] Window displays correct title "EtnoPapers"
+- [ ] Window displays correct title "BioCultPapers"
 - [ ] Home page loads by default
 - [ ] All navigation menu items are visible and clickable
 
@@ -303,7 +303,7 @@ This checklist provides comprehensive acceptance criteria for UI testing the Etn
 
 ### T10.1 Window Management
 - [ ] Application appears in Windows taskbar
-- [ ] Window title shows "EtnoPapers"
+- [ ] Window title shows "BioCultPapers"
 - [ ] Window can be resized normally
 - [ ] Window can be minimized/maximized
 - [ ] Window position and size are remembered

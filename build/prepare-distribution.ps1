@@ -1,7 +1,7 @@
 #!/usr/bin/env pwsh
 <#
 .SYNOPSIS
-    Prepare EtnoPapers release artifacts for distribution (T095)
+    Prepare BioCultPapers release artifacts for distribution (T095)
 
 .DESCRIPTION
     Validates build artifacts, verifies checksums, and prepares GitHub release package.
@@ -85,8 +85,8 @@ Write-Host "`n--- Artifact Validation ---`n"
 
 # Check for required files
 $requiredFiles = @(
-    @{Name = "EtnoPapers-Setup-$Version.msi"; Description = "MSI Installer"; Size = "~120 MB" },
-    @{Name = "EtnoPapers-Portable-$Version.zip"; Description = "Portable Package"; Size = "~160 MB" },
+    @{Name = "BioCultPapers-Setup-$Version.msi"; Description = "MSI Installer"; Size = "~120 MB" },
+    @{Name = "BioCultPapers-Portable-$Version.zip"; Description = "Portable Package"; Size = "~160 MB" },
     @{Name = "checksums.txt"; Description = "SHA256 Checksums"; Size = "~1 KB" },
     @{Name = "BUILD_REPORT.txt"; Description = "Build Report"; Size = "~10 KB" }
 )
@@ -238,7 +238,7 @@ Write-Success "All validation checks PASSED"
 if ($CreatePackage -and -not $Validate) {
     Write-Host "`n--- Creating Release Package ---`n"
 
-    $packageName = "EtnoPapers-$Version-Release"
+    $packageName = "BioCultPapers-$Version-Release"
     $stagingDir = Join-Path $BuildDir $packageName
     $packageZip = "$packageName.zip"
 
@@ -253,8 +253,8 @@ if ($CreatePackage -and -not $Validate) {
 
     # Copy artifacts
     Write-Info "Copying installer artifacts..."
-    Copy-Item (Join-Path $BuildDir "EtnoPapers-Setup-$Version.msi") -Destination $stagingDir
-    Copy-Item (Join-Path $BuildDir "EtnoPapers-Portable-$Version.zip") -Destination $stagingDir
+    Copy-Item (Join-Path $BuildDir "BioCultPapers-Setup-$Version.msi") -Destination $stagingDir
+    Copy-Item (Join-Path $BuildDir "BioCultPapers-Portable-$Version.zip") -Destination $stagingDir
     Copy-Item (Join-Path $BuildDir "checksums.txt") -Destination $stagingDir
     Copy-Item (Join-Path $BuildDir "BUILD_REPORT.txt") -Destination $stagingDir
 
@@ -270,22 +270,22 @@ if ($CreatePackage -and -not $Validate) {
     $packageReadme = Join-Path $stagingDir "README.txt"
     @"
 ================================================================================
-                    EtnoPapers v$Version Release Package
+                    BioCultPapers v$Version Release Package
 ================================================================================
 
-Thank you for downloading EtnoPapers!
+Thank you for downloading BioCultPapers!
 
 QUICK START:
 1. Review RELEASE_NOTES.md for new features and improvements
 2. Choose installation method:
-   - Windows Users: Run EtnoPapers-Setup-$Version.msi
-   - Portable Users: Extract EtnoPapers-Portable-$Version.zip
+   - Windows Users: Run BioCultPapers-Setup-$Version.msi
+   - Portable Users: Extract BioCultPapers-Portable-$Version.zip
 3. Follow INSTALL.md for step-by-step instructions
 4. Configure OLLAMA and MongoDB (optional) in Settings
 
 CONTENTS:
-- EtnoPapers-Setup-$Version.msi       Windows MSI installer
-- EtnoPapers-Portable-$Version.zip    Portable ZIP archive
+- BioCultPapers-Setup-$Version.msi       Windows MSI installer
+- BioCultPapers-Portable-$Version.zip    Portable ZIP archive
 - RELEASE_NOTES.md                    Version 1.0.0 release information
 - INSTALL.md                          Installation and configuration guide
 - RELEASE_CHECKLIST.md                QA checklist and release details
@@ -304,7 +304,7 @@ SUPPORT:
 - Documentation: See INSTALL.md and USER_GUIDE.md
 
 LICENSE:
-EtnoPapers is released under the MIT License. See LICENSE.md for details.
+BioCultPapers is released under the MIT License. See LICENSE.md for details.
 
 ================================================================================
 For more information, visit: https://github.com/etnopayers/etnopayers
@@ -377,10 +377,10 @@ Write-Host "
 
   Command to create GitHub release:
   gh release create v$Version `
-    -t 'EtnoPapers $Version' `
+    -t 'BioCultPapers $Version' `
     -F RELEASE_NOTES.md `
-    build/EtnoPapers.Installer/bin/Release/EtnoPapers-Setup-$Version.msi
-    artifacts/EtnoPapers-Portable-$Version.zip
+    build/EtnoPapers.Installer/bin/Release/BioCultPapers-Setup-$Version.msi
+    artifacts/BioCultPapers-Portable-$Version.zip
 "
 
 # ======== COMPLETION ========

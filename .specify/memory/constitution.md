@@ -1,4 +1,4 @@
-# EtnoPapers Project Constitution
+# BioCultPapers Project Constitution
 
 **Version**: 1.0.0 | **Ratified**: 2025-12-06 | **Last Amended**: 2025-12-06
 

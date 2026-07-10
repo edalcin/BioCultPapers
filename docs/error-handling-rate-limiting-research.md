@@ -1,7 +1,7 @@
 # Error Handling and Rate Limiting Strategies for Cloud AI APIs
 
 **Research Date**: December 2025
-**Target Application**: EtnoPapers Windows Desktop Application
+**Target Application**: BioCultPapers Windows Desktop Application
 **Programming Context**: C# .NET 8.0, WPF, async/await patterns
 
 ---
@@ -829,7 +829,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EtnoPapers.Services
+namespace BioCultPapers.Services
 {
     public class ResilientApiClient
     {
@@ -992,7 +992,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 
-namespace EtnoPapers.ViewModels
+namespace BioCultPapers.ViewModels
 {
     public class PdfProcessingViewModel : ViewModelBase
     {
@@ -1135,7 +1135,7 @@ namespace EtnoPapers.ViewModels
 7. **Limit retries to 3-5 attempts** with sensible timeout caps
 8. **Don't retry non-transient errors** (400, 401, 403, 404)
 
-### Recommended Approach for EtnoPapers
+### Recommended Approach for BioCultPapers
 
 **Option 1: Manual Retry (No Dependencies)**
 - Pros: No external dependencies, full control
@@ -1149,7 +1149,7 @@ namespace EtnoPapers.ViewModels
 
 ### Recommended Implementation
 
-For EtnoPapers, I recommend **starting with manual retry** (Pattern 1) because:
+For BioCultPapers, I recommend **starting with manual retry** (Pattern 1) because:
 1. No additional dependencies needed
 2. Full transparency for learning/debugging
 3. Sufficient for the application's needs

@@ -40,7 +40,7 @@ Changed from first 800 chars to full response capture:
 ## Test Execution Steps
 
 ### Step 1: Prepare Environment
-1. Stop any running EtnoPapers instances
+1. Stop any running BioCultPapers instances
 2. Clear log file (or rename):
    ```
    C:\Users\EDalcin\AppData\Roaming\EtnoPapers\logs\extraction-markdown-debug.log
@@ -52,7 +52,7 @@ Changed from first 800 chars to full response capture:
    ```
 
 ### Step 2: Extract Benchmark PDF
-1. Run: `H:\git\etnopapers\src\EtnoPapers.UI\bin\Release\publish\EtnoPapers.UI.exe`
+1. Run: `H:\git\BioCultPapers\src\EtnoPapers.UI\bin\Release\publish\EtnoPapers.UI.exe`
 2. Select PDF: `C:\Users\EDalcin\Desktop\Desenv\artigos\Rapid_ethnobotanical_diagnosis_of_the_Fu.pdf`
 3. Or use the one in `docs/pdfTest/`
 4. Wait for extraction to complete (~3 minutes)
@@ -67,7 +67,7 @@ Changed from first 800 chars to full response capture:
 ### Step 4: Compare Outputs
 Create comparison table with benchmark:
 ```
-Field           | EtnoPapers v2 | OLLAMA Desktop | Match? | Status
+Field           | BioCultPapers v2 | OLLAMA Desktop | Match? | Status
 ----------------|---------------|---|--------|--------
 titulo          | ...           | ... | Y/N | ✅/❌
 autores         | ...           | ... | Y/N | ✅/❌
@@ -108,7 +108,7 @@ especies.count  | ...           | ... | Y/N | ✅/❌
 
 ## Expected Improvement
 
-### Before Fixes (EtnoPapers v1)
+### Before Fixes (BioCultPapers v1)
 ```
 Fields Correct: 6/14 (43%)
 - titulo: ✅
@@ -129,7 +129,7 @@ Fields Failing: 8/14 (57%)
 - especies details: All empty
 ```
 
-### After Fixes (EtnoPapers v2) - EXPECTED
+### After Fixes (BioCultPapers v2) - EXPECTED
 ```
 Fields Correct: ~12/14 (86%)
 - titulo: ✅
@@ -166,7 +166,7 @@ the full response without truncation.
 3. Check if empty fields are being filled somewhere else
 
 ### If Fields Still Missing
-1. Compare prompt formatting between EtnoPapers and OLLAMA Desktop
+1. Compare prompt formatting between BioCultPapers and OLLAMA Desktop
 2. Check if markdown content is complete
 3. Verify character encoding (UTF-8)
 

@@ -1,10 +1,10 @@
 # Guia de Configuração de IA em Nuvem
 
-Este guia explica como configurar e usar provedores de IA em nuvem no EtnoPapers para extração automática de metadados etnobotânicos.
+Este guia explica como configurar e usar provedores de IA em nuvem no BioCultPapers para extração automática de metadados etnobotânicos.
 
 ## Visão Geral
 
-O EtnoPapers agora suporta três provedores de IA em nuvem:
+O BioCultPapers agora suporta três provedores de IA em nuvem:
 - **Google Gemini** (Gemini 1.5 Flash)
 - **OpenAI** (GPT-4o-mini)
 - **Anthropic** (Claude 3.5 Sonnet)
@@ -77,9 +77,9 @@ O EtnoPapers agora suporta três provedores de IA em nuvem:
 - Custo médio: ~$0.03 por PDF
 - Para 1000 PDFs: ~$30 USD
 
-## Passo 3: Configurar no EtnoPapers
+## Passo 3: Configurar no BioCultPapers
 
-1. Abra o EtnoPapers
+1. Abra o BioCultPapers
 2. Vá em **Configurações** (menu lateral)
 3. Na seção "Configuração do Provedor de IA":
    - Selecione o provedor desejado no dropdown
@@ -189,7 +189,7 @@ Não necessariamente. O **Google Gemini** é gratuito com limites generosos (15 
 
 Localmente no seu computador, em: `%LOCALAPPDATA%\EtnoPapers\config.json`
 
-A chave é **criptografada com Windows DPAPI** e só pode ser descriptografada no seu usuário Windows. Nunca é enviada para servidores do EtnoPapers.
+A chave é **criptografada com Windows DPAPI** e só pode ser descriptografada no seu usuário Windows. Nunca é enviada para servidores do BioCultPapers.
 
 ### Posso usar offline?
 
@@ -214,17 +214,17 @@ Todos usam aproximadamente a mesma quantidade de tokens (6000-8000 por PDF). O c
 **Importante**: Ao usar IA em nuvem, o conteúdo do PDF é enviado para os servidores do provedor (Google, OpenAI ou Anthropic).
 
 - **Google/OpenAI/Anthropic**: Não treinam modelos com seus dados (conforme políticas de privacidade)
-- **EtnoPapers**: Nunca armazena ou tem acesso aos seus PDFs ou chaves de API
+- **BioCultPapers**: Nunca armazena ou tem acesso aos seus PDFs ou chaves de API
 
 Se você precisa de privacidade total, use OLLAMA local (não incluído nesta versão).
 
 ## Suporte
 
 - **Documentação técnica**: Consulte `docs/estrutura.json` para ver a estrutura completa de dados
-- **Issues**: Reporte bugs em https://github.com/seu-repositorio/etnopapers/issues
+- **Issues**: Reporte bugs em https://github.com/seu-repositorio/BioCultPapers/issues
 - **Comunidade**: Participe das discussões sobre etnobotânica e extração de dados
 
 ---
 
 **Última atualização**: 2025-12-13
-**Versão do EtnoPapers**: 2.0 (Cloud AI Migration)
+**Versão do BioCultPapers**: 2.0 (Cloud AI Migration)

@@ -1,6 +1,6 @@
-Write-Host "=== EtnoPapers Button Test ===" -ForegroundColor Cyan
+Write-Host "=== BioCultPapers Button Test ===" -ForegroundColor Cyan
 
-$exePath = "H:\git\etnopapers\src\EtnoPapers.UI\bin\Release\net8.0-windows\EtnoPapers.UI.exe"
+$exePath = "H:\git\BioCultPapers\src\EtnoPapers.UI\bin\Release\net8.0-windows\EtnoPapers.UI.exe"
 $logPath = "$env:APPDATA\EtnoPapers\exception.log"
 
 # Limpar logs antigos

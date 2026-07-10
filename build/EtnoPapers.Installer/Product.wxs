@@ -4,26 +4,26 @@
 
   <!-- Product Definition (T085-T086) -->
   <Product Id="*"
-           Name="EtnoPapers 1.0.0"
+           Name="BioCultPapers 1.0.0"
            Language="1033"
            Version="1.0.0.0"
-           Manufacturer="EtnoPapers Project"
+           Manufacturer="BioCultPapers Project"
            UpgradeCode="4F6B3E2D-1A9C-4F8B-8C2E-9D5F3A1B0C2E">
 
     <Package InstallerVersion="200"
              Compressed="yes"
              InstallScope="perMachine"
-             Description="EtnoPapers - Ethnobotanical Paper Analysis Tool"
+             Description="BioCultPapers - Ethnobotanical Paper Analysis Tool"
              Comments="Automated extraction and cataloging of ethnobotanical metadata from scientific papers" />
 
     <!-- Media Definition -->
-    <Media Id="1" Cabinet="EtnoPapers.cab" EmbedCab="yes" />
+    <Media Id="1" Cabinet="BioCultPapers.cab" EmbedCab="yes" />
 
     <!-- Installation Scope - System-wide -->
     <ALLUSERS>1</ALLUSERS>
 
     <!-- Feature Hierarchy (T086) -->
-    <Feature Id="ProductFeature" Title="EtnoPapers 1.0.0" Level="1" Description="Complete EtnoPapers application">
+    <Feature Id="ProductFeature" Title="BioCultPapers 1.0.0" Level="1" Description="Complete BioCultPapers application">
       <ComponentRef Id="MainApplicationComponent" />
       <ComponentRef Id="DesktopShortcutComponent" />
       <ComponentRef Id="StartMenuComponent" />
@@ -35,11 +35,11 @@
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER" Name="EtnoPapers" />
+        <Directory Id="INSTALLFOLDER" Name="BioCultPapers" />
       </Directory>
 
       <Directory Id="ProgramMenuFolder">
-        <Directory Id="ApplicationProgramsFolder" Name="EtnoPapers" />
+        <Directory Id="ApplicationProgramsFolder" Name="BioCultPapers" />
       </Directory>
 
       <Directory Id="DesktopFolder" Name="Desktop" />
@@ -54,7 +54,7 @@
       <File Id="EtnoPapersExe" Name="EtnoPapers.exe" Source="$(var.PublishDir)EtnoPapers.exe" KeyPath="yes">
         <Shortcut Id="DesktopShortcut"
                   Directory="DesktopFolder"
-                  Name="EtnoPapers"
+                  Name="BioCultPapers"
                   WorkingDirectory="INSTALLFOLDER"
                   Icon="EtnoPapersIcon.ico"
                   IconIndex="0"
@@ -74,7 +74,7 @@
     <Component Id="StartMenuComponent" Directory="ApplicationProgramsFolder" Guid="6G5F4E3D-2C1B-0A4F-8B8C-2E9D5F3A1B0C">
       <Shortcut Id="StartMenuShortcut"
                 Target="[INSTALLFOLDER]EtnoPapers.exe"
-                Name="EtnoPapers"
+                Name="BioCultPapers"
                 WorkingDirectory="INSTALLFOLDER"
                 Icon="EtnoPapersIcon.ico"
                 IconIndex="0" />
@@ -86,7 +86,7 @@
     <Component Id="DesktopShortcutComponent" Directory="DesktopFolder" Guid="7H6G5F4E-3D2C-1B0A-4F8B-8C2E9D5F3A1B">
       <Shortcut Id="DesktopShortcutMain"
                 Target="[INSTALLFOLDER]EtnoPapers.exe"
-                Name="EtnoPapers"
+                Name="BioCultPapers"
                 WorkingDirectory="INSTALLFOLDER"
                 Icon="EtnoPapersIcon.ico"
                 IconIndex="0" />
@@ -96,9 +96,9 @@
     <!-- Main Application Component -->
     <Component Id="MainApplicationComponent" Directory="INSTALLFOLDER" Guid="8I7H6G5F-4E3D-2C1B-0A4F-8B8C2E9D5F3A">
       <RegistryKey Root="HKLM" Key="SOFTWARE\EtnoPapers">
-        <RegistryValue Name="DisplayName" Type="string" Value="EtnoPapers 1.0.0" />
+        <RegistryValue Name="DisplayName" Type="string" Value="BioCultPapers 1.0.0" />
         <RegistryValue Name="DisplayVersion" Type="string" Value="1.0.0" />
-        <RegistryValue Name="Publisher" Type="string" Value="EtnoPapers Project" />
+        <RegistryValue Name="Publisher" Type="string" Value="BioCultPapers Project" />
         <RegistryValue Name="InstallLocation" Type="string" Value="[INSTALLFOLDER]" />
         <RegistryValue Name="URLInfoAbout" Type="string" Value="https://github.com/etnopayers/etnopayers" />
       </RegistryKey>
@@ -106,9 +106,9 @@
 
     <!-- Registry Entries (T089) -->
     <Registry Id="UninstallRegistry" Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\EtnoPapers">
-      <RegistryValue Name="DisplayName" Type="string" Value="EtnoPapers 1.0.0" />
+      <RegistryValue Name="DisplayName" Type="string" Value="BioCultPapers 1.0.0" />
       <RegistryValue Name="DisplayVersion" Type="string" Value="1.0.0" />
-      <RegistryValue Name="Publisher" Type="string" Value="EtnoPapers Project" />
+      <RegistryValue Name="Publisher" Type="string" Value="BioCultPapers Project" />
       <RegistryValue Name="UninstallString" Type="string" Value="[SystemFolder]msiexec.exe /x [ProductCode]" />
       <RegistryValue Name="InstallLocation" Type="string" Value="[INSTALLFOLDER]" />
     </Registry>

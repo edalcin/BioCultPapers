@@ -1,8 +1,8 @@
-# Arquitetura do Sistema - EtnoPapers
+# Arquitetura do Sistema - BioCultPapers
 
 > 📚 **Voltar ao README**: Veja [README.md](README.md) para informações gerais do projeto, instalação e como usar.
 
-O EtnoPapers segue uma arquitetura em camadas que integra componentes locais e externos para processamento de documentos científicos.
+O BioCultPapers segue uma arquitetura em camadas que integra componentes locais e externos para processamento de documentos científicos.
 
 ### Visão Geral (C4 Model - Nível 1: Contexto do Sistema)
 
@@ -10,8 +10,8 @@ O EtnoPapers segue uma arquitetura em camadas que integra componentes locais e e
 graph TB
     User[👤 Pesquisador<br/>Etnobotânico]
 
-    subgraph Sistema["EtnoPapers v2.0"]
-        App[EtnoPapers]
+    subgraph Sistema["BioCultPapers v2.0"]
+        App[BioCultPapers]
     end
 
     CloudAI[☁️ Provedores de IA<br/>Gemini | OpenAI | Anthropic]
@@ -37,7 +37,7 @@ graph TB
 graph TB
     User[👤 Usuário]
 
-    subgraph EtnoPapers["EtnoPapers Application v2.0"]
+    subgraph BioCultPapers["BioCultPapers Application v2.0"]
         UI[WPF Desktop UI<br/>C# .NET 8<br/>---<br/>Páginas: Upload, Registros,<br/>Configurações]
 
         Services[Camada de Serviços<br/>---<br/>AIProviderFactory<br/>GeminiService<br/>OpenAIService<br/>AnthropicService<br/>ExtractionService<br/>ConfigurationService]
@@ -128,7 +128,7 @@ graph LR
 
 ## Fluxo de Trabalho
 
-O EtnoPapers processa documentos científicos através de um fluxo automatizado com validação humana.
+O BioCultPapers processa documentos científicos através de um fluxo automatizado com validação humana.
 
 ```mermaid
 flowchart TD
@@ -219,7 +219,7 @@ flowchart TD
 
 ### Integração com Provedores de IA em Nuvem
 
-O EtnoPapers v2.0 utiliza provedores de IA em nuvem para extração de metadados com máxima qualidade e desempenho. A integração é feita via **HTTPS REST APIs** autenticadas com API keys.
+O BioCultPapers v2.0 utiliza provedores de IA em nuvem para extração de metadados com máxima qualidade e desempenho. A integração é feita via **HTTPS REST APIs** autenticadas com API keys.
 
 **Fluxo Técnico (v2.0):**
 
@@ -263,7 +263,7 @@ Cada provedor implementa a interface `IAIProvider`:
   - Gratuito (até 15 requisições/minuto)
   - Sem necessidade de cartão de crédito
   - Rápido e confiável
-  - Ideal para testar o EtnoPapers
+  - Ideal para testar o BioCultPapers
 
 **Para uso profissional / alto volume:**
 - **OpenAI GPT-4o-mini**

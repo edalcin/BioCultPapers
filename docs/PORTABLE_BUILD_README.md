@@ -1,8 +1,8 @@
-# EtnoPapers v2.0.0 - Versão Portátil para Pen-Drive
+# BioCultPapers v2.0.0 - Versão Portátil para Pen-Drive
 
 ## 📋 Pré-requisitos
 
-Para usar esta versão portátil do EtnoPapers, você precisa ter instalado no seu computador:
+Para usar esta versão portátil do BioCultPapers, você precisa ter instalado no seu computador:
 
 - **Windows 10** ou superior
 - **.NET 8.0 Runtime** (necessário - [baixar aqui](https://dotnet.microsoft.com/en-us/download/dotnet/8.0))
@@ -18,7 +18,7 @@ Para usar esta versão portátil do EtnoPapers, você precisa ter instalado no s
 1. Copie a pasta `publish/` para seu pen-drive
 2. A pasta ocupa apenas ~29 MB (bem menor que a versão com .NET embutida)
 
-### 2. Executar o EtnoPapers
+### 2. Executar o BioCultPapers
 
 1. Conecte o pen-drive ao computador
 2. Navegue até a pasta copiada
@@ -61,7 +61,7 @@ Cada extração registra:
 
 ## 📧 Suporte
 
-Para problemas, visite: https://github.com/edalcin/etnopapers/issues
+Para problemas, visite: https://github.com/edalcin/BioCultPapers/issues
 
 ---
 

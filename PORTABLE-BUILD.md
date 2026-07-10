@@ -1,8 +1,8 @@
-# Build Portátil - EtnoPapers
+# Build Portátil - BioCultPapers
 
 ## Descrição
 
-Esta documentação explica como gerar a versão portátil (self-contained) da aplicação EtnoPapers que funciona em qualquer máquina Windows sem necessidade de instalação do .NET Framework.
+Esta documentação explica como gerar a versão portátil (self-contained) da aplicação BioCultPapers que funciona em qualquer máquina Windows sem necessidade de instalação do .NET Framework.
 
 ## Pré-requisitos
 
@@ -17,7 +17,7 @@ Esta documentação explica como gerar a versão portátil (self-contained) da a
 Execute este comando na raiz do repositório:
 
 ```powershell
-cd D:\git\etnopapers
+cd D:\git\BioCultPapers
 
 # Restaurar dependências
 dotnet restore
@@ -25,7 +25,7 @@ dotnet restore
 # Publicar como self-contained
 dotnet publish src/EtnoPapers.UI/EtnoPapers.UI.csproj `
     --configuration Release `
-    --output EtnoPapers-Portable `
+    --output BioCultPapers-Portable `
     --self-contained `
     --runtime win-x64 `
     --no-restore
@@ -34,13 +34,13 @@ dotnet publish src/EtnoPapers.UI/EtnoPapers.UI.csproj `
 ### Opção 2: Usando Bash/Shell
 
 ```bash
-cd D:\git\etnopapers
+cd D:\git\BioCultPapers
 
 # Restaurar e publicar
 dotnet restore
 dotnet publish src/EtnoPapers.UI/EtnoPapers.UI.csproj \
     --configuration Release \
-    --output EtnoPapers-Portable \
+    --output BioCultPapers-Portable \
     --self-contained \
     --runtime win-x64 \
     --no-restore
@@ -51,7 +51,7 @@ dotnet publish src/EtnoPapers.UI/EtnoPapers.UI.csproj \
 Após executar o comando acima, você terá:
 
 ```
-EtnoPapers-Portable/
+BioCultPapers-Portable/
 ├── EtnoPapers.UI.exe              # Executável principal
 ├── EtnoPapers.Core.dll            # Biblioteca core
 ├── EtnoPapers.UI.deps.json        # Dependências
@@ -68,7 +68,7 @@ EtnoPapers-Portable/
 Por padrão, o .NET inclui recursos de vários idiomas. Para manter apenas português:
 
 ```powershell
-cd EtnoPapers-Portable
+cd BioCultPapers-Portable
 
 # Remover pastas de idiomas
 Remove-Item en-US, es, de, fr, it, ja, ko, pt-BR, ru, zh-CN, zh-TW -Recurse -Force -ErrorAction SilentlyContinue
@@ -83,10 +83,10 @@ Remove-Item README.txt -Force -ErrorAction SilentlyContinue
 
 ```powershell
 # No Windows Explorer ou PowerShell
-Compress-Archive -Path EtnoPapers-Portable -DestinationPath EtnoPapers-Portable.zip
+Compress-Archive -Path BioCultPapers-Portable -DestinationPath BioCultPapers-Portable.zip
 ```
 
-**Resultado:** `EtnoPapers-Portable.zip` (~179 MB)
+**Resultado:** `BioCultPapers-Portable.zip` (~179 MB)
 
 ### Enviar para Usuários
 
@@ -130,7 +130,7 @@ Para incluir número de versão na build, adicione a versão ao comando:
 ```powershell
 dotnet publish src/EtnoPapers.UI/EtnoPapers.UI.csproj `
     --configuration Release `
-    --output EtnoPapers-Portable-v1.1.0 `
+    --output BioCultPapers-Portable-v1.1.0 `
     --self-contained `
     --runtime win-x64 `
     /p:Version=1.1.0 `
@@ -154,7 +154,7 @@ dotnet restore
 taskkill /F /IM EtnoPapers.UI.exe
 
 # Remover pasta anterior
-Remove-Item EtnoPapers-Portable -Recurse -Force
+Remove-Item BioCultPapers-Portable -Recurse -Force
 
 # Tentar novamente
 ```
@@ -194,7 +194,7 @@ A versão portátil:
 
 Para problemas ou perguntas:
 - 📧 Abra uma issue no GitHub
-- 🔗 https://github.com/edalcin/etnopapers
+- 🔗 https://github.com/edalcin/BioCultPapers
 
 ---
 

@@ -1,8 +1,8 @@
-# Test script for portable EtnoPapers application
-$appPath = "H:\git\etnopapers\test-portable\publish\EtnoPapers.UI.exe"
+# Test script for portable BioCultPapers application
+$appPath = "H:\git\BioCultPapers\test-portable\publish\EtnoPapers.UI.exe"
 $logDir = Join-Path $env:APPDATA "EtnoPapers\logs"
 
-Write-Host "=== EtnoPapers Portable Application Test ===" -ForegroundColor Cyan
+Write-Host "=== BioCultPapers Portable Application Test ===" -ForegroundColor Cyan
 Write-Host "Application Path: $appPath"
 Write-Host "Log Directory: $logDir"
 Write-Host ""

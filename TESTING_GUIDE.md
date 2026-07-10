@@ -1,4 +1,4 @@
-# EtnoPapers - Local Testing Guide
+# BioCultPapers - Local Testing Guide
 
 ## Quick Start
 
@@ -9,7 +9,7 @@
 
 ### 1. Install Dependencies
 ```bash
-cd H:\git\etnopapers
+cd H:\git\BioCultPapers
 pnpm install
 ```
 
@@ -181,8 +181,8 @@ When running Electron app, data is stored in:
 
 Subdirectories:
 - `data/articles.json` - Local record database
-- `etnopapers-config.json` - Application configuration
-- `logs/etnopapers.log` - Application logs
+- `BioCultPapers-config.json` - Application configuration
+- `logs/BioCultPapers.log` - Application logs
 - `logs/error.log` - Error logs
 
 ## Troubleshooting

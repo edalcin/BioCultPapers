@@ -1,10 +1,10 @@
 #!/usr/bin/env pwsh
 <#
 .SYNOPSIS
-    EtnoPapers Release Build Script
+    BioCultPapers Release Build Script
 
 .DESCRIPTION
-    Automates the build process for creating a release of EtnoPapers.
+    Automates the build process for creating a release of BioCultPapers.
     Performs cleaning, testing, building, and artifact generation.
 
 .PARAMETER Version
@@ -24,7 +24,7 @@
     .\build-release.ps1 -Configuration Release
 
 .NOTES
-    Author: EtnoPapers Project
+    Author: BioCultPapers Project
     Date: December 2024
 #>
 
@@ -64,7 +64,7 @@ function Write-Error {
 
 # Script start
 Write-Host "`n==============================================="
-Write-Host "  EtnoPapers Release Build Script"
+Write-Host "  BioCultPapers Release Build Script"
 Write-Host "  Version $Version"
 Write-Host "===============================================`n"
 
@@ -152,7 +152,7 @@ if (Test-Path "$publishDir/EtnoPapers.UI.exe") {
 
 # Step 7: Create portable ZIP
 Write-Info "Step 7: Creating portable ZIP package..."
-$zipFile = "$OutputDir/EtnoPapers-Portable-$Version.zip"
+$zipFile = "$OutputDir/BioCultPapers-Portable-$Version.zip"
 if (Test-Path $zipFile) {
     Remove-Item $zipFile -Force
 }
@@ -165,11 +165,11 @@ Write-Info "Step 8: Calculating checksums..."
 $checksumFile = "$OutputDir/checksums.txt"
 
 $items = @(
-    "EtnoPapers-Portable-$Version.zip"
+    "BioCultPapers-Portable-$Version.zip"
 )
 
 # Clear checksum file
-"# EtnoPapers $Version Release Checksums`n# SHA256`n" | Out-File $checksumFile
+"# BioCultPapers $Version Release Checksums`n# SHA256`n" | Out-File $checksumFile
 
 foreach ($item in $items) {
     $path = "$OutputDir/$item"
@@ -187,7 +187,7 @@ Write-Info "Step 9: Generating build report..."
 $reportFile = "$OutputDir/BUILD_REPORT.txt"
 @"
 ===============================================
-EtnoPapers Build Report - v$Version
+BioCultPapers Build Report - v$Version
 ===============================================
 
 BUILD INFORMATION
@@ -204,7 +204,7 @@ ARTIFACTS GENERATED
    Size: $(if (Test-Path $publishDir) { [math]::Round((Get-ChildItem $publishDir -Recurse | Measure-Object -Property Length -Sum).Sum / 1MB, 2) } else { 'N/A' }) MB
 
 2. Portable ZIP Package
-   File: EtnoPapers-Portable-$Version.zip
+   File: BioCultPapers-Portable-$Version.zip
    Size: $(if (Test-Path $zipFile) { [math]::Round((Get-Item $zipFile).Length / 1MB, 2) } else { 'N/A' }) MB
 
 3. Checksums

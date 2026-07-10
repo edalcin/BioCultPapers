@@ -12,10 +12,10 @@
     <AssemblyVersion>2.1.0.0</AssemblyVersion>
     <FileVersion>2.1.0.0</FileVersion>
     <InformationalVersion>2.1.0</InformationalVersion>
-    <Product>EtnoPapers</Product>
-    <Company>EtnoPapers Project</Company>
+    <Product>BioCultPapers</Product>
+    <Company>BioCultPapers Project</Company>
     <Description>Automated extraction and cataloging of ethnobotanical metadata from scientific papers</Description>
-    <Copyright>Copyright © 2024 EtnoPapers Contributors</Copyright>
+    <Copyright>Copyright © 2024 BioCultPapers Contributors</Copyright>
 
     <!-- Portable framework-dependent configuration for USB/pen-drive distribution -->
     <!-- Requires .NET 8.0 runtime installed on target machine, but much smaller size (~100MB vs 500MB) -->

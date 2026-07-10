@@ -1,7 +1,7 @@
-# Advanced debugging script for EtnoPapers
-$appPath = "H:\git\etnopapers\src\EtnoPapers.UI\bin\Debug\net8.0-windows\EtnoPapers.UI.exe"
+# Advanced debugging script for BioCultPapers
+$appPath = "H:\git\BioCultPapers\src\EtnoPapers.UI\bin\Debug\net8.0-windows\EtnoPapers.UI.exe"
 
-Write-Host "=== EtnoPapers Debug Execution ===" -ForegroundColor Cyan
+Write-Host "=== BioCultPapers Debug Execution ===" -ForegroundColor Cyan
 Write-Host "Path: $appPath"
 Write-Host ""
 
@@ -13,13 +13,13 @@ $env:COMPlus_LogToConsole = 1
 # Create a wrapper batch file to capture output
 $wrapperScript = @"
 @echo off
-cd /d "H:\git\etnopapers\src\EtnoPapers.UI\bin\Debug\net8.0-windows"
+cd /d "H:\git\BioCultPapers\src\EtnoPapers.UI\bin\Debug\net8.0-windows"
 EtnoPapers.UI.exe 2>&1
 echo Exit code: %ERRORLEVEL%
 pause
 "@
 
-$wrapperPath = "$env:TEMP\etnopapers-wrapper.bat"
+$wrapperPath = "$env:TEMP\biocultpapers-wrapper.bat"
 Set-Content -Path $wrapperPath -Value $wrapperScript
 
 Write-Host "Running with debug output capture..." -ForegroundColor Yellow
@@ -61,7 +61,7 @@ if ($crashDumps) {
 
 # List all files in appdata
 Write-Host ""
-Write-Host "=== EtnoPapers AppData Contents ===" -ForegroundColor Cyan
+Write-Host "=== BioCultPapers AppData Contents ===" -ForegroundColor Cyan
 Get-ChildItem "$env:APPDATA\EtnoPapers" -Recurse -ErrorAction SilentlyContinue | Select-Object FullName, Length, LastWriteTime | Format-Table -AutoSize
 
 Write-Host ""

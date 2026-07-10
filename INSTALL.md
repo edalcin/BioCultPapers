@@ -1,4 +1,4 @@
-# EtnoPapers Installation Guide
+# BioCultPapers Installation Guide
 
 **Version**: 1.0.0
 **Updated**: December 2024
@@ -57,7 +57,7 @@
 
 **Best For:** Most users, automatic updates, system integration
 
-**File**: `EtnoPapers-Setup-1.0.0.msi`
+**File**: `BioCultPapers-Setup-1.0.0.msi`
 
 **Advantages:**
 - User-friendly setup wizard
@@ -73,7 +73,7 @@
 
 **Best For:** USB drives, minimal installations, portable systems
 
-**File**: `EtnoPapers-Portable-1.0.0.zip`
+**File**: `BioCultPapers-Portable-1.0.0.zip`
 
 **Advantages:**
 - No installation required
@@ -93,15 +93,15 @@
 #### 1. Download and Verify
 
 ```bash
-# Download EtnoPapers-Setup-1.0.0.msi
+# Download BioCultPapers-Setup-1.0.0.msi
 # Verify file integrity (optional)
-certutil -hashfile EtnoPapers-Setup-1.0.0.msi SHA256
+certutil -hashfile BioCultPapers-Setup-1.0.0.msi SHA256
 # Compare with published checksum in checksums.txt
 ```
 
 #### 2. Run the Installer
 
-1. Double-click `EtnoPapers-Setup-1.0.0.msi`
+1. Double-click `BioCultPapers-Setup-1.0.0.msi`
 2. If prompted by Windows SmartScreen, click "Run anyway"
 3. Wait for installer to initialize (~5 seconds)
 
@@ -113,7 +113,7 @@ certutil -hashfile EtnoPapers-Setup-1.0.0.msi SHA256
 
 #### 4. Installation Directory
 
-**Default**: `C:\Program Files\EtnoPapers`
+**Default**: `C:\Program Files\BioCultPapers`
 
 To change:
 1. Click "Browse..."
@@ -125,7 +125,7 @@ To change:
 
 Select optional features:
 - [ ] Create Desktop Shortcut (recommended)
-- [ ] Associate PDF files with EtnoPapers (optional)
+- [ ] Associate PDF files with BioCultPapers (optional)
 - [ ] Add to Start Menu (selected by default)
 - [ ] Launch at Windows startup (optional)
 
@@ -144,12 +144,12 @@ Wait for installation to complete. This may take 2-5 minutes depending on system
 #### 8. Completion
 
 - Installation complete message appears
-- [ ] Optional: "Launch EtnoPapers now" (checked by default)
+- [ ] Optional: "Launch BioCultPapers now" (checked by default)
 - Click "Finish"
 
 #### 9. First Launch
 
-When EtnoPapers launches:
+When BioCultPapers launches:
 1. Initialize database (30 seconds)
 2. Create user documents directory
 3. Load default configuration
@@ -162,11 +162,11 @@ When EtnoPapers launches:
 #### 1. Download and Extract
 
 ```bash
-# Download EtnoPapers-Portable-1.0.0.zip
+# Download BioCultPapers-Portable-1.0.0.zip
 # Extract to desired location
-# Example: D:\Applications\EtnoPapers\
+# Example: D:\Applications\BioCultPapers\
 
-Expand-Archive -Path EtnoPapers-Portable-1.0.0.zip -DestinationPath D:\Applications\
+Expand-Archive -Path BioCultPapers-Portable-1.0.0.zip -DestinationPath D:\Applications\
 ```
 
 #### 2. First-Time Setup
@@ -182,8 +182,8 @@ Expand-Archive -Path EtnoPapers-Portable-1.0.0.zip -DestinationPath D:\Applicati
 **Windows Start Menu:**
 ```bash
 $desktop = [Environment]::GetFolderPath('Desktop')
-$source = "D:\Applications\EtnoPapers\EtnoPapers.exe"
-$shortcut = "$desktop\EtnoPapers.lnk"
+$source = "D:\Applications\BioCultPapers\EtnoPapers.exe"
+$shortcut = "$desktop\BioCultPapers.lnk"
 $shell = New-Object -ComObject WScript.Shell
 $link = $shell.CreateShortCut($shortcut)
 $link.TargetPath = $source
@@ -224,9 +224,9 @@ ollama pull llama2-uncensored
 # Download may take 5-10 minutes and ~6GB space
 ```
 
-**Step 3: Configure in EtnoPapers**
+**Step 3: Configure in BioCultPapers**
 
-1. Open EtnoPapers
+1. Open BioCultPapers
 2. Click "Configurações" (Settings) in navigation menu
 3. Find "OLLAMA Configuration" section
 4. Enter:
@@ -252,7 +252,7 @@ net start MongoDB
 # or if not installed as service:
 mongod --dbpath "C:\path\to\data"
 
-# In EtnoPapers Settings:
+# In BioCultPapers Settings:
 MongoDB URI: mongodb://localhost:27017/etnopayers
 ```
 
@@ -264,13 +264,13 @@ MongoDB URI: mongodb://localhost:27017/etnopayers
 # Create a cluster and database
 # Get connection string from Atlas dashboard
 
-# In EtnoPapers Settings:
+# In BioCultPapers Settings:
 MongoDB URI: mongodb+srv://username:password@cluster.mongodb.net/etnopayers?retryWrites=true&w=majority
 ```
 
-**Step: Configure in EtnoPapers**
+**Step: Configure in BioCultPapers**
 
-1. Open EtnoPapers
+1. Open BioCultPapers
 2. Click "Configurações" (Settings)
 3. Find "MongoDB Configuration" section
 4. Enter your MongoDB URI
@@ -297,7 +297,7 @@ After installation, verify everything is working:
 
 - [ ] **Application Launches**
   ```bash
-  # From Start Menu: EtnoPapers
+  # From Start Menu: BioCultPapers
   # Should launch within 2 seconds
   ```
 
@@ -387,9 +387,9 @@ If configured:
 
 **Solution**:
 1. Download .NET 8.0 Desktop Runtime from [microsoft.com](https://dotnet.microsoft.com/download/dotnet/8.0)
-2. Install manually before running EtnoPapers installer
+2. Install manually before running BioCultPapers installer
 3. Restart computer
-4. Retry EtnoPapers installation
+4. Retry BioCultPapers installation
 
 #### 5. Registry Permission Denied
 
@@ -401,7 +401,7 @@ If configured:
 3. Check if registry key exists:
    ```bash
    # In Command Prompt as Administrator:
-   reg query "HKEY_LOCAL_MACHINE\SOFTWARE\EtnoPapers"
+   reg query "HKEY_LOCAL_MACHINE\SOFTWARE\BioCultPapers"
    ```
 
 ### Common Runtime Issues
@@ -440,7 +440,7 @@ If configured:
 3. Delete and recreate data.json:
    ```bash
    del "%USERPROFILE%\Documents\EtnoPapers\data.json"
-   # Restart EtnoPapers to recreate
+   # Restart BioCultPapers to recreate
    ```
 
 #### OLLAMA Connection Fails
@@ -522,7 +522,7 @@ If configured:
 
 # To reset to defaults:
 del "%USERPROFILE%\Documents\EtnoPapers\config.json"
-# Restart EtnoPapers - will recreate with defaults
+# Restart BioCultPapers - will recreate with defaults
 ```
 
 #### Lost Record Data
@@ -566,7 +566,7 @@ del "%USERPROFILE%\Documents\EtnoPapers\config.json"
 ### Using Windows Installer
 
 1. Open **Settings** > **Apps** > **Installed apps**
-2. Find **EtnoPapers** in the list
+2. Find **BioCultPapers** in the list
 3. Click the three dots (...)
 4. Select **Uninstall**
 5. Confirm in the uninstall dialog
@@ -577,7 +577,7 @@ del "%USERPROFILE%\Documents\EtnoPapers\config.json"
 **OR using Control Panel:**
 
 1. Open **Control Panel** > **Programs** > **Programs and Features**
-2. Find **EtnoPapers 1.0.0**
+2. Find **BioCultPapers 1.0.0**
 3. Right-click and select **Uninstall**
 4. Follow the uninstall wizard
 
@@ -596,7 +596,7 @@ C:\Users\[User]\Documents\EtnoPapers\
 
 To keep this data:
 1. Back up this folder before uninstalling
-2. Reinstall EtnoPapers
+2. Reinstall BioCultPapers
 3. Copy backed-up files back to this location
 
 To remove all user data and settings:

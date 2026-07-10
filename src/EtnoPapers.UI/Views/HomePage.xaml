@@ -18,7 +18,7 @@
 
                 <!-- Welcome Text -->
                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                    <TextBlock Text="Bem-vindo ao EtnoPapers" FontSize="28" FontWeight="Bold" Foreground="#0078D4" Margin="0,0,0,8"/>
+                    <TextBlock Text="Bem-vindo ao BioCultPapers" FontSize="28" FontWeight="Bold" Foreground="#0078D4" Margin="0,0,0,8"/>
                     <TextBlock Text="Extração Automatizada de Dados e Metadados Etnobotânicos" FontSize="16" Foreground="#505050" Margin="0,0,0,16"/>
                     <TextBlock Text="{Binding WelcomeMessage}" FontSize="14" TextWrapping="Wrap" Foreground="#505050"/>
                 </StackPanel>

@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
     <ProjectGuid>9J8I7H6G-5F4E-3D2C-1B0A-4F8B8C2E9D5F</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>EtnoPapers-Setup</OutputName>
+    <OutputName>BioCultPapers-Setup</OutputName>
     <OutputType>Bundle</OutputType>
     <WixVersion>4.0</WixVersion>
   </PropertyGroup>
@@ -15,8 +15,8 @@
   <!-- Project Properties -->
   <PropertyGroup>
     <ProductVersion>1.0.0.0</ProductVersion>
-    <ProductName>EtnoPapers</ProductName>
-    <Manufacturer>EtnoPapers Project</Manufacturer>
+    <ProductName>BioCultPapers</ProductName>
+    <Manufacturer>BioCultPapers Project</Manufacturer>
     <SourceDir>.</SourceDir>
   </PropertyGroup>
 
@@ -71,7 +71,7 @@
 
   <!-- Pre-Build Tasks -->
   <Target Name="PreBuild">
-    <Message Text="Building WiX Installer for EtnoPapers 1.0.0" Importance="high" />
+    <Message Text="Building WiX Installer for BioCultPapers 1.0.0" Importance="high" />
     <Message Text="Publish Directory: $(PublishDir)" Importance="normal" />
     <Message Text="Output: $(OutputPath)$(OutputName).msi" Importance="normal" />
   </Target>

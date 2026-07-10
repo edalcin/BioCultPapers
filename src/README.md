@@ -1,6 +1,6 @@
-# EtnoPapers - Estrutura de Código Fonte
+# BioCultPapers - Estrutura de Código Fonte
 
-Esta pasta contém a implementação em C# WPF do EtnoPapers.
+Esta pasta contém a implementação em C# WPF do BioCultPapers.
 
 ## Estrutura de Diretórios
 

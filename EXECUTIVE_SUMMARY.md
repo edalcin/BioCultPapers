@@ -1,4 +1,4 @@
-# EtnoPapers WPF Migration - Executive Summary
+# BioCultPapers WPF Migration - Executive Summary
 
 **Project Status**: ✅ Ready for Implementation
 **Last Updated**: 2025-12-06
@@ -8,7 +8,7 @@
 
 ## Project Overview
 
-**EtnoPapers** is being refactored from Electron (Node.js/TypeScript) to **C# WPF** for better Windows desktop integration, improved performance, and native Windows experience.
+**BioCultPapers** is being refactored from Electron (Node.js/TypeScript) to **C# WPF** for better Windows desktop integration, improved performance, and native Windows experience.
 
 **Core Mission**: Migrate 100% of Electron functionality to WPF while improving startup time by 50-75% and reducing memory footprint by 50-70%.
 
@@ -180,7 +180,7 @@ git status                # Must be on main, clean
 ### Phase 0 Execution (1-2 hours)
 ```bash
 # Create solution and projects
-dotnet new sln -n EtnoPapers
+dotnet new sln -n BioCultPapers
 dotnet new classlib -n EtnoPapers.Core -f net8.0 -o src/EtnoPapers.Core
 dotnet new wpf -n EtnoPapers.UI -f net8.0 -o src/EtnoPapers.UI
 dotnet new xunit -n EtnoPapers.Core.Tests -f net8.0 -o tests/EtnoPapers.Core.Tests

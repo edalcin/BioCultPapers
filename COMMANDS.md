@@ -1,4 +1,4 @@
-# EtnoPapers - Quick Commands Reference
+# BioCultPapers - Quick Commands Reference
 
 ## Native Windows Application
 
@@ -129,7 +129,7 @@ git push origin main
 
 ```bash
 # Set working directory
-cd H:\git\etnopapers
+cd H:\git\BioCultPapers
 
 # List available scripts
 pnpm run
@@ -160,7 +160,7 @@ pnpm run lint
 ## Project Structure
 
 ```
-H:\git\etnopapers\
+H:\git\BioCultPapers\
 ├── src/
 │   ├── main/           # Electron main process
 │   ├── renderer/       # React UI
@@ -189,7 +189,7 @@ electron-builder.config.js        # Windows installer config
 ```
 Dev Server:       http://localhost:5173
 OLLAMA Health:    http://localhost:11434/api/tags
-Repository:       https://github.com/edalcin/etnopapers
+Repository:       https://github.com/edalcin/BioCultPapers
 ```
 
 ## Key Directories
@@ -233,7 +233,7 @@ specs/main/data-model.md      - Data structures
 
 ### Start Fresh Development Session
 ```bash
-cd H:\git\etnopapers
+cd H:\git\BioCultPapers
 pnpm install                    # If dependencies changed
 pnpm run dev                    # Start dev server
 # Open http://localhost:5173
@@ -262,16 +262,16 @@ pnpm run build                  # Test build after update
 
 ## Notes
 
-- All commands run from project root: `H:\git\etnopapers`
+- All commands run from project root: `H:\git\BioCultPapers`
 - TypeScript types checked during build/dev
 - Hot reload works for React components
 - CSS/Tailwind changes reflect immediately
 - Environment variables can be added to `.env` file
-- Data stored in `~/.config/EtnoPapers/` (Electron app)
+- Data stored in `~/.config/BioCultPapers/` (Electron app)
 
 ## Support
 
 - See `TESTING_GUIDE.md` for troubleshooting
 - See `MVP_COMPLETION_SUMMARY.md` for overview
 - Check `specs/main/` for detailed documentation
-- GitHub Issues: https://github.com/edalcin/etnopapers/issues
+- GitHub Issues: https://github.com/edalcin/BioCultPapers/issues

@@ -1,4 +1,4 @@
-# Auto-build script for EtnoPapers
+# Auto-build script for BioCultPapers
 # This script is called automatically after code changes
 $ErrorActionPreference = 'Stop'
 
@@ -15,10 +15,10 @@ $env:DOTNET_CLI_TELEMETRY_OPTOUT = "1"
 $env:DOTNET_NOLOGO = "1"
 
 # Change to project root
-Set-Location "D:\git\etnopapers"
+Set-Location "D:\git\BioCultPapers"
 
 # Build Release configuration
-Write-Host "Building EtnoPapers Release..." -ForegroundColor Cyan
+Write-Host "Building BioCultPapers Release..." -ForegroundColor Cyan
 
 & $dotnetExe build src/EtnoPapers.UI/EtnoPapers.UI.csproj -c Release --nologo -v quiet
 

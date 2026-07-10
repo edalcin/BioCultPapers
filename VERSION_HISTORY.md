@@ -1,6 +1,6 @@
-# 📜 Histórico de Versões - EtnoPapers
+# 📜 Histórico de Versões - BioCultPapers
 
-> **Documento de Controle de Versões**: Este arquivo registra todas as versões do EtnoPapers, suas justificativas técnicas, mudanças implementadas e evolução do projeto ao longo do tempo.
+> **Documento de Controle de Versões**: Este arquivo registra todas as versões do BioCultPapers, suas justificativas técnicas, mudanças implementadas e evolução do projeto ao longo do tempo.
 
 ---
 
@@ -288,7 +288,7 @@ PDF → [iTextSharp] → Texto Bruto → OLLAMA → JSON → ArticleRecord
 
 ### 🎯 Objetivo da Versão
 
-**Release Inicial**: Migração completa do EtnoPapers de Electron (Node.js/TypeScript) para C# WPF, entregando aplicação desktop nativa para Windows com melhor performance e integração.
+**Release Inicial**: Migração completa do BioCultPapers de Electron (Node.js/TypeScript) para C# WPF, entregando aplicação desktop nativa para Windows com melhor performance e integração.
 
 ### ✨ Funcionalidades Principais
 
@@ -411,7 +411,7 @@ PDF → [iTextSharp] → Texto Bruto → OLLAMA → JSON → ArticleRecord
 
 ### 🔗 Repositório
 
-- **GitHub**: https://github.com/edalcin/etnopapers
+- **GitHub**: https://github.com/edalcin/BioCultPapers
 - **Branch Principal**: `main` (single-branch workflow)
 
 ### 👥 Contribuidores

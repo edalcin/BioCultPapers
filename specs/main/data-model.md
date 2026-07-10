@@ -1,4 +1,4 @@
-# Data Model: EtnoPapers
+# Data Model: BioCultPapers
 
 **Date**: 2025-12-01
 **Feature**: Ethnobotanical Metadata Extraction Desktop Application
@@ -6,7 +6,7 @@
 
 ## Overview
 
-This document defines the complete data model for EtnoPapers, including TypeScript interfaces, validation rules, and data transformation logic. The model is designed to match the structure defined in `docs/estrutura.json` while providing type safety and validation.
+This document defines the complete data model for BioCultPapers, including TypeScript interfaces, validation rules, and data transformation logic. The model is designed to match the structure defined in `docs/estrutura.json` while providing type safety and validation.
 
 ---
 
@@ -208,7 +208,7 @@ interface AIProviderConfig {
 
 interface MongoDBConfig {
   uri: string | null           // User-provided connection string
-  database: string             // Default: "etnopapers"
+  database: string             // Default: "BioCultPapers"
   collection: string           // Default: "articles"
   tlsEnabled: boolean          // Default: true for Atlas
   connectionTimeout: number    // Seconds, default: 10
@@ -410,7 +410,7 @@ export function validateArticleRecord(data: unknown): ArticleRecord {
 
   // MongoDB-specific metadata
   uploadedAt: ISODate("2025-12-01T10:00:00Z"),
-  uploadedFrom: "EtnoPapers v1.0.0",
+  uploadedFrom: "BioCultPapers v1.0.0",
   originalLocalId: "uuid-from-local"
 }
 

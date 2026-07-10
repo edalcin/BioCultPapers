@@ -4,7 +4,7 @@
     Create branding images for WiX installer
 
 .DESCRIPTION
-    Generates minimal valid BMP files for the EtnoPapers installer.
+    Generates minimal valid BMP files for the BioCultPapers installer.
     Creates Banner.bmp (500x63) and Dialog.bmp (262x392).
     These are minimal white backgrounds - replace with proper branded images.
 
@@ -27,7 +27,7 @@ param(
     [string]$DialogColor = "#FFFFFF"
 )
 
-Write-Host "Creating branding images for EtnoPapers installer..." -ForegroundColor Cyan
+Write-Host "Creating branding images for BioCultPapers installer..." -ForegroundColor Cyan
 
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 $bannerPath = Join-Path $scriptPath "Banner.bmp"
@@ -53,7 +53,7 @@ try {
     # Add simple text
     $font = New-Object System.Drawing.Font("Segoe UI", 20, [System.Drawing.FontStyle]::Bold)
     $textBrush = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(46, 117, 182))
-    $bannerGraphics.DrawString("EtnoPapers 1.0.0", $font, $textBrush, 20, 15)
+    $bannerGraphics.DrawString("BioCultPapers 1.0.0", $font, $textBrush, 20, 15)
 
     $grayBrush.Dispose()
     $textBrush.Dispose()
@@ -76,7 +76,7 @@ try {
     # Add simple text
     $smallFont = New-Object System.Drawing.Font("Segoe UI", 16, [System.Drawing.FontStyle]::Bold)
     $textBrush = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(46, 117, 182))
-    $dialogGraphics.DrawString("EtnoPapers", $smallFont, $textBrush, 20, 150)
+    $dialogGraphics.DrawString("BioCultPapers", $smallFont, $textBrush, 20, 150)
 
     $textBrush.Dispose()
     $smallFont.Dispose()

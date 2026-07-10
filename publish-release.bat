@@ -4,7 +4,7 @@ REM Uso: publish-release.bat
 
 echo.
 echo ================================
-echo  EtnoPapers Release Build Script
+echo  BioCultPapers Release Build Script
 echo ================================
 echo.
 
@@ -35,7 +35,7 @@ powershell -Command "Copy-Item -Path 'bin\Release\net8.0-windows\win-x64\publish
 echo.
 echo ================================
 echo Sucesso! Build em:
-echo H:\git\etnopapers\src\EtnoPapers.UI\bin\Release\publish\EtnoPapers.UI.exe
+echo H:\git\BioCultPapers\src\EtnoPapers.UI\bin\Release\publish\EtnoPapers.UI.exe
 echo ================================
 echo.
 

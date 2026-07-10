@@ -1,4 +1,4 @@
-# EtnoPapers 1.0.0 Release Notes
+# BioCultPapers 1.0.0 Release Notes
 
 **Release Date**: November 2025
 **Platform**: Windows 10+ (x64)
@@ -8,7 +8,7 @@
 
 ## Overview
 
-**EtnoPapers 1.0.0** marks the complete migration from Electron to C# WPF, delivering a native Windows desktop application for automated extraction and cataloging of ethnobotanical metadata from scientific papers.
+**BioCultPapers 1.0.0** marks the complete migration from Electron to C# WPF, delivering a native Windows desktop application for automated extraction and cataloging of ethnobotanical metadata from scientific papers.
 
 ---
 
@@ -121,7 +121,7 @@
 # Run OLLAMA server
 ollama serve
 
-# In EtnoPapers Settings:
+# In BioCultPapers Settings:
 # URL: http://localhost:11434
 # Model: llama2 (or llama2-uncensored for Portuguese)
 ```
@@ -179,7 +179,7 @@ mongodb+srv://username:password@cluster.mongodb.net/etnopayers?retryWrites=true&
 
 ### Option 1: Windows Installer (Recommended)
 ```bash
-EtnoPapers-Setup-1.0.0.msi
+BioCultPapers-Setup-1.0.0.msi
 # Follow the installation wizard
 # Select installation directory
 # Choose optional features (desktop shortcut, file associations)
@@ -187,7 +187,7 @@ EtnoPapers-Setup-1.0.0.msi
 
 ### Option 2: Portable ZIP
 ```bash
-# Extract EtnoPapers-Portable-1.0.0.zip to desired location
+# Extract BioCultPapers-Portable-1.0.0.zip to desired location
 # Run EtnoPapers.exe directly
 # No installation required
 # All data stored in application directory
@@ -229,7 +229,7 @@ EtnoPapers-Setup-1.0.0.msi
 
 ## 📝 License
 
-EtnoPapers is released under the **MIT License**.
+BioCultPapers is released under the **MIT License**.
 
 See `LICENSE.md` for full license text.
 
@@ -258,7 +258,7 @@ Contributions are welcome! See GitHub repository for:
 
 ## 🎉 Acknowledgments
 
-EtnoPapers is built with:
+BioCultPapers is built with:
 - **.NET 8.0**: Modern cross-platform framework
 - **WPF**: Native Windows desktop UI
 - **OLLAMA**: Local AI model execution

@@ -1,7 +1,7 @@
 # Cloud AI Provider SDK Research for C#/.NET Integration
 
 **Date**: 2025-12-09
-**Context**: EtnoPapers Windows desktop application - Migration from local OLLAMA to cloud AI providers
+**Context**: BioCultPapers Windows desktop application - Migration from local OLLAMA to cloud AI providers
 **Target Framework**: .NET 6+ / WPF Desktop Application
 
 ---
@@ -1095,7 +1095,7 @@ public interface IAiClient
 
 ---
 
-## 5. Recommendations for EtnoPapers Implementation
+## 5. Recommendations for BioCultPapers Implementation
 
 ### SDK vs Direct HTTP: Decision Matrix
 
@@ -1121,7 +1121,7 @@ public interface IAiClient
 | **Gemini 1.5 Pro** | 2-5 seconds | $0.00125 input / $0.005 output | 2M tokens | Long documents, cost-sensitive |
 | **Claude 3.5 Sonnet** | 4-10 seconds | $0.003 input / $0.015 output | 200K tokens | Complex reasoning, Portuguese |
 
-### Architecture Recommendation for EtnoPapers
+### Architecture Recommendation for BioCultPapers
 
 ```
 ┌─────────────────────────────────────────────────┐
@@ -1263,7 +1263,7 @@ public interface IAiClient
 
 ### Next Steps
 
-1. Review existing OLLAMA integration code in EtnoPapers
+1. Review existing OLLAMA integration code in BioCultPapers
 2. Design `IAiClient` interface matching current extraction flow
 3. Implement OpenAI client first (easiest, best SDK support)
 4. Add Gemini and Claude incrementally

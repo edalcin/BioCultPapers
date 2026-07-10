@@ -1,4 +1,4 @@
-# EtnoPapers Release Configuration (Phase 8)
+# BioCultPapers Release Configuration (Phase 8)
 
 **Version**: 1.0.0
 **Release Date**: December 2024
@@ -11,16 +11,16 @@
 
 **Current Version**: 1.0.0.0
 **Assembly Version**: 1.0.0.0
-**Product Name**: EtnoPapers
-**Company**: EtnoPapers Project
+**Product Name**: BioCultPapers
+**Company**: BioCultPapers Project
 
 ### Assembly Properties
 
-- **Product**: EtnoPapers (Ethnobotanical Paper Analysis Tool)
+- **Product**: BioCultPapers (Ethnobotanical Paper Analysis Tool)
 - **Description**: Automated extraction and cataloging of ethnobotanical metadata from scientific papers about traditional plant use
-- **Company**: EtnoPapers Contributors
-- **Copyright**: Copyright © 2024 EtnoPapers Contributors
-- **Trademark**: EtnoPapers®
+- **Company**: BioCultPapers Contributors
+- **Copyright**: Copyright © 2024 BioCultPapers Contributors
+- **Trademark**: BioCultPapers®
 
 ### File Versioning Strategy
 
@@ -49,11 +49,11 @@
 
 ### Installation Directories
 
-**Default Installation Path**: `C:\Program Files\EtnoPapers`
+**Default Installation Path**: `C:\Program Files\BioCultPapers`
 
 **Directory Structure After Installation:**
 ```
-C:\Program Files\EtnoPapers\
+C:\Program Files\BioCultPapers\
 ├── EtnoPapers.exe                 (Main application)
 ├── EtnoPapers.UI.dll             (WPF UI assembly)
 ├── EtnoPapers.Core.dll           (Core services)
@@ -74,24 +74,24 @@ C:\Users\[User]\Documents\EtnoPapers\    (User data directory)
 ### Application Shortcuts
 
 **Start Menu:**
-- Program Files > EtnoPapers > EtnoPapers
+- Program Files > BioCultPapers > BioCultPapers
 
 **Desktop:**
-- EtnoPapers (optional, configurable during installation)
+- BioCultPapers (optional, configurable during installation)
 
 **File Associations:**
-- PDF files can be opened with EtnoPapers (optional)
+- PDF files can be opened with BioCultPapers (optional)
 
 ### Registry Entries
 
-**Location**: `HKEY_LOCAL_MACHINE\SOFTWARE\EtnoPapers`
+**Location**: `HKEY_LOCAL_MACHINE\SOFTWARE\BioCultPapers`
 
 ```
-- DisplayName: EtnoPapers 1.0.0
+- DisplayName: BioCultPapers 1.0.0
 - DisplayVersion: 1.0.0
-- Publisher: EtnoPapers Project
-- UninstallString: C:\Program Files\EtnoPapers\uninstall.exe
-- InstallLocation: C:\Program Files\EtnoPapers
+- Publisher: BioCultPapers Project
+- UninstallString: C:\Program Files\BioCultPapers\uninstall.exe
+- InstallLocation: C:\Program Files\BioCultPapers
 - VersionMajor: 1
 - VersionMinor: 0
 ```
@@ -128,8 +128,8 @@ C:\Users\[User]\Documents\EtnoPapers\    (User data directory)
 
 **Output Artifacts:**
 - `EtnoPapers.exe` (self-contained, ~150MB)
-- `EtnoPapers-Setup-1.0.0.msi` (installer, ~120MB)
-- `EtnoPapers-Portable-1.0.0.zip` (portable version, ~160MB)
+- `BioCultPapers-Setup-1.0.0.msi` (installer, ~120MB)
+- `BioCultPapers-Portable-1.0.0.zip` (portable version, ~160MB)
 - `release-notes-1.0.0.md` (release documentation)
 - `checksums.txt` (SHA256 hashes for distribution)
 

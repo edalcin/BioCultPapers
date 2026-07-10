@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**EtnoPapers** is a Windows desktop application for automated extraction and cataloging of ethnobotanical metadata from scientific papers about traditional plant use by indigenous and traditional communities.
+**BioCultPapers** is a Windows desktop application for automated extraction and cataloging of ethnobotanical metadata from scientific papers about traditional plant use by indigenous and traditional communities.
 
 ### Application Purpose
 
@@ -62,7 +62,7 @@ SpecKit follows a strict multi-phase workflow:
 ### Directory Structure
 
 ```
-etnopapers/
+BioCultPapers/
 ├── .specify/                        # SpecKit framework files
 │   ├── scripts/powershell/          # Automation scripts for workflow
 │   │   ├── create-new-feature.ps1   # Branch + spec directory creation
@@ -314,4 +314,14 @@ This updates `.claude/claude.md` (or equivalent for Cursor/Copilot) with:
 - Slash commands detect current context (branch, feature dir) automatically
 - Due to single-branch workflow, the SpecKit branch naming conventions do not apply to this project
 - este projeto deve ter apenas o main branch. Nunca criar um novo branch. Comitar sempre no main branch
-- a localização dos builds (executáveis) deve ser sempre em D:\git\etnopapers\src\EtnoPapers.UI\bin\Release\net8.0-windows
+- a localização dos builds (executáveis) deve ser sempre em D:\git\BioCultPapers\src\EtnoPapers.UI\bin\Release\net8.0-windows
+
+## graphify
+
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+Rules:
+- For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).

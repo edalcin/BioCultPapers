@@ -1,11 +1,11 @@
-# Developer Quickstart: EtnoPapers
+# Developer Quickstart: BioCultPapers
 
 **Date**: 2025-12-01
-**Target Audience**: Developers joining the EtnoPapers project
+**Target Audience**: Developers joining the BioCultPapers project
 
 ## Project Overview
 
-EtnoPapers is a Windows desktop application (.NET 8.0 / WPF) that extracts ethnobotanical metadata from scientific papers using cloud AI providers (Google Gemini, OpenAI, Anthropic) and syncs data to MongoDB.
+BioCultPapers is a Windows desktop application (.NET 8.0 / WPF) that extracts ethnobotanical metadata from scientific papers using cloud AI providers (Google Gemini, OpenAI, Anthropic) and syncs data to MongoDB.
 
 **Key Technologies**:
 - **Framework**: .NET 8.0 / WPF
@@ -40,8 +40,8 @@ Before starting, ensure you have:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/etnopapers.git
-cd etnopapers
+git clone https://github.com/your-org/BioCultPapers.git
+cd BioCultPapers
 
 # Install dependencies
 pnpm install
@@ -54,7 +54,7 @@ node --version
 ### 2. Project Structure
 
 ```
-etnopapers/
+BioCultPapers/
 ├── src/
 │   ├── main/              # Electron main process
 │   │   ├── index.ts       # Entry point

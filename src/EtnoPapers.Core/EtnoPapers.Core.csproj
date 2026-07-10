@@ -10,10 +10,10 @@
     <AssemblyVersion>2.1.0.0</AssemblyVersion>
     <FileVersion>2.1.0.0</FileVersion>
     <InformationalVersion>2.1.0</InformationalVersion>
-    <Product>EtnoPapers</Product>
-    <Company>EtnoPapers Project</Company>
-    <Description>Core services and data models for EtnoPapers</Description>
-    <Copyright>Copyright © 2024 EtnoPapers Contributors</Copyright>
+    <Product>BioCultPapers</Product>
+    <Company>BioCultPapers Project</Company>
+    <Description>Core services and data models for BioCultPapers</Description>
+    <Copyright>Copyright © 2024 BioCultPapers Contributors</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

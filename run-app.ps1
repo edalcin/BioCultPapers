@@ -1,7 +1,7 @@
-Write-Host "=== EtnoPapers Launcher ===" -ForegroundColor Cyan
+Write-Host "=== BioCultPapers Launcher ===" -ForegroundColor Cyan
 Write-Host ""
 
-$exePath = "H:\git\etnopapers\src\EtnoPapers.UI\bin\Release\net8.0-windows\EtnoPapers.UI.exe"
+$exePath = "H:\git\BioCultPapers\src\EtnoPapers.UI\bin\Release\net8.0-windows\EtnoPapers.UI.exe"
 $logPath = "$env:APPDATA\EtnoPapers\exception.log"
 
 Write-Host "Arquivo: $exePath"

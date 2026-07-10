@@ -301,7 +301,7 @@
                         <!-- About Section -->
                         <Border Background="#F3F3F3" Padding="16" CornerRadius="8">
                             <StackPanel>
-                                <TextBlock Text="Sobre o EtnoPapers" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                                <TextBlock Text="Sobre o BioCultPapers" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,8"/>
                                 <TextBlock Text="Aplicacao para extracao e catalogacao de metadados etnobotanicos de artigos cientificos."
                                            FontSize="11"
                                            Foreground="#505050"

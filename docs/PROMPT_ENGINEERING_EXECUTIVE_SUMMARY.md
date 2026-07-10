@@ -1,6 +1,6 @@
 # Prompt Engineering Research - Executive Summary
 
-**Project**: EtnoPapers Cloud AI Migration
+**Project**: BioCultPapers Cloud AI Migration
 **Date**: 2025-12-09
 **Research Scope**: Multi-provider prompt compatibility (OpenAI, Anthropic, Gemini)
 

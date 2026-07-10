@@ -25,7 +25,7 @@ Before starting, verify your environment:
   git config --global user.email "your.email@example.com"
   ```
 - [ ] PowerShell 5.0+ available
-- [ ] Current working directory: `H:\git\etnopapers`
+- [ ] Current working directory: `H:\git\BioCultPapers`
 
 ### Documentation Review
 
@@ -58,7 +58,7 @@ Before starting, verify your environment:
 
 **Commands**:
 ```bash
-dotnet new sln -n EtnoPapers
+dotnet new sln -n BioCultPapers
 ```
 
 **Acceptance Criteria**:
@@ -310,7 +310,7 @@ cat .gitignore | head -10
 ```powershell
 #!/usr/bin/env pwsh
 
-Write-Host "Building EtnoPapers solution..." -ForegroundColor Cyan
+Write-Host "Building BioCultPapers solution..." -ForegroundColor Cyan
 
 # Build
 Write-Host "Running dotnet build..." -ForegroundColor Yellow

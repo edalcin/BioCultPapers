@@ -1,11 +1,11 @@
-# Investigation Plan: Quality Difference Between EtnoPapers and OLLAMA Desktop
+# Investigation Plan: Quality Difference Between BioCultPapers and OLLAMA Desktop
 
 ## Problem Statement
-EtnoPapers extraction is now returning **valid data** (not hallucinations), but when compared to OLLAMA Desktop using the **same model (Qwen2.5:7b), same PDF, same prompt**, the results are **significantly inferior**:
+BioCultPapers extraction is now returning **valid data** (not hallucinations), but when compared to OLLAMA Desktop using the **same model (Qwen2.5:7b), same PDF, same prompt**, the results are **significantly inferior**:
 
 ### Quality Comparison
 
-| Field | EtnoPapers | OLLAMA Desktop | Status |
+| Field | BioCultPapers | OLLAMA Desktop | Status |
 |-------|-----------|---|--------|
 | titulo | ✅ Correct | ✅ Correct | PASS |
 | autores | ✅ Correct (6) | ✅ Correct (6) | PASS |
@@ -23,28 +23,28 @@ EtnoPapers extraction is now returning **valid data** (not hallucinations), but 
 | metodologia | ❌ null | ✅ Description | FAIL |
 | ano_coleta | ❌ null | ✅ 2007 | FAIL |
 
-**Score**: EtnoPapers 6/14 fields correct (43%) vs OLLAMA Desktop 11/14 fields correct (79%)
+**Score**: BioCultPapers 6/14 fields correct (43%) vs OLLAMA Desktop 11/14 fields correct (79%)
 
 ---
 
 ## Root Cause Hypotheses
 
 ### H1: Different OLLAMA Generation Parameters
-**Hypothesis**: OLLAMA Desktop has different temperature/top_p/top_k settings than EtnoPapers
-- OLLAMA Desktop default temperature ≠ EtnoPapers HTTP request parameters
-- Higher temperature in EtnoPapers = more repetition of "empty" values
+**Hypothesis**: OLLAMA Desktop has different temperature/top_p/top_k settings than BioCultPapers
+- OLLAMA Desktop default temperature ≠ BioCultPapers HTTP request parameters
+- Higher temperature in BioCultPapers = more repetition of "empty" values
 - **Impact**: Would explain systematic failures in detail extraction
 
 ### H2: Prompt Format/Encoding Issue
 **Hypothesis**: When custom prompt is appended to markdown with `$"{customPrompt}\n\n{pdfText}"`, the formatting breaks OLLAMA's instruction parsing
-- EtnoPapers appends: `prompt\n\npdfText`
+- BioCultPapers appends: `prompt\n\npdfText`
 - OLLAMA Desktop might send differently (e.g., using system vs user message)
 - Line breaks or encoding might cause OLLAMA to ignore the anti-hallucination rules
 - **Impact**: Would explain why OLLAMA reverts to generic/empty values
 
 ### H3: Markdown Content Difference
 **Hypothesis**: Different markdown conversion between tools or truncation
-- EtnoPapers sends 50,905 characters
+- BioCultPapers sends 50,905 characters
 - OLLAMA Desktop might receive different content (better structured, more complete)
 - Markdown structure (headings, separators) might differ
 - **Impact**: Less information = less data to extract
@@ -72,7 +72,7 @@ EtnoPapers extraction is now returning **valid data** (not hallucinations), but 
 **Status**: ✅ Code is ready
 **Commands**:
 ```
-1. Run: H:\git\etnopapers\src\EtnoPapers.UI\bin\Release\publish\EtnoPapers.UI.exe
+1. Run: H:\git\BioCultPapers\src\EtnoPapers.UI\bin\Release\publish\EtnoPapers.UI.exe
 2. Extract the same PDF
 3. Check log: C:\Users\EDalcin\AppData\Roaming\EtnoPapers\logs\extraction-markdown-debug.log
 4. Compare:
@@ -205,7 +205,7 @@ OUTPUT JSON END
 
 ## Next Steps
 
-1. **Run the updated EtnoPapers** with enhanced logging
+1. **Run the updated BioCultPapers** with enhanced logging
 2. **Extract the same PDF** used for OLLAMA Desktop test
 3. **Share the log file** so we can see:
    - Exact custom prompt being used

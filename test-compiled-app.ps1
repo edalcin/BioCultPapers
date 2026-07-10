@@ -1,8 +1,8 @@
-# Test script for compiled EtnoPapers application
-$appPath = "H:\git\etnopapers\src\EtnoPapers.UI\bin\Release\net8.0-windows\EtnoPapers.UI.exe"
+# Test script for compiled BioCultPapers application
+$appPath = "H:\git\BioCultPapers\src\EtnoPapers.UI\bin\Release\net8.0-windows\EtnoPapers.UI.exe"
 $logDir = Join-Path $env:APPDATA "EtnoPapers\logs"
 
-Write-Host "=== EtnoPapers Compiled Application Test ===" -ForegroundColor Cyan
+Write-Host "=== BioCultPapers Compiled Application Test ===" -ForegroundColor Cyan
 Write-Host "Application Path: $appPath"
 Write-Host "Log Directory: $logDir"
 Write-Host ""
