@@ -46,7 +46,6 @@
 | Component | Purpose | Installation |
 |-----------|---------|--------------|
 | OLLAMA | AI-powered metadata extraction | Install separately from [ollama.ai](https://ollama.ai) |
-| MongoDB | Remote data synchronization | Local installation or Atlas cloud account |
 | PostgreSQL | Future support | Not yet required |
 
 ---
@@ -237,48 +236,7 @@ ollama pull llama2-uncensored
 6. Status should show green "Conectado"
 7. Click "Salvar Configurações"
 
-#### 3. Configure MongoDB (Optional)
-
-MongoDB is only needed if you want to synchronize records to a cloud/remote database.
-
-**Option A: Local MongoDB**
-
-```bash
-# Install MongoDB Community Edition
-# https://www.mongodb.com/try/download/community
-
-# Start MongoDB service:
-net start MongoDB
-# or if not installed as service:
-mongod --dbpath "C:\path\to\data"
-
-# In BioCultPapers Settings:
-MongoDB URI: mongodb://localhost:27017/etnopayers
-```
-
-**Option B: MongoDB Atlas (Cloud)**
-
-```bash
-# Create MongoDB Atlas account: https://www.mongodb.com/cloud/atlas
-
-# Create a cluster and database
-# Get connection string from Atlas dashboard
-
-# In BioCultPapers Settings:
-MongoDB URI: mongodb+srv://username:password@cluster.mongodb.net/etnopayers?retryWrites=true&w=majority
-```
-
-**Step: Configure in BioCultPapers**
-
-1. Open BioCultPapers
-2. Click "Configurações" (Settings)
-3. Find "MongoDB Configuration" section
-4. Enter your MongoDB URI
-5. Click "Testar Conexão MongoDB"
-6. Status should show green "Conectado"
-7. Click "Salvar Configurações"
-
-#### 4. Language Preference
+#### 3. Language Preference
 
 1. In Settings, find "Application Settings"
 2. Select language:
@@ -334,14 +292,6 @@ If configured:
    # Check if OLLAMA is listening
    netstat -ano | findstr 11434
    ```
-
-### MongoDB Verification
-
-If configured:
-
-1. In Settings, click "Testar Conexão MongoDB"
-2. Should show "Conectado" (green indicator)
-3. If fails, verify MongoDB URI and server running
 
 ---
 
@@ -468,30 +418,6 @@ If configured:
    # Should show downloaded models
    ```
 
-#### MongoDB Connection Fails
-
-**Symptoms**: "Could not connect to MongoDB"
-
-**Solutions**:
-1. Verify MongoDB is running:
-   ```bash
-   # Check if mongod process exists:
-   tasklist | findstr mongod
-   ```
-2. Verify URI format:
-   ```
-   Local: mongodb://localhost:27017/etnopayers
-   Atlas: mongodb+srv://user:password@cluster.mongodb.net/dbname
-   ```
-3. Check credentials (for Atlas):
-   - Username and password are URL-encoded
-   - Special characters (@, :, /, etc.) must be escaped
-4. Test connection manually:
-   ```bash
-   # Using MongoDB Compass or mongo shell
-   mongo "mongodb://localhost:27017/etnopayers"
-   ```
-
 #### PDF Extraction Hangs
 
 **Symptoms**: PDF extraction doesn't complete, progress bar stuck
@@ -530,13 +456,15 @@ del "%USERPROFILE%\Documents\EtnoPapers\config.json"
 **Solution**:
 ```bash
 # Local data stored in:
-%USERPROFILE%\Documents\EtnoPapers\data.json
+%USERPROFILE%\Documents\EtnoPapers\biocultpapers.sqlite
 
-# Backup exists if synced to MongoDB
-# To recover from backup:
-# 1. Check MongoDB database
-# 2. Export records as JSON
-# 3. Import back to local storage
+# Backup is simply a copy of the SQLite file:
+# 1. Close BioCultPapers
+# 2. Copy biocultpapers.sqlite to a safe location
+# 3. To restore, copy it back to the same path
+
+# Alternatively, click "Exportar para BioCultDB" on the Registros page
+# to save selected (or all) records as a JSON file at any time.
 ```
 
 #### Performance Issues
@@ -550,7 +478,8 @@ del "%USERPROFILE%\Documents\EtnoPapers\config.json"
    ```bash
    # Ensure at least 500MB free
    # Large data.json file slows startup
-   # Consider syncing to MongoDB and clearing local data
+   # SQLite storage has no record limit; use "Exportar para BioCultDB"
+   # to archive a copy of older records externally if desired
    ```
 3. Monitor memory:
    - Restart application periodically

@@ -14,7 +14,7 @@
 
 **Versão Atual**: 2.1.0 | [Ver Histórico de Versões](VERSION_HISTORY.md)
 
-> **✨ Novidade na v2.1.0**: Integração completa com o projeto BioCultDB! Nova estrutura de dados padronizada conforme [BioCultDB Data Structure](https://github.com/edalcin/BioCultDB?tab=readme-ov-file#estrutura-de-dados) para sincronização perfeita com o banco de dados central. [Saiba mais](VERSION_HISTORY.md#versão-210---dezembro-2025)
+> **✨ Novidade na v2.1.0**: Integração completa com o projeto BioCultDB! Nova estrutura de dados padronizada conforme [BioCultDB Data Structure](https://github.com/edalcin/BioCultDB?tab=readme-ov-file#estrutura-de-dados) para exportação perfeita para o banco de dados central. [Saiba mais](VERSION_HISTORY.md#versão-210---dezembro-2025)
 
 
 > "Se os dados não estão fisicamente sob o controle de quem os gerou, a soberania é apenas uma promessa bonita em um termo de consentimento."
@@ -31,7 +31,7 @@
 >
 > **🎯 Fluxo de trabalho integrado:**
 > 1. **BioCultPapers** → Extração automatizada de PDFs com IA
-> 2. **MongoDB** → Armazenamento centralizado de dados
+> 2. **Exportação JSON** → Registros exportados para importação no BioCultDB
 > 3. **BioCultDB** → Visualização, curadoria e entrada manual complementar
 >
 > Para mais informações sobre o projeto BioCultDB, visite: **https://github.com/edalcin/BioCultDB**
@@ -46,7 +46,7 @@ Com o BioCultPapers, você pode:
 
 - ✨ **Extrair automaticamente** metadados de artigos científicos em PDF usando inteligência artificial
 - 📝 **Gerenciar** suas referências com interface completa de edição (criar, visualizar, editar, deletar)
-- ☁️ **Sincronizar** seus dados com MongoDB (Atlas ou servidor local) para backup e segurança
+- 📤 **Exportar** seus dados para o BioCultDB via arquivo JSON, para centralização e curadoria
 - 🔧 **Personalizar** a extração com prompts configuráveis para o modelo de IA
 - 🌿 **Catalogar** espécies de plantas, comunidades estudadas, localizações geográficas e metodologias
 
@@ -73,24 +73,23 @@ Interface intuitiva para gerenciar todas as suas referências processadas:
 - Edite qualquer campo dos registros, incluindo adição de novos atributos personalizados
 - Crie novos registros manualmente quando necessário
 - Delete referências que não são mais necessárias
-- Marque fichas para envio ao banco de dados remoto
+- Marque fichas para exportação para o BioCultDB
 
-### ☁️ Sincronização com MongoDB
+### 📤 Exportação para BioCultDB
 
-Mantenha seus dados seguros e acessíveis:
+Envie seus registros para o BioCultDB através de um arquivo de exportação:
 
-- Conecte-se ao MongoDB Atlas (nuvem) ou servidor local
-- Selecione quais fichas deseja enviar para o banco de dados
-- Upload automático com confirmação de sucesso
-- Registros enviados com sucesso são removidos do armazenamento local
-- Avisos automáticos para lembrar você de fazer backup regular
+- Selecione as fichas que deseja exportar na página **Registros** (nenhuma selecionada exporta todas)
+- Clique em **Exportar para BioCultDB**
+- Escolha o local e o nome do arquivo na caixa de diálogo Salvar Como
+- Um arquivo JSON com os registros selecionados é gravado no local escolhido
+- Importe o arquivo gerado no BioCultDB para concluir a centralização dos dados
 
 ### ⚙️ Configuração Flexível
 
 - Configure o prompt de IA para personalizar a extração de dados
-- Informe a URI de conexão com seu MongoDB
 - Configurações persistem entre sessões
-- Indicadores de status de conexão para IA e banco de dados
+- Indicador de status de conexão com o provedor de IA
 
 ---
 
@@ -103,13 +102,11 @@ Mantenha seus dados seguros e acessíveis:
   - Google Gemini API ([obter chave](https://ai.google.dev/))
   - OpenAI API ([obter chave](https://platform.openai.com/))
   - Anthropic Claude API ([obter chave](https://console.anthropic.com/))
-- **Conexão com Internet**: Necessária para:
-  - Extração de metadados usando IA em nuvem
-  - Sincronização com MongoDB Atlas
+- **Conexão com Internet**: Necessária para extração de metadados usando IA em nuvem
 
 ### Recomendações
 
-- **MongoDB**: Conta no MongoDB Atlas (gratuita) ou servidor MongoDB local para backup de dados
+- **Backup**: Exporte seus dados regularmente para o BioCultDB usando o botão **Exportar para BioCultDB** na página Registros, mantendo uma cópia externa segura dos seus registros
 
 ---
 
@@ -149,11 +146,6 @@ Mantenha seus dados seguros e acessíveis:
    - Cole sua chave de API
    - Clique em **Salvar**
 
-4. **Configure o MongoDB** (opcional, mas recomendado)
-   - Crie uma conta gratuita no MongoDB Atlas ou instale um servidor local
-   - Obtenha a URI de conexão do seu banco de dados
-   - Configure a URI nas configurações do BioCultPapers
-
 ---
 
 ## Como Usar
@@ -165,8 +157,6 @@ Mantenha seus dados seguros e acessíveis:
 3. Selecione seu provedor de IA em nuvem (Gemini, OpenAI ou Anthropic)
 4. Cole sua chave de API do provedor escolhido
 5. Clique em **Salvar** para armazenar as configurações
-6. Informe a URI de conexão com o MongoDB (opcional)
-7. Teste a conexão com o MongoDB
 
 ### Processar um Artigo
 
@@ -184,16 +174,14 @@ Mantenha seus dados seguros e acessíveis:
 2. Visualize todas as fichas processadas em formato de tabela
 3. A lista é atualizada automaticamente sempre que você visita a página
 4. Veja as principais informações: Título, Ano, Autores e País
-5. Selecione registros para editar ou sincronizar com MongoDB
+5. Selecione registros para editar ou exportar para o BioCultDB
 
-### Sincronizar com MongoDB
+### Exportar para BioCultDB
 
-1. Na aba **Registros**, selecione os registros que deseja enviar para o banco de dados
-2. Clique em **Sincronizar com MongoDB**
-3. Aguarde a confirmação de upload
-4. Registros enviados com sucesso serão removidos do armazenamento local
-
-> ⚠️ **Importante**: Faça upload regular dos seus dados para o MongoDB para garantir backup e bom desempenho do sistema. O armazenamento local tem limite de registros.
+1. Na aba **Registros**, selecione os registros que deseja exportar (nenhum selecionado exporta todos)
+2. Clique em **Exportar para BioCultDB**
+3. Na caixa de diálogo **Salvar Como**, escolha o local e o nome do arquivo JSON
+4. O arquivo é gravado com os registros exportados, prontos para importação no BioCultDB
 
 ---
 
@@ -277,7 +265,7 @@ O BioCultPapers suporta três provedores de IA em nuvem para extração de metad
 - **Arquitetura**: MVVM (Model-View-ViewModel)
 - **IA em Nuvem**: Google Gemini, OpenAI ou Anthropic Claude (APIs REST)
 - **Armazenamento Local**: JSON
-- **Banco de Dados**: MongoDB (Atlas ou local)
+- **Banco de Dados**: SQLite local (arquivo `biocultpapers.sqlite`, sem limite de registros)
 - **Linguagem**: C#
 
 ---
@@ -291,8 +279,7 @@ Para entender a arquitetura detalhada do sistema, incluindo diagramas C4 Model e
 ## Notas Importantes
 
 - 📄 **PDFs não são armazenados**: Todos os arquivos PDF enviados são descartados após o processamento por questões de armazenamento e privacidade
-- 💾 **Backup regular**: Sempre sincronize seus dados com o MongoDB para evitar perda de informações
-- 🎯 **Limite de armazenamento local**: Há um número máximo de registros no arquivo local. O sistema avisará quando se aproximar do limite
+- 💾 **Backup regular**: Exporte seus dados periodicamente para o BioCultDB usando o botão **Exportar para BioCultDB**, mantendo uma cópia externa segura dos seus registros
 - ☁️ **Provedor de IA obrigatório**: Configure um provedor de IA em nuvem (Gemini, OpenAI ou Anthropic) antes de processar PDFs
 - 🔑 **Segurança da API Key**: Sua chave de API é criptografada usando DPAPI do Windows e armazenada localmente de forma segura
 - ✏️ **Edição sempre disponível**: Após a extração, a janela de edição sempre abre para você revisar os dados, independente de estarem completos ou não
@@ -329,7 +316,7 @@ A versão 2.1 traz integração completa com o projeto [BioCultDB](https://githu
 - ✅ **Timestamps ISO 8601**: Formato internacional para `createdAt` e `updatedAt`
 - ✅ **Sistema de status**: Campo `status` para workflow de aprovação ("pending", "approved", "rejected")
 - ✅ **Rastreamento de origem**: Campo `fonte` identifica a origem dos dados ("etnodb - [Provedor IA]")
-- ✅ **Sincronização otimizada**: Upload direto para MongoDB do BioCultDB sem conversões
+- ✅ **Exportação direta**: Estrutura de dados compatível permite exportar diretamente para importação no BioCultDB sem conversões
 
 ### Migração de Dados
 
@@ -348,9 +335,8 @@ O BioCultPapers é componente **exclusivo de Iniciativas de Fontes Secundárias*
 ```mermaid
 graph TD
     subgraph I1["Iniciativa de Fontes Secundárias"]
-        EP(BioCultPapers\nExtração com IA) -->|dados extraídos de PDFs| EDB(BioCultDB)
-        EDB <--> MDB[(MongoDB)]
-        ET(BioCultTermos\nSKOS-XL) <--> MDB
+        EP(BioCultPapers\nExtração com IA) -->|"exportação JSON"| EDB(BioCultDB)
+        ET(BioCultTermos\nSKOS-XL) <--> EDB
     end
 
     PL{{"Pluriverso\nMiddleware de Federação"}}
@@ -376,7 +362,6 @@ O BioCultPapers tem **impacto mínimo** na transição para a arquitetura federa
 
 | Mudança | Descrição |
 |---------|-----------|
-| **Configuração de MongoDB** | Garantir que aponta para o MongoDB da Iniciativa #1 (não mais "compartilhado") — provavelmente já correto, apenas documentar explicitamente |
 | **Campo `member_id`** | Incluir `member_id` nos registros gerados para rastreabilidade no índice federado |
 
 ### Componentes Relacionados

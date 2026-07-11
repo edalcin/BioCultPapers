@@ -1,6 +1,8 @@
+> **Nota:** Este documento descreve uma especificação anterior (spec-kit) e foi substituído pela arquitetura v3.1 (SQLite local + JSON, exportação de arquivo para o BioCultDB — ADR-005 da Arquitetura-BioCultural). Mantido apenas para referência histórica.
+
 # BioCultPapers Project Constitution
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-06 | **Last Amended**: 2025-12-06
+**Version**: 1.1.0 | **Ratified**: 2025-12-06 | **Last Amended**: 2026-07-11
 
 ## Core Principles
 
@@ -24,7 +26,7 @@ These metrics MUST be measured and validated before release. Deviations require 
 **GATE**: Benchmarks (T070, T071, T072) must pass before Phase 7 completion.
 
 ### IV. Data Integrity (NON-NEGOTIABLE)
-JSON file format MUST remain identical to Electron version. MongoDB documents MUST be unchanged. Configuration compatibility MUST be maintained across versions. Migration path MUST be documented and tested. Unknown fields in JSON MUST be preserved (forward/backward compatibility).
+JSON file format MUST remain identical to Electron version. The local SQLite schema (`records(id TEXT PRIMARY KEY, data TEXT)`) MUST remain backward-compatible across releases — existing rows MUST stay readable after any schema change. The JSON format exported for BioCultDB import (array of `ArticleRecord`) MUST remain stable so BioCultDB's importer keeps working across versions. Configuration compatibility MUST be maintained across versions. Migration path MUST be documented and tested. Unknown fields in JSON MUST be preserved (forward/backward compatibility).
 
 **GATE**: Data serialization tests (T016) MUST validate round-trip compatibility.
 
@@ -34,7 +36,7 @@ Standard WPF patterns and best practices MUST be followed. MVVM architectural pa
 **GATE**: Architecture review before Phase 1; complexity justification required in plan.md.
 
 ### VI. Quality Assurance (NON-NEGOTIABLE)
-Unit tests for business logic are mandatory. Integration tests for data layer and MongoDB are required. Manual acceptance testing for UI and workflows is required. Performance benchmarking MUST occur before release.
+Unit tests for business logic are mandatory. Integration tests for the SQLite data layer and the JSON export/import round-trip are required. Manual acceptance testing for UI and workflows is required. Performance benchmarking MUST occur before release.
 
 **GATE**: No task completion without tests (where applicable per tech stack). T070/T071/T072 benchmarks must validate SC-002, SC-003.
 
@@ -59,7 +61,7 @@ Unit tests for business logic are mandatory. Integration tests for data layer an
 ### Phase 0 Gate ✅ PASSED
 - Technology choices justified (C# WPF vs alternatives)
 - Performance targets defined and measurable (SC-002, SC-003)
-- Data compatibility strategy documented (identical JSON/MongoDB)
+- Data compatibility strategy documented (identical JSON structure; SQLite local storage)
 - Architecture approach documented in plan.md
 
 ### Phase 1 Gate ✅ PASSED
@@ -90,3 +92,7 @@ Unit tests for business logic are mandatory. Integration tests for data layer an
 - Data integrity gates MUST pass before release
 
 **Reference**: Development guidance in `CLAUDE.md` (project-level instructions)
+
+---
+
+_Amendment 1.1.0 (2026-07-11): Principle IV and VI, and the Phase 0 gate, were updated to replace the retired MongoDB sync requirements with the current architecture — local SQLite storage (`DataStorageService.cs`) plus stable JSON file export/import for BioCultDB compatibility (ref. ADR-005, Arquitetura-BioCultural)._

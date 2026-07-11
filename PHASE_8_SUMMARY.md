@@ -6,6 +6,8 @@
 **Build Date**: December 2024
 **Platform**: Windows 10/11 (x64)
 
+> **Nota (v3.1):** A persistência foi migrada de MongoDB para SQLite local + JSON (ADR-005 da Arquitetura-BioCultural); a sincronização com MongoDB descrita/registrada neste documento foi substituída por exportação de arquivo para o BioCultDB.
+
 ---
 
 ## Overview

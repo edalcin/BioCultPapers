@@ -9,7 +9,7 @@ using Serilog;
 namespace EtnoPapers.Core.Services
 {
     /// <summary>
-    /// Manages application configuration (Cloud AI, MongoDB) persistence.
+    /// Manages application configuration (Cloud AI) persistence.
     /// Stores configuration in AppData/Local/EtnoPapers/config.json
     /// API keys are encrypted using Windows DPAPI.
     /// </summary>
@@ -156,18 +156,6 @@ namespace EtnoPapers.Core.Services
                 if (!Uri.TryCreate(config.OllamaUrl, UriKind.Absolute, out _))
                 {
                     Logger.Warning("Invalid OLLAMA URL format");
-                    return false;
-                }
-            }
-
-            // Validate MongoDB URI if provided
-            if (!string.IsNullOrEmpty(config.MongodbUri))
-            {
-                // Basic validation - must start with mongodb+srv:// or mongodb://
-                if (!config.MongodbUri.StartsWith("mongodb://") &&
-                    !config.MongodbUri.StartsWith("mongodb+srv://"))
-                {
-                    Logger.Warning("Invalid MongoDB URI format");
                     return false;
                 }
             }

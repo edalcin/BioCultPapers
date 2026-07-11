@@ -82,8 +82,11 @@
   <data name="StatusOLLAMA" xml:space="preserve">
     <value>OLLAMA:</value>
   </data>
-  <data name="StatusMongoDB" xml:space="preserve">
-    <value>MongoDB:</value>
+  <data name="ExportButton" xml:space="preserve">
+    <value>Export to BioCultDB</value>
+  </data>
+  <data name="ExportSuccessMessage" xml:space="preserve">
+    <value>Records exported successfully</value>
   </data>
   <data name="Connected" xml:space="preserve">
     <value>Connected</value>

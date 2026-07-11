@@ -4,6 +4,8 @@
 
 ---
 
+> **Nota (v3.1):** A persistência foi migrada de MongoDB para SQLite local + JSON (ADR-005 da Arquitetura-BioCultural); a sincronização com MongoDB descrita/registrada nas entradas históricas abaixo foi substituída por exportação de arquivo para o BioCultDB.
+
 ## 📌 Índice de Versões
 
 | Versão | Data | Tipo | Resumo |

@@ -14,10 +14,8 @@ namespace EtnoPapers.UI.ViewModels
     {
         private readonly ConfigurationService _configService;
         private readonly LoggerService _loggerService;
-        private readonly MongoDBSyncService _mongodbService;
         private string _currentPage = "Home";
         private bool _cloudAIConfigured = false;
-        private bool _mongodbConnected = false;
         private string _applicationTitle = "BioCultPapers - Gerenciador de Pesquisa Etnobotânica";
 
         public MainWindowViewModel()
@@ -25,7 +23,6 @@ namespace EtnoPapers.UI.ViewModels
             // Placeholder - services will be injected from App.xaml resources
             _configService = new ConfigurationService();
             _loggerService = new LoggerService();
-            _mongodbService = new MongoDBSyncService();
 
             _loggerService.Info("MainWindowViewModel initialized");
 
@@ -45,12 +42,6 @@ namespace EtnoPapers.UI.ViewModels
         {
             get => _cloudAIConfigured;
             set => SetProperty(ref _cloudAIConfigured, value);
-        }
-
-        public bool MongodbConnected
-        {
-            get => _mongodbConnected;
-            set => SetProperty(ref _mongodbConnected, value);
         }
 
         public string ApplicationTitle
@@ -92,20 +83,7 @@ namespace EtnoPapers.UI.ViewModels
                 CloudAIConfigured = config?.IsCloudAIConfigured ?? false;
                 _loggerService.Info($"Cloud AI configured: {CloudAIConfigured}, Provider: {config?.AIProvider}");
 
-                // Check MongoDB connection if URI is configured
-                if (!string.IsNullOrWhiteSpace(config?.MongodbUri))
-                {
-                    var mongodbConnected = await _mongodbService.TestConnectionAsync(config.MongodbUri);
-                    MongodbConnected = mongodbConnected;
-                    _loggerService.Info($"MongoDB connection test: {mongodbConnected}, URI: {config.MongodbUri}");
-                }
-                else
-                {
-                    MongodbConnected = false;
-                    _loggerService.Info("MongoDB URI not configured");
-                }
-
-                _loggerService.Info($"Connection check completed - Cloud AI: {CloudAIConfigured}, MongoDB: {MongodbConnected}");
+                _loggerService.Info($"Connection check completed - Cloud AI: {CloudAIConfigured}");
             }
             catch (Exception ex)
             {

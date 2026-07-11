@@ -62,8 +62,8 @@
 
                     <TextBlock FontSize="13" TextWrapping="Wrap" Margin="0,0,0,12">
                         <Run Text="2. " FontWeight="Bold"/>
-                        <Run Text="Configure MongoDB - " FontWeight="Bold"/>
-                        <Run Text="Adicione uma string de conexão MongoDB se deseja sincronizar registros para a nuvem (opcional)"/>
+                        <Run Text="Armazenamento local - " FontWeight="Bold"/>
+                        <Run Text="Os registros são salvos automaticamente em SQLite local (Documents/EtnoPapers), sem necessidade de configuração"/>
                     </TextBlock>
 
                     <TextBlock FontSize="13" TextWrapping="Wrap" Margin="0,0,0,12">
@@ -80,8 +80,8 @@
 
                     <TextBlock FontSize="13" TextWrapping="Wrap" Margin="0,0,0,12">
                         <Run Text="5. " FontWeight="Bold"/>
-                        <Run Text="Sincronize - " FontWeight="Bold"/>
-                        <Run Text="Sincronize seus registros com MongoDB para backup na nuvem (opcional)"/>
+                        <Run Text="Exporte para o BioCultDB - " FontWeight="Bold"/>
+                        <Run Text="Na seção Registros, selecione os itens desejados (ou nenhum, para exportar todos) e clique em 'Exportar para BioCultDB' para gerar um arquivo JSON (opcional)"/>
                     </TextBlock>
                 </StackPanel>
             </Border>
@@ -102,7 +102,7 @@
 
                     <TextBlock FontSize="12" Margin="0,4,0,0" Foreground="#505050">• .NET 8.0 Runtime</TextBlock>
                     <TextBlock FontSize="12" Margin="0,2,0,0" Foreground="#505050">• Chave de API de provedor de IA (Gemini, OpenAI ou Anthropic)</TextBlock>
-                    <TextBlock FontSize="12" Margin="0,2,0,0" Foreground="#505050">• (Opcional) MongoDB Atlas ou instância local</TextBlock>
+                    <TextBlock FontSize="12" Margin="0,2,0,0" Foreground="#505050">• (Opcional) BioCultDB para importar os registros exportados</TextBlock>
                 </StackPanel>
             </Border>
         </StackPanel>

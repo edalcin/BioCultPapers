@@ -1,5 +1,7 @@
 # BioCultPapers - Local Testing Guide
 
+> **Nota (v3.1):** A persistência foi migrada de MongoDB para SQLite local + JSON (ADR-005 da Arquitetura-BioCultural); a sincronização com MongoDB descrita/registrada neste documento foi substituída por exportação de arquivo para o BioCultDB. Este guia também documenta a fase Electron/Node.js do projeto, já substituída pela reescrita em C#/.NET WPF.
+
 ## Quick Start
 
 ### Prerequisites

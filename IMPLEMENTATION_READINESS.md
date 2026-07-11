@@ -136,7 +136,7 @@ dotnet new xunit -n EtnoPapers.Core.Tests -f net8.0 -o tests/EtnoPapers.Core.Tes
 
 ```bash
 # Core services
-dotnet add src/EtnoPapers.Core package MongoDB.Driver
+dotnet add src/EtnoPapers.Core package Microsoft.Data.Sqlite
 dotnet add src/EtnoPapers.Core package Newtonsoft.Json
 dotnet add src/EtnoPapers.Core package Serilog
 dotnet add src/EtnoPapers.Core package Serilog.Sinks.File
@@ -349,7 +349,7 @@ git push
 | **2** | T030-T040 | 2-3 days | WPF UI foundation |
 | **3** | T041-T049 | 2-3 days | PDF upload workflow |
 | **4** | T050-T057 | 2-3 days | Record management UI |
-| **5** | T058-T062 | 1-2 days | MongoDB sync |
+| **5** | T058-T062 | 1-2 days | Exportação para BioCultDB |
 | **6** | T063-T074 | 2-3 days | Settings & configuration |
 | **7** | T075-T083 | 3-4 days | Testing & performance |
 | **8** | T084-T091 | 2-3 days | Installer & release |
@@ -430,7 +430,7 @@ dotnet new wpf -n EtnoPapers.UI -f net8.0 -o src/EtnoPapers.UI
 dotnet new xunit -n EtnoPapers.Core.Tests -f net8.0 -o tests/EtnoPapers.Core.Tests
 
 # Install dependencies
-dotnet add src/EtnoPapers.Core package MongoDB.Driver
+dotnet add src/EtnoPapers.Core package Microsoft.Data.Sqlite
 dotnet add src/EtnoPapers.Core package Newtonsoft.Json
 dotnet add src/EtnoPapers.Core package Serilog
 dotnet add src/EtnoPapers.Core package Serilog.Sinks.File

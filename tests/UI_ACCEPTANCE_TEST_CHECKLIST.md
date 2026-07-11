@@ -37,7 +37,7 @@ This checklist provides comprehensive acceptance criteria for UI testing the Bio
 - [ ] Welcome message is displayed
 - [ ] Getting started section shows 5 steps
 - [ ] Record count displays correctly
-- [ ] Connection status shows OLLAMA and MongoDB status
+- [ ] Connection status shows OLLAMA status and local SQLite record count
 - [ ] Call-to-action buttons ("Iniciar Upload", "Configurar") are visible
 
 ---
@@ -131,37 +131,30 @@ This checklist provides comprehensive acceptance criteria for UI testing the Bio
 
 ---
 
-## Phase 4: MongoDB Synchronization
+## Phase 4: BioCultDB Export
 
-### T4.1 Sync Configuration
-- [ ] MongoDB URI can be entered in Sync page
-- [ ] "Testar Conexão MongoDB" button tests connection
-- [ ] Status shows "Conectado" (green dot) if successful
-- [ ] Status shows "Erro ao conectar" (red dot) if failed
-- [ ] Error message explains connection failure
+### T4.1 Export Selection
+- [ ] Registros page shows "Exportar para BioCultDB" button
+- [ ] Can select individual records in the DataGrid (multi-select)
+- [ ] Selected record count is reflected in the ViewModel's SelectedRecords
+- [ ] Exporting with no selection exports all filtered records
 
-### T4.2 Record Selection for Sync
-- [ ] Records page shows sync button
-- [ ] Sync reminder appears when >500 records locally
-- [ ] Sync reminder can be dismissed
-- [ ] Can select individual records in ListBox
-- [ ] Selected record count updates
+### T4.2 Export Operation
+- [ ] Clicking "Exportar para BioCultDB" opens a Save File dialog
+- [ ] Default filename is `biocultpapers-export-{yyyyMMdd}.json`
+- [ ] Exported file contains a valid JSON array of ArticleRecord
+- [ ] Success message shows count of exported records and the file path
+- [ ] Local records are NOT deleted after export (unlike the old sync flow)
 
-### T4.3 Sync Operation
-- [ ] Start sync with selected records
-- [ ] Progress bar updates during sync
-- [ ] Current status shows "Sincronizando: X/Y"
-- [ ] Cancel button stops sync
-- [ ] Sync completes successfully
-- [ ] "Última sincronização" timestamp updates
-- [ ] Records are deleted from local storage after upload
-- [ ] Success message shows count of uploaded records
+### T4.3 Export Error Handling
+- [ ] If there are no records to export, shows a clear "nothing to export" message
+- [ ] If the file write fails (e.g. permission denied), shows an actionable error
+- [ ] Cancelling the Save File dialog does not show an error
 
-### T4.4 Sync Error Handling
-- [ ] If MongoDB not configured, shows clear error
-- [ ] If connection fails, displays connection error
-- [ ] If record upload fails, shows specific record ID in error
-- [ ] Error messages are actionable
+### T4.4 BioCultDB Import (cross-repo)
+- [ ] `node backend/src/scripts/import-papers.js <arquivo.json>` (BioCultDB repo) imports the exported file without error
+- [ ] Imported records appear with `status=pending` and `fonte=biocultpapers` in the Curadoria interface (port 3002)
+- [ ] Re-running the import script with the same file does not create duplicates (idempotent by DOI+titulo+ano)
 
 ---
 
@@ -175,12 +168,9 @@ This checklist provides comprehensive acceptance criteria for UI testing the Bio
 - [ ] Status indicator shows connected (green) or error (red)
 - [ ] All changes are retained when clicking "Salvar Configurações"
 
-### T5.2 MongoDB Configuration
-- [ ] MongoDB URI field accepts input
-- [ ] Example URI format is displayed (mongodb+srv://...)
-- [ ] "Testar Conexão MongoDB" button tests connection
-- [ ] Status indicator shows connected (green) or error (red)
-- [ ] Test without URI shows error message
+### T5.2 Export Preferences
+- [ ] Export always available regardless of Cloud AI configuration
+- [ ] No connection/URI fields required (local SQLite storage only)
 
 ### T5.3 Application Settings
 - [ ] Language dropdown shows options: Portuguese (pt-BR), English (en-US)
@@ -209,7 +199,7 @@ This checklist provides comprehensive acceptance criteria for UI testing the Bio
 
 ### T6.2 Network Errors
 - [ ] OLLAMA connection failure shows clear error
-- [ ] MongoDB connection failure shows actionable error
+- [ ] Export write failure (e.g. disk full) shows actionable error
 - [ ] Network timeouts display user-friendly messages
 - [ ] Retry options are available where applicable
 
@@ -286,7 +276,7 @@ This checklist provides comprehensive acceptance criteria for UI testing the Bio
 
 ### T9.3 Long-Running Operations
 - [ ] PDF extraction doesn't freeze UI
-- [ ] MongoDB sync doesn't freeze UI
+- [ ] Export to BioCultDB doesn't freeze UI
 - [ ] File operations don't freeze UI
 - [ ] Progress is visible during operations
 
@@ -329,7 +319,7 @@ This checklist provides comprehensive acceptance criteria for UI testing the Bio
 - **RAM**: Minimum 4GB
 - **Disk Space**: 500MB free
 - **OLLAMA**: Must be running on localhost:11434
-- **MongoDB**: Optional (for sync testing)
+- **BioCultDB**: Optional (for import testing after export)
 
 ### Test Data
 - Use the provided sample data set with 100+ records

@@ -66,7 +66,7 @@ Metadata (title, authors, year, abstract in PT-BR, species)
 
 ### 2. **100% Feature Parity**
 - All Electron workflows must work identically in WPF
-- Data formats unchanged (JSON, MongoDB)
+- Data formats unchanged (JSON, SQLite local)
 - Users can migrate seamlessly without data loss
 - Error messages identical across versions
 
@@ -124,17 +124,15 @@ Metadata (title, authors, year, abstract in PT-BR, species)
 - CRUD operations (edit, delete, create)
 - **Result**: Users can manage local records
 
-### Phase 5: MongoDB Sync (1-2 days)
-- Sync UI and workflow
-- Upload selected records
-- Sync progress tracking
-- **Result**: Records can sync to cloud
+### Phase 5: Exportação para BioCultDB (1-2 days)
+- Export button on Records page
+- SaveFileDialog + JSON export of selected (or all) records
+- **Result**: Records can be exported to a BioCultDB JSON file
 
 ### Phase 6: Settings & Configuration (2-3 days)
 - OLLAMA configuration
-- MongoDB connection setup
 - Custom prompt editing
-- **Result**: Users can configure AI and cloud
+- **Result**: Users can configure AI extraction
 
 ### Phase 7: Testing & Performance (3-4 days)
 - Performance benchmarking
@@ -186,7 +184,7 @@ dotnet new wpf -n EtnoPapers.UI -f net8.0 -o src/EtnoPapers.UI
 dotnet new xunit -n EtnoPapers.Core.Tests -f net8.0 -o tests/EtnoPapers.Core.Tests
 
 # Install dependencies (especially PdfPig)
-dotnet add src/EtnoPapers.Core package MongoDB.Driver
+dotnet add src/EtnoPapers.Core package Microsoft.Data.Sqlite
 dotnet add src/EtnoPapers.Core package Newtonsoft.Json
 dotnet add src/EtnoPapers.Core package Serilog
 dotnet add src/EtnoPapers.Core package Serilog.Sinks.File

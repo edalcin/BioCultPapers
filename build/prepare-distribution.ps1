@@ -281,7 +281,7 @@ QUICK START:
    - Windows Users: Run BioCultPapers-Setup-$Version.msi
    - Portable Users: Extract BioCultPapers-Portable-$Version.zip
 3. Follow INSTALL.md for step-by-step instructions
-4. Configure OLLAMA and MongoDB (optional) in Settings
+4. Configure OLLAMA in Settings; use "Exportar para BioCultDB" na página Registros para enviar dados ao BioCultDB
 
 CONTENTS:
 - BioCultPapers-Setup-$Version.msi       Windows MSI installer

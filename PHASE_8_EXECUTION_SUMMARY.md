@@ -8,6 +8,8 @@
 
 ---
 
+> **Nota (v3.1):** A persistência foi migrada de MongoDB para SQLite local + JSON (ADR-005 da Arquitetura-BioCultural); a sincronização com MongoDB descrita/registrada neste documento foi substituída por exportação de arquivo para o BioCultDB.
+
 ## Executive Summary
 
 Phase 8 implementation is now **100% complete**. All 14 tasks (T084-T097) have been executed and documented. The BioCultPapers v1.0.0 application is ready for public release pending final installer testing (T093) on clean Windows systems.

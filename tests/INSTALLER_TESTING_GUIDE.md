@@ -408,7 +408,7 @@ If installation completion selected "Launch BioCultPapers now":
 
 - [ ] **Settings page displays**:
   - [ ] OLLAMA configuration section visible
-  - [ ] MongoDB configuration section visible
+  - [ ] "Preferências" section visible (no legacy sync configuration — export is now file-based, no connection to configure)
   - [ ] Language preference option visible
 
 - [ ] **Settings can be modified**:
@@ -454,14 +454,13 @@ if ($response) { Write-Host "OLLAMA is accessible" }
   - [ ] Shows "Connected" if OLLAMA running
   - [ ] Shows error message if not running (acceptable)
 
-### Test 5.2: MongoDB Configuration (Optional)
+### Test 5.2: Export to BioCultDB (Optional)
 
-- [ ] **Configure MongoDB in Settings**:
-  - [ ] URI field accepts input
-  - [ ] Valid URI format accepted
-  - [ ] Invalid URI shows error
-  - [ ] Click "Test Connection" (if MongoDB available)
-  - [ ] Settings save without error
+- [ ] **Export records from Registros page**:
+  - [ ] "Exportar para BioCultDB" button visible
+  - [ ] Clicking without selection exports all records
+  - [ ] Save File dialog opens with default filename
+  - [ ] Exported JSON file is well-formed and importable via `node backend/src/scripts/import-papers.js`
 
 ### Test 5.3: Language Configuration
 

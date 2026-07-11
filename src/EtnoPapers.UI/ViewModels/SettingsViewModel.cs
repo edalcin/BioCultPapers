@@ -11,12 +11,11 @@ namespace EtnoPapers.UI.ViewModels
 {
     /// <summary>
     /// ViewModel for managing application settings and configuration.
-    /// Handles Cloud AI provider, MongoDB, and application preference settings.
+    /// Handles Cloud AI provider and application preference settings.
     /// </summary>
     public class SettingsViewModel : ViewModelBase
     {
         private readonly ConfigurationService _configService;
-        private readonly MongoDBSyncService _mongodbService;
         private readonly LoggerService _loggerService;
 
         // Cloud AI Provider Settings
@@ -35,11 +34,6 @@ namespace EtnoPapers.UI.ViewModels
         private string _ollamaModel = "llama2";
         private string _ollamaPrompt = "";
 
-        // MongoDB Settings
-        private string _mongodbUri = "";
-        private bool _isMongodbConnected = false;
-        private string _mongodbTestStatus = "";
-
         // Application Settings
         private int _windowWidth = 1200;
         private int _windowHeight = 800;
@@ -57,13 +51,11 @@ namespace EtnoPapers.UI.ViewModels
         public SettingsViewModel()
         {
             _configService = new ConfigurationService();
-            _mongodbService = new MongoDBSyncService();
             _loggerService = new LoggerService();
 
             LoadSettingsCommand = new RelayCommand(_ => LoadSettings());
             SaveSettingsCommand = new RelayCommand(_ => SaveSettings(), _ => !IsSaving);
             ResetToDefaultsCommand = new RelayCommand(_ => ResetToDefaults());
-            TestMongodbCommand = new AsyncRelayCommand(_ => TestMongodbConnectionAsync());
             TestProviderConnectionCommand = new AsyncRelayCommand(_ => TestProviderConnectionAsync());
             ClearErrorCommand = new RelayCommand(_ => ClearError());
             DismissMigrationBannerCommand = new RelayCommand(_ => DismissMigrationBanner());
@@ -173,28 +165,6 @@ namespace EtnoPapers.UI.ViewModels
 
         #endregion
 
-        #region MongoDB Properties
-
-        public string MongodbUri
-        {
-            get => _mongodbUri;
-            set => SetProperty(ref _mongodbUri, value);
-        }
-
-        public bool IsMongodbConnected
-        {
-            get => _isMongodbConnected;
-            set => SetProperty(ref _isMongodbConnected, value);
-        }
-
-        public string MongodbTestStatus
-        {
-            get => _mongodbTestStatus;
-            set => SetProperty(ref _mongodbTestStatus, value);
-        }
-
-        #endregion
-
         #region Application Properties
 
         public int WindowWidth
@@ -259,7 +229,6 @@ namespace EtnoPapers.UI.ViewModels
         public ICommand LoadSettingsCommand { get; }
         public ICommand SaveSettingsCommand { get; }
         public ICommand ResetToDefaultsCommand { get; }
-        public ICommand TestMongodbCommand { get; }
         public ICommand TestProviderConnectionCommand { get; }
         public ICommand ClearErrorCommand { get; }
         public ICommand DismissMigrationBannerCommand { get; }
@@ -304,7 +273,6 @@ namespace EtnoPapers.UI.ViewModels
                 _ollamaPrompt = config?.OllamaPrompt ?? "";
 
                 // Load other settings
-                MongodbUri = config?.MongodbUri ?? "";
                 WindowWidth = config?.WindowWidth ?? 1200;
                 WindowHeight = config?.WindowHeight ?? 800;
                 WindowMaximized = config?.WindowMaximized ?? false;
@@ -370,7 +338,6 @@ namespace EtnoPapers.UI.ViewModels
                 config.OllamaPrompt = _ollamaPrompt;
 
                 // Save other settings
-                config.MongodbUri = MongodbUri?.Trim() ?? "";
                 config.WindowWidth = WindowWidth;
                 config.WindowHeight = WindowHeight;
                 config.WindowMaximized = WindowMaximized;
@@ -399,13 +366,10 @@ namespace EtnoPapers.UI.ViewModels
         {
             SelectedProviderIndex = -1;
             ApiKey = "";
-            MongodbUri = "";
             WindowWidth = 1200;
             WindowHeight = 800;
             WindowMaximized = false;
 
-            IsMongodbConnected = false;
-            MongodbTestStatus = "";
             ProviderTestStatus = "";
 
             ClearError();
@@ -452,58 +416,6 @@ namespace EtnoPapers.UI.ViewModels
             {
                 var lastFour = ApiKey.Substring(ApiKey.Length - 4);
                 MaskedApiKey = "Chave atual: ••••" + lastFour;
-            }
-        }
-
-        /// <summary>
-        /// Tests connection to MongoDB service.
-        /// </summary>
-        public async Task TestMongodbConnectionAsync()
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(MongodbUri))
-                {
-                    MongodbTestStatus = "URI do MongoDB não configurada";
-                    IsMongodbConnected = false;
-                    return;
-                }
-
-                MongodbTestStatus = "Testando...";
-
-                // Save MongoDB URI before testing so MainWindow can find it
-                try
-                {
-                    var config = _configService.LoadConfiguration();
-                    config.MongodbUri = MongodbUri.Trim();
-                    _configService.SaveConfiguration(config);
-                }
-                catch { /* Ignore save errors, test anyway */ }
-
-                var isConnected = await _mongodbService.TestConnectionAsync(MongodbUri);
-
-                if (isConnected)
-                {
-                    IsMongodbConnected = true;
-                    MongodbTestStatus = "✓ Conectado ao MongoDB";
-                    _loggerService.Info("MongoDB connection test successful");
-
-                    // Update MainWindow connection status
-                    var mainWindow = System.Windows.Application.Current.MainWindow as Views.MainWindow;
-                    mainWindow?.RefreshConnectionStatus();
-                }
-                else
-                {
-                    IsMongodbConnected = false;
-                    MongodbTestStatus = "✗ Erro ao conectar ao MongoDB";
-                    _loggerService.Warn("MongoDB connection test failed");
-                }
-            }
-            catch (Exception ex)
-            {
-                IsMongodbConnected = false;
-                MongodbTestStatus = $"✗ Erro: {ex.Message}";
-                _loggerService.Error($"MongoDB connection test error: {ex.Message}", ex);
             }
         }
 

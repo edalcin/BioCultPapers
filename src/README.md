@@ -12,7 +12,6 @@ src/
 │   │   ├── DataStorageService.cs
 │   │   ├── PDFProcessingService.cs
 │   │   ├── OLLAMAService.cs
-│   │   ├── MongoDBSyncService.cs
 │   │   └── ExtractionPipelineService.cs
 │   ├── Models/               # Modelos de dados
 │   │   ├── Article.cs
@@ -51,8 +50,7 @@ tests/
 ├── EtnoPapers.Core.Tests/    # Testes unitários e de integração
 │   └── Services/
 │       ├── PDFProcessingServiceTests.cs
-│       ├── ExtractionPipelineTests.cs
-│       └── MongoDBSyncServiceTests.cs
+│       └── ExtractionPipelineTests.cs
 
 build/                        # Scripts e configurações de build
 └── installer/               # Configuração do instalador Windows
@@ -63,7 +61,7 @@ build/                        # Scripts e configurações de build
 - **.NET 8.0**: Framework principal
 - **WPF**: Interface desktop Windows
 - **MVVM**: Padrão de arquitetura (CommunityToolkit.Mvvm)
-- **MongoDB .NET Driver**: Integração com MongoDB
+- **Microsoft.Data.Sqlite**: Persistência local SQLite
 - **iTextSharp ou Spire.Pdf**: Processamento de PDFs
 - **Newtonsoft.Json**: Serialização JSON
 - **xUnit/NUnit**: Testes unitários

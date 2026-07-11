@@ -12,10 +12,19 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <StackPanel Grid.Row="0" Margin="40,40,40,0">
-            <TextBlock Text="Registros" FontSize="28" FontWeight="Bold" Foreground="#0078D4" Margin="0,0,0,8"/>
-            <TextBlock Text="Visualize, filtre e gerencie seus registros de artigos extraídos" FontSize="14" Foreground="#505050" TextWrapping="Wrap"/>
-        </StackPanel>
+        <Grid Grid.Row="0" Margin="40,40,40,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Registros" FontSize="28" FontWeight="Bold" Foreground="#0078D4" Margin="0,0,0,8"/>
+                <TextBlock Text="Visualize, filtre e gerencie seus registros de artigos extraídos" FontSize="14" Foreground="#505050" TextWrapping="Wrap"/>
+            </StackPanel>
+            <Button Grid.Column="1" x:Name="ExportButton" Content="📤 Exportar para BioCultDB" Padding="16,8" VerticalAlignment="Top"
+                    Background="#0078D4" Foreground="White" Click="ExportButton_Click"
+                    ToolTip="Exporta os registros selecionados (ou todos, se nenhum selecionado) para um arquivo JSON, importável no BioCultDB"/>
+        </Grid>
 
         <!-- Filter Panel -->
         <Border Grid.Row="1"
@@ -48,7 +57,8 @@
             </StackPanel>
 
             <!-- Records DataGrid (shown when records exist) -->
-            <DataGrid ItemsSource="{Binding FilteredRecords}"
+            <DataGrid x:Name="RecordsDataGrid" ItemsSource="{Binding FilteredRecords}"
+                      SelectionChanged="RecordsDataGrid_SelectionChanged"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
                       SelectionMode="Extended"

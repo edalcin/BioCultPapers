@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 namespace EtnoPapers.Core.Models
 {
     /// <summary>
-    /// Holds application configuration for cloud AI providers and MongoDB settings.
+    /// Holds application configuration for cloud AI providers.
     /// Supports Gemini, OpenAI, and Anthropic for metadata extraction.
     ///
     /// Note: Legacy OLLAMA fields (OllamaUrl, OllamaModel, OllamaPrompt) are preserved for backward
@@ -40,10 +40,6 @@ namespace EtnoPapers.Core.Models
 
         [JsonProperty("ollamaPrompt")]
         public string OllamaPrompt { get; set; }
-
-        // MongoDB Configuration
-        [JsonProperty("mongodbUri")]
-        public string MongodbUri { get; set; }
 
         // UI Settings
         [JsonProperty("windowWidth")]

@@ -13,20 +13,20 @@ The application enables ethnobotany researchers to:
 - Extract article metadata and ethnobotanical data using AI (via local OLLAMA installation)
 - Store extracted data in local JSON files
 - Edit, review, and manage extracted records (CRUD interface)
-- Synchronize selected records to external MongoDB (Atlas or local server)
+- Export selected (or all) records to a JSON file for import into BioCultDB
 
 ### Key Technical Requirements
 
 - **Platform**: Windows desktop native application
 - **AI Integration**: Local OLLAMA for metadata extraction
 - **Data Storage**:
-  - Local: JSON files (structure defined in `docs/estrutura.json`)
-  - Remote: MongoDB (Atlas or local, URI configured by user)
+  - Local: SQLite database (`Documents/EtnoPapers/biocultpapers.sqlite`, table `records(id, data)`, no record limit); JSON structure defined in `docs/estrutura.json`
+  - Export: JSON file written via Save As dialog for import into BioCultDB
 - **Core Features**:
   - PDF upload and processing interface
-  - Configuration area (OLLAMA prompt, MongoDB URI)
+  - Configuration area (OLLAMA prompt)
   - CRUD interface for managing extracted records
-  - Selective sync to MongoDB (deletes local copy on successful upload)
+  - Export selected (or all) records to BioCultDB as a JSON file (Save As dialog)
   - Professional Windows installer
 
 ### Data Structure
@@ -300,11 +300,6 @@ This updates `.claude/claude.md` (or equivalent for Cursor/Copilot) with:
 - **Technical documentation (specs, plans, code) may be in English**
 - **Data fields**: `resumo` must always be extracted/translated to Brazilian Portuguese
 
-### Performance Considerations
-- Local JSON file has a maximum record limit for performance
-- System should warn users to sync to MongoDB before reaching limit
-- Block new PDF uploads when local storage limit is reached
-
 ## Important Notes
 
 - All PowerShell scripts must be run from repository root
@@ -325,3 +320,7 @@ Rules:
 - If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
+
+## Arquitetura v3.1 — Persistência
+Persistência = SQLite com JSON (JSON1), **um arquivo por unidade federada** compartilhado pelas ferramentas (tabelas distintas), WAL, `SQLITE_DB_PATH`. Um container por unidade. Sem dependência de banco de dados externo/em nuvem.
+Ref.: Arquitetura-BioCultural/docs/architecture-decisions/ADR-005.

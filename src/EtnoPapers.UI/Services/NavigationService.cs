@@ -26,7 +26,6 @@ namespace EtnoPapers.UI.Services
                 "home" => new HomePage(),
                 "upload" => new UploadPage(),
                 "records" => new RecordsPage(),
-                "sync" => new SyncPage(),
                 "settings" => new SettingsPage(),
                 _ => new HomePage()
             };

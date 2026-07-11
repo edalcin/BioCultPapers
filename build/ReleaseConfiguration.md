@@ -45,7 +45,6 @@
 
 **Optional Requirements:**
 - OLLAMA: For AI-powered metadata extraction (local installation on localhost:11434)
-- MongoDB: For remote synchronization (optional, user provides URI)
 
 ### Installation Directories
 
@@ -59,7 +58,6 @@ C:\Program Files\BioCultPapers\
 ├── EtnoPapers.Core.dll           (Core services)
 ├── Dependencies/
 │   ├── Newtonsoft.Json.dll
-│   ├── MongoDB.Driver.dll
 │   ├── Serilog.dll
 │   └── iTextSharp.dll
 ├── License.txt
@@ -150,7 +148,7 @@ C:\Users\[User]\Documents\EtnoPapers\    (User data directory)
 
 2. **Installation Guide** (`INSTALL.md`)
    - Step-by-step installation
-   - Configuration setup (OLLAMA, MongoDB)
+   - Configuration setup (OLLAMA)
    - Troubleshooting common issues
    - Uninstallation instructions
    - Post-installation verification
@@ -280,13 +278,11 @@ C:\Users\[User]\Documents\EtnoPapers\    (User data directory)
 **Runtime Troubleshooting:**
 - Database connection issues
 - OLLAMA service not responding
-- MongoDB connection failures
 - PDF extraction errors
 - File not found errors
 
 **Configuration Help:**
 - OLLAMA setup and configuration
-- MongoDB URI formatting
 - Language and locale settings
 - Custom model selection
 - Network proxy configuration

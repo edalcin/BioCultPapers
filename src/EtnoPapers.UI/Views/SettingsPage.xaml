@@ -14,7 +14,7 @@
         <!-- Header -->
         <StackPanel Grid.Row="0" Margin="40,40,40,20">
             <TextBlock Text="Configuracoes" FontSize="28" FontWeight="Bold" Foreground="#0078D4" Margin="0,0,0,8"/>
-            <TextBlock Text="Configure a integracao com IA em nuvem, MongoDB e preferencias da aplicacao" FontSize="14" Foreground="#505050" TextWrapping="Wrap"/>
+            <TextBlock Text="Configure a integracao com IA em nuvem e preferencias da aplicacao" FontSize="14" Foreground="#505050" TextWrapping="Wrap"/>
         </StackPanel>
 
         <!-- TabControl with settings sections -->
@@ -238,57 +238,7 @@
                 </ScrollViewer>
             </TabItem>
 
-            <!-- Tab 3: MongoDB Configuration -->
-            <TabItem Header="MongoDB">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <StackPanel Margin="20">
-                        <TextBlock Text="Configuracao MongoDB" FontSize="18" FontWeight="Bold" Margin="0,0,0,16"/>
-
-                        <TextBlock Text="URI de Conexao" FontSize="12" Foreground="#505050" Margin="0,0,0,4"/>
-                        <TextBox Text="{Binding MongodbUri, UpdateSourceTrigger=PropertyChanged}"
-                                 Padding="8,6"
-                                 Margin="0,0,0,8"
-                                 Background="White"
-                                 BorderBrush="#E0E0E0"/>
-
-                        <TextBlock Text="(Deixe em branco para desabilitar sincronizacao remota)"
-                                   FontSize="11"
-                                   Foreground="#8A8A8A"
-                                   Margin="0,0,0,16"/>
-
-                        <Button Content="Testar Conexao"
-                                Command="{Binding TestMongodbCommand}"
-                                Padding="16,8"
-                                Background="#0078D4"
-                                Foreground="White"
-                                Margin="0,0,0,12"/>
-
-                        <TextBlock Text="{Binding MongodbTestStatus}"
-                                   FontSize="12"
-                                   Foreground="#505050"
-                                   TextWrapping="Wrap"
-                                   Visibility="{Binding MongodbTestStatus, Converter={StaticResource StringToVisibilityConverter}}"/>
-
-                        <!-- MongoDB Help Section -->
-                        <Border Background="#F3F3F3" Padding="16" CornerRadius="8" Margin="0,20,0,0">
-                            <StackPanel>
-                                <TextBlock Text="Formato da URI" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,8"/>
-                                <TextBlock Text="mongodb+srv://usuario:senha@cluster.mongodb.net/database"
-                                           FontSize="11"
-                                           Foreground="#505050"
-                                           FontFamily="Consolas"
-                                           Margin="0,0,0,8"/>
-                                <TextBlock Text="A sincronizacao remota permite fazer backup dos registros extraidos e acessar os dados de outros dispositivos."
-                                           FontSize="11"
-                                           Foreground="#8A8A8A"
-                                           TextWrapping="Wrap"/>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                </ScrollViewer>
-            </TabItem>
-
-            <!-- Tab 4: Application Preferences -->
+            <!-- Tab 3: Application Preferences -->
             <TabItem Header="Preferencias">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="20">

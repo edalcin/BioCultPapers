@@ -15,17 +15,16 @@ graph TB
     end
 
     CloudAI[☁️ Provedores de IA<br/>Gemini | OpenAI | Anthropic]
-    MongoDB[☁️ MongoDB<br/>Atlas ou Local]
+    BioCultDB[📁 BioCultDB<br/>Exportação Manual JSON]
 
     User -->|Upload PDFs<br/>Gerencia Registros| App
     App -->|Requisição JSON| CloudAI
     CloudAI -->|Metadados Extraídos| App
-    App -->|Sincroniza Dados| MongoDB
-    MongoDB -->|Confirma Upload| App
+    App -.->|Exporta JSON (opcional)| BioCultDB
 
     style Sistema fill:#e1f5ff,stroke:#0066cc,stroke-width:3px,color:black
     style CloudAI fill:#fff4e6,stroke:#ff9800,stroke-width:2px,color:black
-    style MongoDB fill:#e8f5e9,stroke:#4caf50,stroke-width:2px,color:black
+    style BioCultDB fill:#e8f5e9,stroke:#4caf50,stroke-width:2px,color:black
     style User fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px,color:black
 ```
 
@@ -48,21 +47,21 @@ graph TB
     end
 
     CloudAI[Cloud AI Providers<br/>Gemini | OpenAI | Anthropic<br/>HTTPS REST]
-    MongoDB[(MongoDB<br/>---<br/>Coleção:<br/>articles)]
+    BioCultDB[(BioCultDB<br/>---<br/>Exportação Manual<br/>via SaveFileDialog)]
 
     User -->|Interage| UI
     UI -->|Chama| Services
     Services -->|Usa| PdfPig
     Services -->|HTTPS Requisição| CloudAI
     Services -->|Lê/Escreve| LocalDB
-    Services -->|Insert Documents| MongoDB
+    Services -.->|Exporta JSON (opcional)| BioCultDB
 
     style UI fill:#bbdefb,stroke:#1976d2,stroke-width:2px,color:black
     style Services fill:#c8e6c9,stroke:#388e3c,stroke-width:2px,color:black
     style PdfPig fill:#ffe0b2,stroke:#f57c00,stroke-width:2px,color:black
     style LocalDB fill:#fff9c4,stroke:#f57c00,stroke-width:2px,color:black
     style CloudAI fill:#ffccbc,stroke:#d84315,stroke-width:2px,color:black
-    style MongoDB fill:#b2dfdb,stroke:#00796b,stroke-width:2px,color:black
+    style BioCultDB fill:#b2dfdb,stroke:#00796b,stroke-width:2px,color:black
 ```
 
 ### Componentes (C4 Model - Nível 3: Componentes Principais)
@@ -161,10 +160,10 @@ flowchart TD
     LoadRecords[🔄 Carregar registros<br/>do JSON]
     DisplayGrid[📊 Exibir em DataGrid<br/>Título, Ano, Autores, País, Bioma]
 
-    SelectSync{Usuário seleciona<br/>registros para sync?}
-    CheckMongo{MongoDB<br/>configurado?}
-    SyncMongo[☁️ Sincronizar com MongoDB<br/>Upload de documentos]
-    DeleteLocal[🗑️ Deletar registros locais<br/>após confirmação]
+    SelectExport{Usuário clica em<br/>"Exportar para BioCultDB"?}
+    OpenSaveDialog[💾 Abre SaveFileDialog<br/>Salvar Como]
+    ConfirmSave{Usuário confirma<br/>local e nome do arquivo?}
+    WriteJSON[📄 Grava JSON local<br/>Registros selecionados<br/>ou todos, se nenhum selecionado]
 
     End([✅ Processo concluído])
     Cancel([❌ Cancelado])
@@ -192,15 +191,15 @@ flowchart TD
     NavigateRecords --> LoadRecords
     LoadRecords --> DisplayGrid
 
-    DisplayGrid --> SelectSync
-    SelectSync -->|Sim| CheckMongo
-    SelectSync -->|Não| End
+    DisplayGrid --> SelectExport
+    SelectExport -->|Sim| OpenSaveDialog
+    SelectExport -->|Não| End
 
-    CheckMongo -->|Configurado| SyncMongo
-    CheckMongo -->|Não| End
+    OpenSaveDialog --> ConfirmSave
+    ConfirmSave -->|Sim| WriteJSON
+    ConfirmSave -->|Não| End
 
-    SyncMongo --> DeleteLocal
-    DeleteLocal --> End
+    WriteJSON --> End
 
     ErrorCloudAI --> Cancel
 
@@ -210,7 +209,7 @@ flowchart TD
     style ProcessAI fill:#fff9c4,stroke:#f57c00,stroke-width:2px,color:black
     style ShowDialog fill:#e1bee7,stroke:#7b1fa2,stroke-width:2px,color:black
     style SaveLocal fill:#bbdefb,stroke:#1976d2,stroke-width:2px,color:black
-    style SyncMongo fill:#b2dfdb,stroke:#00796b,stroke-width:2px,color:black
+    style WriteJSON fill:#b2dfdb,stroke:#00796b,stroke-width:2px,color:black
 ```
 
 ---

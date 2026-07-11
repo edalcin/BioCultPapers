@@ -1,3 +1,5 @@
+> **Nota:** Este documento descreve uma especificação anterior (spec-kit) e foi substituído pela arquitetura v3.1 (SQLite local + JSON, exportação de arquivo para o BioCultDB — ADR-005 da Arquitetura-BioCultural). Mantido apenas para referência histórica.
+
 # Data Model: BioCultPapers
 
 **Date**: 2025-12-01

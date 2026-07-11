@@ -37,7 +37,7 @@
   - [ ] No hardcoded credentials
   - [ ] No SQL injection vulnerabilities
   - [ ] Proper input validation throughout
-  - [ ] HTTPS for MongoDB Atlas
+  - [ ] Arquivo SQLite local (`biocultpapers.sqlite`) armazenado com permissões corretas em `Documents/EtnoPapers`
   - [ ] Local storage properly configured
 
 ### Documentation
@@ -207,7 +207,7 @@
 - [ ] Settings can be modified
 - [ ] Settings persist after restart
 - [ ] OLLAMA connection test works (if configured)
-- [ ] MongoDB connection test works (if configured)
+- [ ] "Exportar para BioCultDB" gera arquivo JSON válido (registros selecionados ou todos)
 
 #### Performance Testing
 - [ ] Startup < 2 seconds ✅
@@ -240,11 +240,12 @@
   - [ ] Status indicator shows correctly
   - [ ] Settings saved on restart
 
-- [ ] MongoDB configuration:
-  - [ ] URI field accepts input
-  - [ ] Connection test works
-  - [ ] Status indicator shows correctly
-  - [ ] Invalid URI rejected
+- [ ] Exportação BioCultDB:
+  - [ ] Botão "Exportar para BioCultDB" visível na página Registros
+  - [ ] SaveFileDialog abre com nome de arquivo e extensão padrão
+  - [ ] Com registros selecionados, exporta somente os selecionados
+  - [ ] Sem seleção, exporta todos os registros
+  - [ ] JSON exportado é válido e corresponde ao schema de `JsonSerializationHelper.SerializeList`
 
 - [ ] Language configuration:
   - [ ] Portuguese (pt-BR) selectable

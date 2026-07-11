@@ -29,7 +29,7 @@ Para usar esta versão portátil do BioCultPapers, você precisa ter instalado n
 1. Abra a aba **Configurações**
 2. Escolha um provedor de IA (Gemini, OpenAI ou Anthropic)
 3. Cole sua chave de API
-4. (Opcional) Configure MongoDB para sincronização
+4. (Opcional) Use o botão **Exportar para BioCultDB** na página Registros para gerar um arquivo JSON dos seus dados
 5. Clique em **Salvar Configurações**
 
 ## 📊 Tamanho do Build
@@ -44,7 +44,7 @@ Para usar esta versão portátil do BioCultPapers, você precisa ter instalado n
 
 - **Primeira Vez?** Use Google Gemini - é grátis e não requer cartão de crédito
 - **Dados Persistem?** Sim! Todos os registros são salvos em `AppData/Local/EtnoPapers/data.json`
-- **Backup?** Recomenda-se sincronizar com MongoDB para backup automático
+- **Backup?** O próprio arquivo SQLite local (`Documents/EtnoPapers/biocultpapers.sqlite`) já é o seu backup; use **Exportar para BioCultDB** para gerar uma cópia em JSON quando desejar
 - **Múltiplos Computadores?** Você pode usar o mesmo pen-drive em diferentes PCs (com .NET 8.0 instalado)
 
 ## 🛠️ Linguagem

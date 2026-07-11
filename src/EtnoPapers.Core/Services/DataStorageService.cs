@@ -2,23 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using EtnoPapers.Core.Models;
 using EtnoPapers.Core.Utils;
+using Microsoft.Data.Sqlite;
 
 namespace EtnoPapers.Core.Services
 {
     /// <summary>
-    /// Manages local JSON file storage for article records.
-    /// Data stored in Documents/EtnoPapers/data.json
-    /// Maintains limit of 1000 records per file.
+    /// Local persistence for ArticleRecord data using SQLite+JSON (DA6, ADR-005 of
+    /// Arquitetura-BioCultural). Each record is stored as one row with its full
+    /// JSON serialization in the `data` column — writes touch only the affected
+    /// row instead of rewriting the entire dataset, and there is no artificial
+    /// record cap (the previous data.json format capped at 1000 records).
     /// </summary>
     public class DataStorageService
     {
         private readonly string _dataPath;
-        private readonly int _recordLimit = 1000;
-        private List<ArticleRecord> _records;
         private readonly object _lockObject = new();
+        private SqliteConnection _connection;
 
         public DataStorageService()
         {
@@ -28,17 +29,40 @@ namespace EtnoPapers.Core.Services
             );
 
             Directory.CreateDirectory(appDataPath);
-            _dataPath = Path.Combine(appDataPath, "data.json");
+            _dataPath = Path.Combine(appDataPath, "biocultpapers.sqlite");
         }
 
         /// <summary>
-        /// Initializes the storage service by loading existing data.
+        /// Initializes the storage service: opens the SQLite connection and
+        /// ensures the schema exists (idempotent).
         /// </summary>
         public void Initialize()
         {
             lock (_lockObject)
             {
-                _records = LoadAll();
+                if (_connection != null)
+                    return;
+
+                _connection = new SqliteConnection($"Data Source={_dataPath}");
+                _connection.Open();
+
+                using var pragmaCmd = _connection.CreateCommand();
+                pragmaCmd.CommandText = "PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON;";
+                pragmaCmd.ExecuteNonQuery();
+
+                using var schemaCmd = _connection.CreateCommand();
+                schemaCmd.CommandText = "CREATE TABLE IF NOT EXISTS records (id TEXT PRIMARY KEY, data TEXT NOT NULL);";
+                schemaCmd.ExecuteNonQuery();
+            }
+        }
+
+        private SqliteConnection Connection
+        {
+            get
+            {
+                if (_connection == null)
+                    Initialize();
+                return _connection;
             }
         }
 
@@ -51,14 +75,17 @@ namespace EtnoPapers.Core.Services
             {
                 try
                 {
-                    if (!File.Exists(_dataPath))
-                        return new List<ArticleRecord>();
-
-                    var json = File.ReadAllText(_dataPath);
-                    if (string.IsNullOrWhiteSpace(json))
-                        return new List<ArticleRecord>();
-
-                    return JsonSerializationHelper.DeserializeList(json);
+                    var records = new List<ArticleRecord>();
+                    using var cmd = Connection.CreateCommand();
+                    cmd.CommandText = "SELECT data FROM records";
+                    using var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var record = JsonSerializationHelper.DeserializeFromJson(reader.GetString(0));
+                        if (record != null)
+                            records.Add(record);
+                    }
+                    return records;
                 }
                 catch (Exception ex)
                 {
@@ -75,10 +102,11 @@ namespace EtnoPapers.Core.Services
         {
             lock (_lockObject)
             {
-                if (_records == null)
-                    _records = LoadAll();
-
-                return _records?.FirstOrDefault(r => r.Id == id);
+                using var cmd = Connection.CreateCommand();
+                cmd.CommandText = "SELECT data FROM records WHERE id = $id";
+                cmd.Parameters.AddWithValue("$id", id);
+                var data = cmd.ExecuteScalar() as string;
+                return data != null ? JsonSerializationHelper.DeserializeFromJson(data) : null;
             }
         }
 
@@ -92,22 +120,17 @@ namespace EtnoPapers.Core.Services
 
             lock (_lockObject)
             {
-                if (_records == null)
-                    _records = LoadAll();
-
-                // Check record limit
-                if (_records.Count >= _recordLimit)
-                    return false;
-
-                // Generate ID if not provided
                 if (string.IsNullOrEmpty(record.Id))
                     record.Id = Guid.NewGuid().ToString();
 
                 record.CreatedAt = DateTime.UtcNow;
                 record.UpdatedAt = DateTime.UtcNow;
 
-                _records.Add(record);
-                SaveToFile();
+                using var cmd = Connection.CreateCommand();
+                cmd.CommandText = "INSERT INTO records (id, data) VALUES ($id, $data)";
+                cmd.Parameters.AddWithValue("$id", record.Id);
+                cmd.Parameters.AddWithValue("$data", JsonSerializationHelper.SerializeToJson(record));
+                cmd.ExecuteNonQuery();
                 return true;
             }
         }
@@ -122,19 +145,19 @@ namespace EtnoPapers.Core.Services
 
             lock (_lockObject)
             {
-                if (_records == null)
-                    _records = LoadAll();
-
-                var existing = _records.FirstOrDefault(r => r.Id == record.Id);
+                var existing = GetById(record.Id);
                 if (existing == null)
                     return false;
 
-                var index = _records.IndexOf(existing);
                 record.CreatedAt = existing.CreatedAt;
                 record.UpdatedAt = DateTime.UtcNow;
-                _records[index] = record;
-                SaveToFile();
-                return true;
+
+                using var cmd = Connection.CreateCommand();
+                cmd.CommandText = "UPDATE records SET data = $data WHERE id = $id";
+                cmd.Parameters.AddWithValue("$id", record.Id);
+                cmd.Parameters.AddWithValue("$data", JsonSerializationHelper.SerializeToJson(record));
+                var affected = cmd.ExecuteNonQuery();
+                return affected > 0;
             }
         }
 
@@ -145,16 +168,11 @@ namespace EtnoPapers.Core.Services
         {
             lock (_lockObject)
             {
-                if (_records == null)
-                    _records = LoadAll();
-
-                var record = _records.FirstOrDefault(r => r.Id == id);
-                if (record == null)
-                    return false;
-
-                _records.Remove(record);
-                SaveToFile();
-                return true;
+                using var cmd = Connection.CreateCommand();
+                cmd.CommandText = "DELETE FROM records WHERE id = $id";
+                cmd.Parameters.AddWithValue("$id", id);
+                var affected = cmd.ExecuteNonQuery();
+                return affected > 0;
             }
         }
 
@@ -168,18 +186,17 @@ namespace EtnoPapers.Core.Services
 
             lock (_lockObject)
             {
-                if (_records == null)
-                    _records = LoadAll();
-
-                var recordsToRemove = _records.Where(r => ids.Contains(r.Id)).ToList();
-                var count = recordsToRemove.Count;
-
-                foreach (var record in recordsToRemove)
-                    _records.Remove(record);
-
-                if (count > 0)
-                    SaveToFile();
-
+                using var transaction = Connection.BeginTransaction();
+                var count = 0;
+                foreach (var id in ids)
+                {
+                    using var cmd = Connection.CreateCommand();
+                    cmd.Transaction = transaction;
+                    cmd.CommandText = "DELETE FROM records WHERE id = $id";
+                    cmd.Parameters.AddWithValue("$id", id);
+                    count += cmd.ExecuteNonQuery();
+                }
+                transaction.Commit();
                 return count;
             }
         }
@@ -191,51 +208,25 @@ namespace EtnoPapers.Core.Services
         {
             lock (_lockObject)
             {
-                if (_records == null)
-                    _records = LoadAll();
-
-                return _records.Count;
+                using var cmd = Connection.CreateCommand();
+                cmd.CommandText = "SELECT COUNT(*) FROM records";
+                return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
 
         /// <summary>
-        /// Checks if storage is at limit.
+        /// Whether storage is at capacity. SQLite has no artificial record cap
+        /// (unlike the previous data.json format's 1000-record limit) — always false.
         /// </summary>
-        public bool IsAtLimit()
-        {
-            return Count() >= _recordLimit;
-        }
+        [Obsolete("SQLite storage has no record limit; this always returns false.")]
+        public bool IsAtLimit() => false;
 
         /// <summary>
-        /// Gets remaining capacity.
+        /// Remaining capacity. SQLite has no artificial record cap — always
+        /// int.MaxValue.
         /// </summary>
-        public int GetRemainingCapacity()
-        {
-            return Math.Max(0, _recordLimit - Count());
-        }
-
-        /// <summary>
-        /// Persists all records to file.
-        /// </summary>
-        private void SaveToFile()
-        {
-            try
-            {
-                if (_records == null || _records.Count == 0)
-                {
-                    if (File.Exists(_dataPath))
-                        File.Delete(_dataPath);
-                    return;
-                }
-
-                var json = JsonSerializationHelper.SerializeList(_records);
-                File.WriteAllText(_dataPath, json, Encoding.UTF8);
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidOperationException($"Failed to save records: {ex.Message}", ex);
-            }
-        }
+        [Obsolete("SQLite storage has no record limit; this always returns int.MaxValue.")]
+        public int GetRemainingCapacity() => int.MaxValue;
 
         /// <summary>
         /// Gets the data file path.

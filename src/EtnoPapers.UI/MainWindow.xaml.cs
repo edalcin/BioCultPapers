@@ -93,7 +93,6 @@ namespace EtnoPapers.UI.Views
                     "Home" => "/Views/HomePage.xaml",
                     "Upload" => "/Views/UploadPage.xaml",
                     "Records" => "/Views/RecordsPage.xaml",
-                    "Sync" => "/Views/SyncPage.xaml",
                     "Settings" => "/Views/SettingsPage.xaml",
                     _ => "/Views/HomePage.xaml"
                 };

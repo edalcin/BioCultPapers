@@ -143,14 +143,14 @@ ls tests/EtnoPapers.Core.Tests/EtnoPapers.Core.Tests.csproj
 
 **Commands**:
 ```bash
-dotnet add src/EtnoPapers.Core package MongoDB.Driver
+dotnet add src/EtnoPapers.Core package Microsoft.Data.Sqlite
 dotnet add src/EtnoPapers.Core package Newtonsoft.Json
 dotnet add src/EtnoPapers.Core package Serilog
 dotnet add src/EtnoPapers.Core package Serilog.Sinks.File
 ```
 
 **Acceptance Criteria**:
-- [ ] MongoDB.Driver installed
+- [ ] Microsoft.Data.Sqlite installed
 - [ ] Newtonsoft.Json installed
 - [ ] Serilog installed
 - [ ] Serilog.Sinks.File installed
@@ -428,7 +428,7 @@ git commit -m "feat: Phase 0 - Project setup and infrastructure
 - EtnoPapers.UI (WPF application)
 - EtnoPapers.Core.Tests (xUnit test project)
 - Installed all required NuGet dependencies:
-  * MongoDB.Driver (MongoDB integration)
+  * Microsoft.Data.Sqlite (SQLite local persistence)
   * Newtonsoft.Json (JSON serialization)
   * Serilog (logging)
   * PdfPig (PDF extraction for Markdown conversion)

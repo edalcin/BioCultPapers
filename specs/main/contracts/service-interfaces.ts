@@ -1,3 +1,7 @@
+// NOTA: Esta interface descreve uma especificacao anterior (spec-kit) e foi substituida
+// pela arquitetura v3.1 (SQLite local + JSON, exportacao de arquivo para o BioCultDB — ADR-005
+// da Arquitetura-BioCultural). Mantida apenas para referencia historica.
+
 /**
  * Service Interfaces: BioCultPapers
  *

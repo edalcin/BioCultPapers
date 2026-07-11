@@ -8,7 +8,7 @@ namespace EtnoPapers.UI.Views
 {
     /// <summary>
     /// Interaction logic for SettingsPage.xaml
-    /// Provides configuration UI for Cloud AI providers, MongoDB, and application settings.
+    /// Provides configuration UI for Cloud AI providers and application settings.
     /// </summary>
     public partial class SettingsPage : Page
     {

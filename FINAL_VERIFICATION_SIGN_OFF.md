@@ -7,6 +7,8 @@
 
 ---
 
+> **Nota (v3.1):** A persistência foi migrada de MongoDB para SQLite local + JSON (ADR-005 da Arquitetura-BioCultural); a sincronização com MongoDB descrita/registrada neste documento foi substituída por exportação de arquivo para o BioCultDB.
+
 ## Overview
 
 This document serves as the formal sign-off for BioCultPapers v1.0.0 release. It confirms that all development phases have been completed, testing requirements met, and the application is ready for public distribution.
@@ -282,17 +284,15 @@ This document serves as the formal sign-off for BioCultPapers v1.0.0 release. It
 
 **Workarounds for Common Scenarios**:
 1. **OLLAMA Connection Fails**: Ensure OLLAMA server running on localhost:11434
-2. **MongoDB Sync Timeout**: Check network connectivity and server availability
-3. **Large PDF Extraction Slow**: Expected for papers >100 pages (OLLAMA processing is CPU-intensive)
-4. **Special Characters in Paths**: Use ASCII characters for installation paths
+2. **Large PDF Extraction Slow**: Expected for papers >100 pages (OLLAMA processing is CPU-intensive)
+3. **Special Characters in Paths**: Use ASCII characters for installation paths
 
 ### Design Limitations (By Design)
 
-1. **Local Storage Limit**: System recommends syncing to MongoDB before reaching large dataset (>10,000 records)
-2. **Single User**: Application is single-user, not multi-user capable
-3. **OLLAMA Required**: PDF metadata extraction requires OLLAMA running
-4. **MongoDB Optional**: Local JSON storage is primary; MongoDB is optional for cloud sync
-5. **Windows Only**: Desktop application for Windows 10/11 only at this time
+1. **Single User**: Application is single-user, not multi-user capable
+2. **OLLAMA Required**: PDF metadata extraction requires OLLAMA running
+3. **Export Only (No Cloud Sync)**: Local SQLite storage is primary; records can be exported to a JSON file for BioCultDB via the "Exportar para BioCultDB" button; there is no automatic cloud synchronization
+4. **Windows Only**: Desktop application for Windows 10/11 only at this time
 
 ### Future Enhancement Areas (Not in 1.0.0)
 
