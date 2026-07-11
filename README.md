@@ -1,7 +1,8 @@
 # BioCultPapers
 
 <div align="center">
-  <img src="docs\etnoImagens\etnopapers2Trans300.png" alt="BioCultPapers Logo" width="200">
+  <img src="docs\BioCultPapersLogo.png" alt="BioCultPapers Logo" width="200">
+
 
   [![Version](https://img.shields.io/badge/version-2.1.0-blue.svg)](https://github.com/edalcin/BioCultPapers/releases)
   [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18139340.svg)](https://doi.org/10.5281/zenodo.18139340)

@@ -136,3 +136,5 @@ x86/
 # Portable builds (self-contained, too large for git)
 BioCultPapers-Portable/
 artifacts/
+
+graphify-out/EtnoPapers-Portable/
