@@ -138,4 +138,5 @@ BioCultPapers-Portable/
 artifacts/
 
 graphify-out/
-EtnoPapers-Portable/  # old etnoPapers-branded portable build dir name, pre-rename
+# old etnoPapers-branded portable build dir name, pre-rename
+EtnoPapers-Portable/
