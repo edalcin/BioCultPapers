@@ -137,4 +137,5 @@ x86/
 BioCultPapers-Portable/
 artifacts/
 
-graphify-out/EtnoPapers-Portable/
+graphify-out/
+EtnoPapers-Portable/  # old etnoPapers-branded portable build dir name, pre-rename
